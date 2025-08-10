@@ -1,11 +1,11 @@
 {
   "version": "1",
   "tokens": {
-    "system": [
-      "catalog/shards/by_tag/system.json"
-    ],
     "memory": [
       "catalog/shards/by_tag/memory.json"
+    ],
+    "system": [
+      "catalog/shards/by_tag/system.json"
     ],
     "historic": [
       "catalog/shards/by_tag/historic.json"
