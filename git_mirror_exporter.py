@@ -20,6 +20,9 @@ from mysql.connector import Error as MySQLError
 from datetime import datetime
 from pathlib import Path
 import secrets
+from flask import Flask, request, Response
+import requests
+
 
 # Configuration
 REPO_DIR = "/srv/memory-git"
@@ -457,3 +460,29 @@ if __name__ == '__main__':
     else:
         print("\nFAILED: Simple token-based Git mirror export failed")
         print("Check error messages above for details")
+# API Proxy for ChatGPT access (separate from main memory system)
+proxy_app = Flask(__name__)
+
+@proxy_app.route('/getfile')
+def get_file():
+    key = request.args.get("key")
+    filepath = request.args.get("path")
+    
+    if key != "8bba14962f9f2318":  # Your existing GitHub token
+        return Response("Unauthorized", status=401)
+    
+    if not filepath:
+        return Response("Missing 'path' parameter", status=400)
+    
+    github_url = f"https://raw.githubusercontent.com/HoffmanM361/memory-mirror/main/{filepath}"
+    r = requests.get(github_url)
+    
+    if r.status_code != 200:
+        return Response(f"Error fetching file: {r.status_code}", status=r.status_code)
+    
+    return Response(r.content, mimetype="application/json")
+
+if __name__ == '__main__':
+    # Your existing export code runs first
+    print("Git mirror export completed, starting proxy server...")
+    proxy_app.run(host='0.0.0.0', port=40002)  # Different port from main app
