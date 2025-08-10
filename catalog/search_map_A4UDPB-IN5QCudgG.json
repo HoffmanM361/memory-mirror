@@ -1,0 +1,19 @@
+{
+  "version": "1",
+  "tokens": {
+    "breakthrough": [
+      "catalog/shards/by_tag/breakthrough_Cg0qIFMBhwOMEBII.json"
+    ],
+    "historic": [
+      "catalog/shards/by_tag/historic_4Jm5v8S9yDQSKiDz.json"
+    ],
+    "memory": [
+      "catalog/shards/by_tag/memory_jnbWYTcXTN2VavkI.json"
+    ],
+    "system": [
+      "catalog/shards/by_tag/system_gTLJCraaxY-LlG3k.json"
+    ]
+  },
+  "security": "nonce_based_urls",
+  "access_note": "URLs use random nonces for security through obscurity"
+}

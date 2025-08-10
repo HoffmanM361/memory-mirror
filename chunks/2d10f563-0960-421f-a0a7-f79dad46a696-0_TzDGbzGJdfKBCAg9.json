@@ -1,0 +1,12 @@
+{
+  "id": "2d10f563-0960-421f-a0a7-f79dad46a696",
+  "chunk_ix": 0,
+  "created_at": "2025-08-10T11:20:36",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "TITLE: Persistent Memory System - Fetch &amp; Access Instructions\n\nPersistent Memory System - Fetch &amp; Access Instructions\r\nThis document provides detailed instructions for fetching and interacting with your local\r\npersistent memory system. It includes example commands, access structure, and a\r\nproposed read-only key system so that the AI assistant can query stored chats without\r\nrequiring your direct intervention each time.\r\n1. Basic Fetch Commands (Terminal)\r\nRun these commands from your terminal or SSH session to verify and interact with your\r\nmemory server.\r\n1) Health Check (no authentication required):\r\ncurl &quot;http://104.191.236.122:40001/health&quot;\r\n2) Search (read-only via query key):\r\ncurl &quot;http://104.191.236.122:40001/search?keyword=HISTORIC&amp;limit=5&amp;key=PUBLIC-\r\nREAD-KEY&quot;\r\n3) Get Full Chat by ID (read-only via query key):\r\ncurl &quot;http://104.191.236.122:40001/get/&lt;CHAT_ID&gt;?key=PUBLIC-READ-KEY&quot;\r\n4) Save New Entry (write; requires Bearer token):\r\ncurl -X POST &quot;http://104.191.236.122:40001/save&quot; \\\r\n-H &quot;Authorization: Bearer memory-system-2025-token&quot; \\\r\n-H &quot;Content-Type: application/json&quot; \\\r\n-d &#39;{&quot;content&quot;:&quot;conversation text&quot;,&quot;source&quot;:&quot;chatgpt&quot;,&quot;summary&quot;:&quot;summary&quot;}&#39;\r\n2. Enabling a Read-Only Query Key\r\nTo allow GET requests without headers (so the AI can read from your memory system), add\r\na read-only key in your Flask app:\r\nPython snippet for `memory_app.py`:\r\n-----------------------------------\r\nREADONLY_QUERY_KEY = os.getenv(&#39;MEMORY_READ_KEY&#39;, &#39;public-read-2025&#39;)\r\ndef check_read_auth():\r\nif request.headers.get(&#39;Authorization&#39;, &#39;&#39;).startswith(&#39;Bearer &#39;):\r\ntok = request.headers.get(&#39;Authorization&#39;).split(&#39; &#39;)[1]\r\nif tok == API_TOKEN:\r\nreturn True\r\nif request.method == &#39;GET&#39;:\r\nif request.args.get(&#39;key&#39;, &#39;&#39;) == READONLY_QUERY_KEY:\r\nreturn True\r\n\r\nr"
+}

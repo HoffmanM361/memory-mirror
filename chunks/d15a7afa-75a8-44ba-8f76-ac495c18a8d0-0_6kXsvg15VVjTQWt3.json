@@ -1,0 +1,11 @@
+{
+  "id": "d15a7afa-75a8-44ba-8f76-ac495c18a8d0",
+  "chunk_ix": 0,
+  "created_at": "2025-08-10T11:15:41",
+  "source": "web",
+  "tags": [
+    "memory",
+    "system"
+  ],
+  "content": "TITLE: # CHANGE LOG # File: /var/www/memory_system/blueprints/conversation_bp.py # Document Type: Flask Blueprint # Purpose: Human-friendly conversation management interface # Main App: memory_app.py # Routes: /conversations/, /conversations/save, /conversations/view, /conversations/detail/<id> # Context: Web interface for saving and browsing AI conversations # Dependencies: flask, mysql.connector # Version History: # 2025-08-10 v1.1 - Fixed circular import issue # 2025-08-10 v1.0 - Initial creation with save and browse functionality\n\n# CHANGE LOG\r\n# File: /var/www/memory_system/blueprints/conversation_bp.py\r\n# Document Type: Flask Blueprint\r\n# Purpose: Human-friendly conversation management interface\r\n# Main App: memory_app.py\r\n# Routes: /conversations/, /conversations/save, /conversations/view, /conversations/detail/<id>\r\n# Context: Web interface for saving and browsing AI conversations\r\n# Dependencies: flask, mysql.connector\r\n# Version History:\r\n# 2025-08-10 v1.1 - Fixed circular import issue\r\n# 2025-08-10 v1.0 - Initial creation with save and browse functionality\r\n\r\nfrom flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify\r\nimport mysql.connector\r\nfrom mysql.connector import Error as MySQLError\r\nimport json\r\nimport hashlib\r\nimport uuid\r\nimport os\r\nfrom datetime import datetime\r\nimport traceback\r\n\r\n# Create blueprint\r\nconversation_bp = Blueprint('conversations', __name__, url_prefix='/conversations')\r\n\r\n# Database config (copied from main app to avoid circular import)\r\nDB_CONFIG = {\r\n    'host': 'localhost',\r\n    'database': 'memory_system',\r\n    'user': 'memory_user',\r\n    'password': 'memory_pass_2025'\r\n}\r\n\r\nLOG_PATH = \"/media/mh/2TBU/memory_system/logs/app.log\"\r\n\r\ndef write_log(message):\r\n    \"\"\"Simple logging to file and console\"\"\"\r\n    try:\r\n        timestamp = datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\")\r\n        log_message = f\"[{timestamp}] {message}\\n\"\r\n        \r\n        # Ensure log directory exists\r\n        log_dir = os.p"
+}

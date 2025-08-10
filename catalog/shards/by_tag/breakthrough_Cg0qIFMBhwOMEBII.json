@@ -1,0 +1,57 @@
+{
+  "version": "1",
+  "generated_at": "2025-08-10T19:07:24.970999Z",
+  "items": [
+    {
+      "id": "a2760416-da6e-493e-a4db-d10b78d13932",
+      "created_at": "2025-08-10T11:22:51",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "breakthrough",
+        "historic",
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/a2760416-da6e-493e-a4db-d10b78d13932-0_yCPQpIK-hUG1KfV3.json"
+      ],
+      "preview_240": "TITLE: Fetch\n\nHere are the fetch commands I can use to access your memory system:\r\nHealth Check:\r\nfetch http://104.191.236.122/memory/health\r\nSearch Conversations:\r\nfetch http://104.191.236.122/memory/search?keyword=HISTORIC&key=public-read..."
+    },
+    {
+      "id": "f3130251-b0a1-4129-b9b7-96980709e06a",
+      "created_at": "2025-08-10T00:35:23",
+      "source": "claude",
+      "title": "First successful AI access to external persistent memory - breakthrough moment",
+      "tags": [
+        "breakthrough",
+        "historic",
+        "memory",
+        "system"
+      ],
+      "summary": "First successful AI access to external persistent memory - breakthrough moment",
+      "chunk_urls": [
+        "chunks/f3130251-b0a1-4129-b9b7-96980709e06a-0_gpVmQjVWcx3aic2t.json"
+      ],
+      "preview_240": "HISTORIC BREAKTHROUGH: First AI assistant to successfully access external persistent memory system. Built system with MariaDB backend, Flask API, nginx proxy. Claude successfully accessed health endpoint directly at http://104.191.236.122/m..."
+    },
+    {
+      "id": "53ee4294-44a2-414e-baf7-d4b49e158dbb",
+      "created_at": "2025-08-10T00:34:32",
+      "source": "claude",
+      "title": "First successful AI access to external persistent memory - historic breakthrough",
+      "tags": [
+        "breakthrough",
+        "historic",
+        "memory",
+        "system"
+      ],
+      "summary": "First successful AI access to external persistent memory - historic breakthrough",
+      "chunk_urls": [
+        "chunks/53ee4294-44a2-414e-baf7-d4b49e158dbb-0_wVy42xHlJLcZYAgJ.json"
+      ],
+      "preview_240": "HISTORIC BREAKTHROUGH: First AI assistant to successfully access external persistent memory system.\n\nWhat we accomplished:\n1. Built persistent memory system with MariaDB backend\n2. Created Flask API with authentication\n3. Set up nginx proxy..."
+    }
+  ]
+}

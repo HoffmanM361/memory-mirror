@@ -1,13 +1,13 @@
 # CHANGE LOG
 # File: /srv/memory-git/git_mirror_exporter.py
 # Document Type: Python Utility Script
-# Purpose: Export encrypted memory conversations to Git mirror with incremental updates
+# Purpose: Export memory conversations to Git mirror using nonce-based URLs for security
 # Main App: memory_app.py
-# Dependencies: mysql.connector, json, os, subprocess, pathlib, cryptography
-# Context: Creates encrypted JSON files in Git repo for secure AI access via raw URLs
-# Mirror Strategy: All content encrypted with passphrase, incremental updates only
-# Encryption: Single passphrase "8*Fold*Path" encrypts all content
+# Dependencies: mysql.connector, json, os, subprocess, pathlib, secrets
+# Context: Creates plain JSON files with hard-to-guess URLs for AI access via GitHub raw
+# Security Strategy: URL obscurity with random nonces instead of encryption
 # Version History:
+# 2025-08-10 v2.0 - Simplified to nonce-based URLs, removed encryption complexity
 # 2025-08-10 v1.3 - Fixed function order and directory creation issues
 # 2025-08-10 v1.2 - Added incremental updates and change tracking
 # 2025-08-10 v1.1 - Added encryption with passphrase-based key
@@ -15,15 +15,13 @@
 
 import os
 import json
-import hashlib
 import subprocess
 import traceback
 import mysql.connector
 from mysql.connector import Error as MySQLError
 from datetime import datetime
 from pathlib import Path
-import base64
-from cryptography.fernet import Fernet
+import secrets
 
 # Configuration
 REPO_DIR = "/srv/memory-git"
@@ -37,35 +35,96 @@ PUBLIC_TAGS = {"memory", "breakthrough", "historic", "system", "development"}
 
 # Incremental update tracking
 LAST_EXPORT_FILE = f"{META_DIR}/last_export.json"
+NONCE_MAP_FILE = f"{META_DIR}/nonce_map.json"
 
-# Encryption configuration
-PASSPHRASE = "8*Fold*Path"
-
-def passphrase_to_key(passphrase):
-    """Convert passphrase to encryption key"""
+def generate_nonce():
+    """Generate random nonce for file naming"""
     try:
-        print("DEBUG: passphrase_to_key - Converting passphrase to encryption key")
-        
-        # Use SHA256 to create 32-byte key from passphrase
-        key_bytes = hashlib.sha256(passphrase.encode()).digest()
-        # Convert to base64 for Fernet
-        encryption_key = base64.urlsafe_b64encode(key_bytes)
-        
-        print("DEBUG: passphrase_to_key - Encryption key generated successfully")
-        return encryption_key
-        
+        nonce = secrets.token_urlsafe(12)  # 12-byte random string
+        print(f"DEBUG: generate_nonce - Generated nonce: {nonce}")
+        return nonce
     except Exception as e:
-        print(f"ERROR: passphrase_to_key - Error generating key: {e}")
+        print(f"ERROR: generate_nonce - Error generating nonce: {e}")
         return None
 
-# Initialize encryption
-ENCRYPTION_KEY = passphrase_to_key(PASSPHRASE)
-if ENCRYPTION_KEY:
-    cipher = Fernet(ENCRYPTION_KEY)
-    print("DEBUG: Encryption initialized successfully")
-else:
-    print("ERROR: Failed to initialize encryption")
-    cipher = None
+def load_nonce_map():
+    """Load existing nonce mappings"""
+    try:
+        print("DEBUG: load_nonce_map - Loading existing nonce mappings")
+        
+        if not os.path.exists(NONCE_MAP_FILE):
+            print("DEBUG: load_nonce_map - No existing nonce map, creating new one")
+            return {}
+        
+        with open(NONCE_MAP_FILE, 'r', encoding='utf-8') as f:
+            nonce_map = json.load(f)
+        
+        print(f"DEBUG: load_nonce_map - Loaded {len(nonce_map)} nonce mappings")
+        return nonce_map
+        
+    except Exception as e:
+        print(f"ERROR: load_nonce_map - Error loading nonce map: {e}")
+        return {}
+
+def save_nonce_map(nonce_map):
+    """Save nonce mappings for future reference"""
+    try:
+        print("DEBUG: save_nonce_map - Saving nonce mappings")
+        
+        with open(NONCE_MAP_FILE, 'w', encoding='utf-8') as f:
+            json.dump(nonce_map, f, ensure_ascii=False, indent=2)
+        
+        print(f"DEBUG: save_nonce_map - Saved {len(nonce_map)} nonce mappings")
+        return True
+        
+    except Exception as e:
+        print(f"ERROR: save_nonce_map - Error saving nonce map: {e}")
+        return False
+
+def get_nonce_filename(base_name, nonce_map):
+    """Get nonce-based filename, creating new nonce if needed"""
+    try:
+        print(f"DEBUG: get_nonce_filename - Getting nonce filename for {base_name}")
+        
+        if base_name in nonce_map:
+            filename = nonce_map[base_name]
+            print(f"DEBUG: get_nonce_filename - Using existing nonce: {filename}")
+            return filename
+        
+        nonce = generate_nonce()
+        if not nonce:
+            print(f"ERROR: get_nonce_filename - Failed to generate nonce for {base_name}")
+            return f"{base_name}.json"  # Fallback
+        
+        # Create nonce-based filename
+        name_parts = base_name.split('.')
+        if len(name_parts) > 1:
+            filename = f"{name_parts[0]}_{nonce}.{name_parts[1]}"
+        else:
+            filename = f"{base_name}_{nonce}.json"
+        
+        nonce_map[base_name] = filename
+        print(f"DEBUG: get_nonce_filename - Created new nonce filename: {filename}")
+        return filename
+        
+    except Exception as e:
+        print(f"ERROR: get_nonce_filename - Error creating nonce filename: {e}")
+        return f"{base_name}.json"  # Fallback
+
+def save_json_file(path, data):
+    """Save data as plain JSON file"""
+    try:
+        print(f"DEBUG: save_json_file - Saving to {path}")
+        
+        with open(path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        
+        print(f"DEBUG: save_json_file - Successfully saved {path}")
+        return True
+        
+    except Exception as e:
+        print(f"ERROR: save_json_file - Error saving {path}: {e}")
+        return False
 
 # Database configuration (same as main app)
 DB_CONFIG = {
@@ -74,55 +133,6 @@ DB_CONFIG = {
     'user': 'memory_user',
     'password': 'memory_pass_2025'
 }
-
-def encrypt_content(content):
-    """Encrypt content using the passphrase-based key"""
-    try:
-        print("DEBUG: encrypt_content - Encrypting content")
-        
-        if not cipher:
-            print("ERROR: encrypt_content - No cipher available")
-            return content
-        
-        if not content:
-            print("ERROR: encrypt_content - No content provided")
-            return ""
-        
-        # Convert to string if not already
-        content_str = str(content)
-        
-        # Encrypt the content
-        encrypted_bytes = cipher.encrypt(content_str.encode())
-        encrypted_str = encrypted_bytes.decode()
-        
-        print(f"DEBUG: encrypt_content - Content encrypted, size: {len(encrypted_str)}")
-        return encrypted_str
-        
-    except Exception as e:
-        print(f"ERROR: encrypt_content - Encryption failed: {e}")
-        return content
-
-def save_encrypted_json_file(path, data):
-    """Save data as encrypted JSON file - NO directory creation"""
-    try:
-        print(f"DEBUG: save_encrypted_json_file - Saving to {path}")
-        
-        # Convert data to JSON string
-        json_str = json.dumps(data, ensure_ascii=False, indent=2)
-        
-        # Encrypt the JSON content
-        encrypted_content = encrypt_content(json_str)
-        
-        # Save encrypted content as text file
-        with open(path, 'w', encoding='utf-8') as f:
-            f.write(encrypted_content)
-        
-        print(f"DEBUG: save_encrypted_json_file - Successfully saved {path}")
-        return True
-        
-    except Exception as e:
-        print(f"ERROR: save_encrypted_json_file - Error saving {path}: {e}")
-        return False
 
 def get_db_connection():
     """Get database connection with error handling"""
@@ -154,12 +164,7 @@ def get_last_export_timestamp():
             return None
         
         with open(LAST_EXPORT_FILE, 'r', encoding='utf-8') as f:
-            encrypted_content = f.read()
-        
-        # Decrypt the timestamp file
-        if cipher:
-            decrypted_content = cipher.decrypt(encrypted_content.encode()).decode()
-            data = json.loads(decrypted_content)
+            data = json.load(f)
             timestamp_str = data.get('last_export_timestamp')
             
             if timestamp_str:
@@ -185,7 +190,7 @@ def save_export_timestamp(timestamp):
             'export_completed': True
         }
         
-        if save_encrypted_json_file(LAST_EXPORT_FILE, data):
+        if save_json_file(LAST_EXPORT_FILE, data):
             print("DEBUG: save_export_timestamp - Timestamp saved successfully")
             return True
         else:
@@ -332,9 +337,12 @@ def chunk_content(text, size=CHUNK_SIZE):
         return []
 
 def export_memory_to_git():
-    """Main export function - creates incremental Git mirror from MariaDB"""
+    """Main export function - creates nonce-based Git mirror from MariaDB"""
     try:
-        print(f"DEBUG: export_memory_to_git - Starting incremental export at {datetime.now()}")
+        print(f"DEBUG: export_memory_to_git - Starting nonce-based export at {datetime.now()}")
+        
+        # Load existing nonce mappings
+        nonce_map = load_nonce_map()
         
         # Check for incremental vs full export
         last_export = get_last_export_timestamp()
@@ -376,7 +384,9 @@ def export_memory_to_git():
             chunk_urls = []
             
             for chunk_index, chunk_text in chunks:
-                chunk_filename = f"{chat_id}-{chunk_index}.json"
+                # Create nonce-based chunk filename
+                chunk_base_name = f"{chat_id}-{chunk_index}"
+                chunk_filename = get_nonce_filename(chunk_base_name, nonce_map)
                 chunk_path = f"{CHUNK_DIR}/{chunk_filename}"
                 
                 chunk_data = {
@@ -388,7 +398,7 @@ def export_memory_to_git():
                     "content": chunk_text
                 }
                 
-                if save_encrypted_json_file(chunk_path, chunk_data):
+                if save_json_file(chunk_path, chunk_data):
                     chunk_urls.append(f"chunks/{chunk_filename}")
             
             # Create item metadata
@@ -424,7 +434,7 @@ def export_memory_to_git():
         # Generate timestamp
         now_iso = datetime.utcnow().isoformat() + "Z"
         
-        # Save tag-based shards (encrypted)
+        # Save tag-based shards with nonce filenames
         for tag, items in final_items_by_tag.items():
             shard_data = {
                 "version": "1",
@@ -432,11 +442,12 @@ def export_memory_to_git():
                 "items": items
             }
             
-            shard_path = f"{SHARD_TAG_DIR}/{tag}.json"
-            if not save_encrypted_json_file(shard_path, shard_data):
+            shard_filename = get_nonce_filename(f"{tag}", nonce_map)
+            shard_path = f"{SHARD_TAG_DIR}/{shard_filename}"
+            if not save_json_file(shard_path, shard_data):
                 print(f"ERROR: export_memory_to_git - Failed to save tag shard: {tag}")
         
-        # Save month-based shards (encrypted)
+        # Save month-based shards with nonce filenames
         for month, items in final_items_by_month.items():
             shard_data = {
                 "version": "1", 
@@ -444,37 +455,46 @@ def export_memory_to_git():
                 "items": items
             }
             
-            shard_path = f"{SHARD_DATE_DIR}/{month}.json"
-            if not save_encrypted_json_file(shard_path, shard_data):
+            month_filename = get_nonce_filename(f"{month}", nonce_map)
+            shard_path = f"{SHARD_DATE_DIR}/{month_filename}"
+            if not save_json_file(shard_path, shard_data):
                 print(f"ERROR: export_memory_to_git - Failed to save month shard: {month}")
         
-        # Create search map (encrypted)
+        # Create search map with nonce-based URLs
         search_tokens = {}
         for tag in final_items_by_tag.keys():
-            search_tokens[tag] = [f"catalog/shards/by_tag/{tag}.json"]
+            tag_filename = nonce_map.get(tag, f"{tag}.json")
+            search_tokens[tag] = [f"catalog/shards/by_tag/{tag_filename}"]
         
         search_map = {
             "version": "1",
             "tokens": search_tokens,
-            "encryption": "fernet",
-            "passphrase_hint": "Noble Eightfold Path with asterisks"
+            "security": "nonce_based_urls",
+            "access_note": "URLs use random nonces for security through obscurity"
         }
         
-        if not save_encrypted_json_file(f"{CATALOG_DIR}/search_map.json", search_map):
+        # Search map gets its own nonce
+        search_map_filename = get_nonce_filename("search_map", nonce_map)
+        if not save_json_file(f"{CATALOG_DIR}/{search_map_filename}", search_map):
             print("ERROR: export_memory_to_git - Failed to save search map")
         
-        # Create metadata files (encrypted)
+        # Save nonce mappings
+        if not save_nonce_map(nonce_map):
+            print("ERROR: export_memory_to_git - Failed to save nonce mappings")
+        
+        # Create metadata files
         total_exported = sum(len(items) for items in final_items_by_tag.values())
         latest_build = {
             "generated_at": now_iso,
             "total_conversations": total_exported,
             "new_conversations": new_exported_count,
             "incremental_update": is_incremental,
-            "encryption": "fernet",
-            "passphrase_required": True
+            "security": "nonce_based_urls",
+            "search_map_url": f"catalog/{search_map_filename}"
         }
         
-        if not save_encrypted_json_file(f"{META_DIR}/latest_build.json", latest_build):
+        build_filename = get_nonce_filename("latest_build", nonce_map)
+        if not save_json_file(f"{META_DIR}/{build_filename}", latest_build):
             print("ERROR: export_memory_to_git - Failed to save build metadata")
         
         # Git operations
@@ -483,9 +503,9 @@ def export_memory_to_git():
         subprocess.run(["git", "-C", REPO_DIR, "add", "-A"], check=True)
         
         if is_incremental:
-            commit_message = f"incremental: {new_exported_count} new conversations"
+            commit_message = f"incremental: {new_exported_count} new conversations (nonce-based)"
         else:
-            commit_message = f"full export: {total_exported} total conversations"
+            commit_message = f"full export: {total_exported} total conversations (nonce-based)"
             
         subprocess.run(["git", "-C", REPO_DIR, "commit", "-m", commit_message], check=False)
         subprocess.run(["git", "-C", REPO_DIR, "push"], check=True)
@@ -505,6 +525,7 @@ def export_memory_to_git():
             print(f"DEBUG: export_memory_to_git - Full export: {total_exported} conversations")
         
         print(f"DEBUG: export_memory_to_git - Tags: {list(final_items_by_tag.keys())}")
+        print(f"DEBUG: export_memory_to_git - Search map URL: catalog/{search_map_filename}")
         
         return True
         
@@ -518,19 +539,18 @@ def export_memory_to_git():
 
 if __name__ == '__main__':
     print("=" * 60)
-    print("WORKING ENCRYPTED MEMORY SYSTEM GIT MIRROR EXPORTER v1.3")
-    print(f"Starting incremental export at {datetime.now()}")
-    print(f"Encryption: Enabled with passphrase '{PASSPHRASE}'")
+    print("SIMPLE NONCE-BASED MEMORY SYSTEM GIT MIRROR EXPORTER v2.0")
+    print(f"Starting export at {datetime.now()}")
+    print("Security: Nonce-based URLs for AI accessibility")
     print("=" * 60)
     
     success = export_memory_to_git()
     
     if success:
-        print("\nSUCCESS: Working incremental encrypted Git mirror export completed!")
-        print("All conversations encrypted with passphrase: 8*Fold*Path")
-        print("Future runs will only export new conversations")
-        print("AI assistants can decrypt with passphrase and access via raw Git URLs")
-        print("Raw URLs: https://raw.githubusercontent.com/HoffmanM361/memory-mirror/main/catalog/search_map.json")
+        print("\nSUCCESS: Simple nonce-based Git mirror export completed!")
+        print("All conversations saved as plain JSON with nonce-based URLs")
+        print("AI assistants can directly access content with the nonce URLs")
+        print("Check meta/nonce_map.json for URL mappings")
     else:
-        print("\nFAILED: Working incremental encrypted Git mirror export failed")
+        print("\nFAILED: Simple nonce-based Git mirror export failed")
         print("Check error messages above for details")
