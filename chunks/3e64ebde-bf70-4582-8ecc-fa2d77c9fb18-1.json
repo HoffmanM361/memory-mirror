@@ -1,0 +1,11 @@
+{
+  "id": "3e64ebde-bf70-4582-8ecc-fa2d77c9fb18",
+  "chunk_ix": 1,
+  "created_at": "2025-08-10T15:52:26",
+  "source": "web",
+  "tags": [
+    "memory",
+    "system"
+  ],
+  "content": "d do (every time)\r\n1) Open the search map URL from E1.\r\n2) From &#39;tokens&#39;, open the listed shard(s) (e.g., by_tag/memory.json).\r\n3) Follow each &#39;chunk_urls&#39; item to read content (~2 KB per chunk).\r\n4) If a shard is split (e.g., memory.json.1.json), open all parts in numeric order.\r\n5) Never invent file names. Only open links present in JSON.\r\nG) Verification (phone‑friendly)\r\n• Search map is multi‑line JSON, contains &#39;nonce&#39; and &#39;tokens&#39;.\r\n• Shards are multi‑line, modest size (&lt;256 KB).\r\n• Chunks load and show text.\r\n• meta/latest_build.json exists and shows the same nonce.\r\nH) Rotate or revoke access\r\nTo rotate immediately: delete /srv/memory-git/.current_nonce and run exporter again.\r\nExporter prunes older nonces, keeping MEM_MIRROR_KEEP_NONCES copies (default 2).\r\nShare the two NEW URLs (E1/E2) after each rotation.\r\nI) Cron (optional)\r\nRuns nightly and rotates at most once every 24h:\r\n\r\n0 2 * * * /usr/bin/python3 /srv/memory-git/exporter.py &gt;&gt;\r\n/var/log/memory_exporter.log 2&gt;&amp;1\r\nJ) Rules (for Claude)\r\n• Do NOT guess nonces or paths. Read only the URLs provided.\r\n• Do NOT attempt to write, push, or modify files.\r\n• If JSON is single‑line or too large, ask operator to re‑run exporter (pretty JSON, shard size\r\nguard).\r\n• When asked to &quot;search the library&quot;, start at the search map URL, not Git directory listings.\r\nK) Quick commands (copy/paste)\r\nInstall dep:\r\npython3 -m pip install mysql-connector-python\r\nRun exporter once:\r\npython3 /srv/memory-git/exporter.py\r\nL) Minimal decision tree (Claude)\r\nGiven two URLs (E1/E2):\r\nIf E1 404 → ask for a fresh NONCE or re‑export.\r\nIf shard loads but no &#39;items&#39; → report empty shard; request different tag or re‑export.\r\nIf chunk missing → list the missing chunk URL; continue with remaining chunks.\r\nM) Contact surface for AIs\r\nAssistants consume ONLY:\r\ncatalog/&lt;NONCE&gt;/search_map_&lt;NONCE&gt;.json (entry)\r\ncatalog/&lt;NONCE&gt;/shards/by_tag/*.json (indexes)\r\nchu"
+}

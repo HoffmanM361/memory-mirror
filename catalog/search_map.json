@@ -1,1 +1,20 @@
-gAAAAABomOutpyNt2rfqct9SxX4GeyXvVar0f6YhvwT8y74nLLRbY8N9SSiGgkqiesyk4N_Ke57G-3-rmgpfvMQJed_VZcn8vpDdFeSyOlWMFrxPDe_gxj8SUEaHI-udhWc_CE1l58OatAc7jm3Xk89lR8DJj3J-Ae5WAgl35CBl3jocSFJK6TWycNoQAXkrYQMeeh4CF0TOHftDl6-U6GmX8_ky-PuzxqvnSvRlDOpNtB28edViBw92LWIBztHSMLfi8EMzfBksyPNSPVvGWvBskfzsi0_BqaH5n7a1qJ2DOQ2bm2n2pzJ4eINpGZHOzaU2-GYl3QAIWkqAgdIhzRWV_VOP9zHaj-sbQrfK_a2NBfn1agNlvNPMEDiY2bdSiAVgP7akhX_JYxy8IXhJmaLqGIZs3OQTanXSO08BE5B12IsZ8a742kSwvBEC58-HNeIpJpY4M6iWOpI3wso2yCEroQryaTZ6Z2PviIqleftON9UdpQkKb-jPYcCFtc9p_Suz0bFZZYGG-uYgRvsB8h4ryH2xRy3obY4MkuIR2J4dIWlACg-ED1c-DbsRU8jOv_MZYrfob3j7ulhtVWmXskrN5kl6kBGjWBF23A4lkjgdee3mZUrMxeI=
+{
+  "version": "1",
+  "tokens": {
+    "memory": [
+      "catalog/shards/by_tag/memory.json?key=8bba14962f9f2318"
+    ],
+    "system": [
+      "catalog/shards/by_tag/system.json?key=8bba14962f9f2318"
+    ],
+    "historic": [
+      "catalog/shards/by_tag/historic.json?key=8bba14962f9f2318"
+    ],
+    "breakthrough": [
+      "catalog/shards/by_tag/breakthrough.json?key=8bba14962f9f2318"
+    ]
+  },
+  "security": "token_parameter",
+  "access_token": "8bba14962f9f2318",
+  "access_note": "Append ?key=8bba14962f9f2318 to any URL for access"
+}

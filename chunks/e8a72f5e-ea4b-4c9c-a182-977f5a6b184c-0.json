@@ -1,0 +1,13 @@
+{
+  "id": "e8a72f5e-ea4b-4c9c-a182-977f5a6b184c",
+  "chunk_ix": 0,
+  "created_at": "2025-08-10T15:50:12",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "TITLE: Persistent Memory → Git Mirror: Stable Index, Pretty JSON, and Shard Guard (Complete Guide, v4)\n\nPersistent Memory → Git Mirror: Stable Index, Pretty JSON, and Shard\r\nGuard (Complete Guide, v4)\r\nObjective: Keep MariaDB/Flask/Nginx as source-of-truth and publish a read‑only public\r\nGit mirror (redacted JSON) that any AI assistant can read via HTTPS without headers or\r\nPOST. This document includes stable URLs, full exporter code, schemas, setup, cron,\r\nverification, and troubleshooting.\r\n1) RAW URLs for Assistants (Stable)\r\nUse these RAW GitHub URLs. Replace ORG/REPO if your repo name changes.\r\nStable search map (always overwritten on export):\r\nhttps://raw.githubusercontent.com/HoffmanM361/memory-\r\nmirror/main/catalog/search_map.json\r\nExample shard (by tag):\r\nhttps://raw.githubusercontent.com/HoffmanM361/memory-\r\nmirror/main/catalog/shards/by_tag/memory.json\r\nGeneric patterns:\r\nhttps://raw.githubusercontent.com/ORG/REPO/main/catalog/search_map.json\r\nhttps://raw.githubusercontent.com/ORG/REPO/main/catalog/shards/by_tag/&lt;tag&gt;.json\r\nhttps://raw.githubusercontent.com/ORG/REPO/main/chunks/&lt;chat_id&gt;-&lt;ix&gt;.json\r\n\r\n2) Public Mirror Layout\r\n```\r\n/catalog/\r\nsearch_map.json # STABLE alias (always overwritten)\r\nsearch_map_&lt;nonce&gt;.json # Rotating copy (optional)\r\nshards/\r\nby_tag/&lt;tag&gt;.json # Pretty-printed shard (size-guarded)\r\nby_date/YYYY-MM.json\r\n/chunks/\r\n&lt;id&gt;-0.json # ~2 KB chunk\r\n&lt;id&gt;-1.json\r\n/meta/\r\nlatest_build.json # timestamp + exported count\r\n\r\ncounts.json # counts per tag/month\r\nai_diagnostics.json # freshness hints for AI\r\nREADME.md\r\n```\r\n\r\n3) JSON Schemas\r\nCatalog shard (by_tag or by_date):\r\n```\r\n{\r\n&quot;version&quot;:&quot;1&quot;,\r\n&quot;generated_at&quot;:&quot;2025-08-10T23:59:00Z&quot;,\r\n&quot;items&quot;:[{\r\n&quot;id&quot;:&quot;53ee4294-...-dbb&quot;,\r\n&quot;created_at&quot;:&quot;2025-08-09T14:54:00Z&quot;,\r\n&quot;source&quot;:&quot;claude&quot;,\r\n&quot;title&quot;:&quot;Breakthrough...&quot;,\r\n&quot;tags&quot;"
+}

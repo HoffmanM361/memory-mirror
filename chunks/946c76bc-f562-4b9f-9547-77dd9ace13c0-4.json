@@ -1,0 +1,13 @@
+{
+  "id": "946c76bc-f562-4b9f-9547-77dd9ace13c0",
+  "chunk_ix": 4,
+  "created_at": "2025-08-10T15:51:41",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "uot;created_at&quot;: created_at.isoformat(),\r\n&quot;source&quot;: source, &quot;tags&quot;: sorted(list(tags)),\r\n&quot;content&quot;: part\r\n})\r\nchunk_urls.append(f&quot;chunks/{nonce}/{chat_id}-{ix}.json&quot;)\r\nitem = {\r\n&quot;id&quot;: chat_id,\r\n&quot;created_at&quot;: created_at.isoformat(),\r\n&quot;source&quot;: source,\r\n&quot;title&quot;: (summary or f\\&quot;{source} note\\&quot;)[:80],\r\n&quot;tags&quot;: sorted(list(tags)),\r\n&quot;summary&quot;: summary or &quot;&quot;,\r\n\r\n&quot;chunk_urls&quot;: chunk_urls,\r\n&quot;preview_240&quot;: rc[:240] + (\\&quot;…\\&quot; if len(rc)&gt;240 else &quot;&quot;)\r\n}\r\nfor t in tags:\r\nitems_by_tag.setdefault(t, []).append(item)\r\nym = created_at.strftime(&quot;%Y-%m&quot;)\r\nitems_by_month.setdefault(ym, []).append(item)\r\nexported += 1\r\nnow_iso = datetime.datetime.utcnow().isoformat() + &quot;Z&quot;\r\n# Write shards (pretty + size-guarded)\r\ndef write_shard(path, items):\r\nensure_dir(path)\r\nif len(items) &lt;= MAX_ITEMS_PER_SHARD:\r\nsave_json(path, {&quot;version&quot;:&quot;1&quot;,&quot;generated_at&quot;:now_iso,&quot;items&quot;:items})\r\nelse:\r\nbase, ext = path.rsplit(&quot;.&quot;, 1)\r\nfor ix in range(0, len(items), MAX_ITEMS_PER_SHARD):\r\npart = items[ix:ix+MAX_ITEMS_PER_SHARD]\r\nsave_json(f&quot;{base}.{ix//MAX_ITEMS_PER_SHARD}.{ext}&quot;,\r\n{&quot;version&quot;:&quot;1&quot;,&quot;generated_at&quot;:now_iso,&quot;items&quot;:part})\r\nfor t, items in items_by_tag.items():\r\nwrite_shard(f&quot;{SHARD_TAG_DIR}/{t}.json&quot;, items)\r\nfor ym, items in items_by_month.items():\r\nwrite_shard(f&quot;{SHARD_DATE_DIR}/{ym}.json&quot;, items)\r\n# Nonce search map: under the nonce path, and (optionally) at catalog root with\r\nnonce in filename\r\ntoken_map = {t: [f&quot;catalog/{nonce}/shards/by_tag/{t}.json&quot;] for t in items_by_tag.keys()}\r\nsearch_map = {&quot;version&quot;:&quot;1&quot;,&quot;nonce&quot;: nonce, &quot;generated_at&quot;: now_iso, &quot;tokens&quot;:\r\ntoken_map}\r\nsave_json(f&quot;{CAT_NONCE_DIR}/search_map_{nonce}.json&quot;"
+}

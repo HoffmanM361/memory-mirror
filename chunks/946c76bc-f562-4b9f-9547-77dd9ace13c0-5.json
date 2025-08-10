@@ -1,0 +1,13 @@
+{
+  "id": "946c76bc-f562-4b9f-9547-77dd9ace13c0",
+  "chunk_ix": 5,
+  "created_at": "2025-08-10T15:51:41",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": ", search_map) #\r\nprimary entrypoint\r\n\r\nsave_json(f&quot;{CAT_DIR}/search_map_{nonce}.json&quot;, search_map) # optional\r\nduplicate at catalog root\r\n# meta (stable paths OK; contain no sensitive content)\r\nsave_json(f&quot;{META_DIR}/latest_build.json&quot;, {&quot;generated_at&quot;: now_iso, &quot;exported&quot;:\r\nexported, &quot;nonce&quot;: nonce})\r\ncounts = {&quot;by_tag&quot;:{k:len(v) for k,v in items_by_tag.items()}, &quot;by_month&quot;:{k:len(v) for\r\nk,v in items_by_month.items()}}\r\nsave_json(f&quot;{META_DIR}/counts.json&quot;, counts)\r\nsave_json(f&quot;{META_DIR}/ai_diagnostics.json&quot;, {\r\n&quot;generated_at&quot;: now_iso,\r\n&quot;nonce&quot;: nonce,\r\n&quot;hints&quot;: [&quot;You must use the exact nonce URL shared by the operator.&quot;,\r\n&quot;Start at catalog/&lt;NONCE&gt;/search_map_&lt;NONCE&gt;.json&quot;,\r\n&quot;Then load shards; follow chunk_urls.&quot;],\r\n&quot;top_tags&quot;: sorted([(k,len(v)) for k,v in items_by_tag.items()], key=lambda x: -\r\nx[1])[:5]\r\n})\r\n# prune older nonces from repo\r\nprune_old_nonces(nonce)\r\n# git push\r\nsubprocess.run([&quot;git&quot;,&quot;-C&quot;,REPO_DIR,&quot;add&quot;,&quot;-A&quot;], check=True)\r\nsubprocess.run([&quot;git&quot;,&quot;-C&quot;,REPO_DIR,&quot;commit&quot;,&quot;-m&quot;,f&quot;export: nonce {nonce}&quot;],\r\ncheck=False)\r\nsubprocess.run([&quot;git&quot;,&quot;-C&quot;,REPO_DIR,&quot;push&quot;], check=True)\r\nif __name__ == &quot;__main__&quot;:\r\nmain()\r\n```\r\n6) .gitignore (Local Nonce Files)\r\nAdd to your repo root to avoid committing internal trackers:\r\n```\r\n.current_nonce\r\n.nonce_history\r\n```\r\n\r\n7) SQL Migration (Public Flag &amp; Index)\r\n```\r\nALTER TABLE chats ADD COLUMN public TINYINT(1) NOT NULL DEFAULT 0;\r\nCREATE INDEX idx_public_created ON chats(public, created_at);\r\n-- Example: mark a record public\r\nUPDATE chats SET public = 1 WHERE id IN (&#39;53ee4294-44a2-414e-baf7-\r\nd4b49e158dbb&#39;);\r\n```\r\n\r\n8) Setup &amp; Run\r\n```\r\nsudo mkdir -p /srv/memory-git\r\ncd /srv/memory-git\r\ngit init\r\ngit remot"
+}

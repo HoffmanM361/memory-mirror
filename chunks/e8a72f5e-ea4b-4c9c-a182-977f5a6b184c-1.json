@@ -1,0 +1,13 @@
+{
+  "id": "e8a72f5e-ea4b-4c9c-a182-977f5a6b184c",
+  "chunk_ix": 1,
+  "created_at": "2025-08-10T15:50:12",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": ":[&quot;breakthrough&quot;,&quot;memory&quot;],\r\n&quot;summary&quot;:&quot;Short safe abstract...&quot;,\r\n&quot;chunk_urls&quot;:[&quot;https://raw.githubusercontent.com/ORG/REPO/main/chunks/53ee4294-\r\n...-0.json&quot;],\r\n&quot;preview_240&quot;:&quot;First 240 safe chars…&quot;\r\n}]\r\n}\r\n```\r\nChunk file (~2 KB):\r\n```\r\n{\r\n&quot;id&quot;:&quot;53ee4294-...-dbb&quot;, &quot;chunk_ix&quot;:0,\r\n&quot;created_at&quot;:&quot;2025-08-09T14:54:00Z&quot;, &quot;source&quot;:&quot;claude&quot;,\r\n&quot;tags&quot;:[&quot;memory&quot;],\r\n&quot;content&quot;:&quot;&lt;redacted/plain text up to ~2000 chars&gt;&quot;\r\n}\r\n```\r\nSearch map:\r\n```\r\n{\r\n&quot;version&quot;:&quot;1&quot;,\r\n&quot;tokens&quot;: { &quot;memory&quot;: [&quot;catalog/shards/by_tag/memory.json&quot;], &quot;historic&quot;:\r\n[&quot;catalog/shards/by_tag/historic.json&quot;] }\r\n\r\n}\r\n```\r\n\r\n4) exporter.py (MariaDB → JSON → Git) — v1.2\r\n```python\r\n#!/usr/bin/env python3\r\n# exporter.py\r\n# MariaDB -&gt; redacted JSON shards/chunks in a public Git repo\r\n# Writes pretty JSON, splits large shards, and emits both stable + nonce search_map.\r\nimport os, json, datetime, pathlib, subprocess, re\r\nimport mysql.connector\r\nfrom secrets import token_urlsafe\r\n# ------------------- Config -------------------\r\nREPO_DIR = os.getenv(&quot;MEM_MIRROR_REPO_DIR&quot;, &quot;/srv/memory-git&quot;)\r\nCAT_DIR = f&quot;{REPO_DIR}/catalog&quot;\r\nSHARD_TAG_DIR = f&quot;{CAT_DIR}/shards/by_tag&quot;\r\nSHARD_DATE_DIR = f&quot;{CAT_DIR}/shards/by_date&quot;\r\nCHUNK_DIR = f&quot;{REPO_DIR}/chunks&quot;\r\nMETA_DIR = f&quot;{REPO_DIR}/meta&quot;\r\nCHUNK_SIZE = int(os.getenv(&quot;MEM_MIRROR_CHUNK_SIZE&quot;, &quot;2000&quot;))\r\nMAX_ITEMS_PER_SHARD =\r\nint(os.getenv(&quot;MEM_MIRROR_MAX_ITEMS_PER_SHARD&quot;, &quot;200&quot;))\r\nPUBLIC_TAGS =\r\nset((os.getenv(&quot;MEM_MIRROR_PUBLIC_TAGS&quot;,&quot;memory,policy,housing,breakthrough&quot;\r\n)).split(&quot;,&quot;))\r\nDB = dict(\r\nhost = os.getenv(&quot;MEM_DB_HOST&quot;,&quot;localhost&quot;),\r\ndatabase = os.gete"
+}

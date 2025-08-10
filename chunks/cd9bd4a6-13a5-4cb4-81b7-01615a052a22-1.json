@@ -1,0 +1,11 @@
+{
+  "id": "cd9bd4a6-13a5-4cb4-81b7-01615a052a22",
+  "chunk_ix": 1,
+  "created_at": "2025-08-10T15:53:49",
+  "source": "web",
+  "tags": [
+    "memory",
+    "system"
+  ],
+  "content": "ailable anytime. Service may end if not\r\ncommercially viable (30-day notice, export provided).\r\nOperations &amp; Architecture (MVP)\r\nStack: Ubuntu, Nginx (HTTPS), Flask API (MariaDB), exporter to Git mirror (nonce-only).\r\nSecurity: nonce-protected paths; JSON redaction; write API behind private token (not\r\nexposed).\r\nReliability: cron-based exports; health checks; lightweight monitoring. Target 99.5%\r\nuptime.\r\nSupport: email; Standard 48h, Pro 24h response targets.\r\nBackups: Git mirror retained; database snapshots weekly (hosted plans).\r\nUnit Economics (Illustrative)\r\nAssumptions per 100 hosted Standard users:\r\n• Revenue: 100 × $3 = $300/month.\r\n• Costs: VPS + bandwidth + storage ≈ $80; monitoring + backups ≈ $40; support time ≈ $60.\r\n• Gross margin ≈ $120/month (40%). Scale improves margin with multi-tenant\r\noptimization.\r\nAt 500 users: revenue $1,500/month; costs ≈ $350; gross margin ≈ $1,150/month.\r\nGo-To-Market (First 90 Days)\r\n• Cohort launch: 50–100 early users with discounted pricing; gather testimonials and bug\r\nreports.\r\n• Channels: LinkedIn posts, developer forums, AI communities, affordable housing\r\nnetworks.\r\n• Assets: 1-page landing site, demo video, setup guide, and public sample node.\r\n\r\n• Partnerships: colleges, maker spaces, and local tech groups seeking AI continuity\r\nsolutions.\r\nMVP Metrics &amp; Milestones\r\nSuccess metrics:\r\n• Active hosted nodes, export success rate (&gt;98%), index fetch latency (&lt;1.5s).\r\n• Support tickets per 100 users (&lt;5/month), churn (&lt;3%/month), referral rate (&gt;10%).\r\nMilestones:\r\n• Week 1–2: 20 users live; health dashboard working.\r\n• Week 3–4: 100 users; Pro tier live; nightly backups automated.\r\n• Month 2: self-serve sign-up + billing; dockerized single-tenant image for DIY.\r\n• Month 3: index-of-nodes pilot (federated directory).\r\nRoadmap (Post-MVP)\r\n• Natural-language “memory chat” front-end (no shards/JSON visible).\r\n• Signed URLs (HMAC) and optional passphrase-gated relay.\r\n• Multi-model ingestion; auto-s"
+}

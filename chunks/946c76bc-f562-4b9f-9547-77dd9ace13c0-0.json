@@ -1,0 +1,13 @@
+{
+  "id": "946c76bc-f562-4b9f-9547-77dd9ace13c0",
+  "chunk_ix": 0,
+  "created_at": "2025-08-10T15:51:41",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "TITLE: Nonce‑Protected Git Mirror for AI Memory (Read‑Only, URL-Shared) — Complete Guide\n\nNonce‑Protected Git Mirror for AI Memory (Read‑Only, URL-Shared)\r\n— Complete Guide\r\nObjective: Keep your MariaDB/Flask/Nginx memory system as the source of truth and\r\npublish a **nonce‑protected** read‑only Git mirror (redacted JSON) that ChatGPT and\r\nClaude can read **only if you share the exact URL**. No stable alias is published. Each\r\nexport lives under a rotating nonce path and filenames include the nonce. Security is\r\n“reasonable, not military‑grade”: obscurity via nonce + redaction; full/private data stays in\r\nMariaDB.\r\n1) Access Model (Nonce‑Only)\r\n• You share a fresh **RAW GitHub URL** that contains a random nonce string.\r\n• Without that nonce, the mirror is difficult to guess or enumerate.\r\n• The exporter rotates the nonce on a schedule (e.g., daily) or on demand.\r\n• Old nonces are pruned from the repo to reduce exposure.\r\n2) URLs to Share (Examples)\r\nReplace ORG/REPO and &lt;NONCE&gt; with your values. You must paste the **exact**\r\nURLs when you want an AI to fetch.\r\nSearch map (nonce path + nonce filename):\r\nhttps://raw.githubusercontent.com/HoffmanM361/memory-\r\nmirror/main/catalog/&lt;NONCE&gt;/search_map_&lt;NONCE&gt;.json\r\nShard (by tag, inside the same nonce path):\r\nhttps://raw.githubusercontent.com/HoffmanM361/memory-\r\nmirror/main/catalog/&lt;NONCE&gt;/shards/by_tag/memory.json\r\nChunk content (within the nonce chunk directory):\r\nhttps://raw.githubusercontent.com/HoffmanM361/memory-\r\nmirror/main/chunks/&lt;NONCE&gt;/&lt;chat_id&gt;-&lt;ix&gt;.json\r\n\r\n3) Repo Layout with Nonce\r\n```\r\n/catalog/\r\n&lt;NONCE&gt;/\r\nsearch_map_&lt;NONCE&gt;.json # entrypoint for this nonce\r\n\r\nshards/\r\nby_tag/memory.json # pretty-printed shard\r\nby_tag/historic.json\r\nby_date/2025-08.json\r\nsearch_map_&lt;NONCE&gt;.json # duplicate at catalog root (optional)\r\n/chunks/\r\n&lt;NONCE&gt;/\r\n&lt;chat_id&gt;-0.json\r\n&lt;chat_id&gt;-1.json\r\n/meta/\r\nlatest_build.json # timestamp + exported count\r\ncou"
+}

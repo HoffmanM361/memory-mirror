@@ -1,0 +1,13 @@
+{
+  "id": "e8a72f5e-ea4b-4c9c-a182-977f5a6b184c",
+  "chunk_ix": 5,
+  "created_at": "2025-08-10T15:50:12",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "https://raw.githubusercontent.com/HoffmanM361/memory-\r\nmirror/main/meta/counts.json\r\nhttps://raw.githubusercontent.com/HoffmanM361/memory-\r\nmirror/main/meta/ai_diagnostics.json\r\n\r\n9) Troubleshooting\r\n• Single-line JSON → Ensure exporter uses json.dump(..., indent=2).\r\n• Large shards → Reduce MAX_ITEMS_PER_SHARD or add more tags to split data.\r\n• Zero exports → Set public flag or adjust tag inference.\r\n• Push failures → Next cron run retries; check Git credentials/remote.\r\n\r\n10) Security Posture (Reasonable, Public-Ready)\r\n• Mirror contains only redacted/approved content; full/private stays in MariaDB and\r\n/memory API.\r\n• No headers or keys needed for public mirror; easy for AI tools to read.\r\n• Toggle the &#39;public&#39; flag to publish/unpublish items; re-export to update.\r\n11) How ChatGPT/Claude Should Navigate\r\n1) Fetch the STABLE search map URL.\r\n2) Load relevant shards listed under &#39;tokens&#39;.\r\n3) Follow &#39;chunk_urls&#39; to retrieve specific content.\r\n4) Use /meta files to check freshness before deep reads.\r\nIterative Changelog\r\n• exporter.py — v1.2 included (pretty JSON, shard splitting, stable + nonce search map).\r\nStatus: ready.\r\n• URLs — Stable RAW links added explicitly. Status: ready.\r\n• Guide — End-to-end instructions, schemas, setup, cron, verification, troubleshooting.\r\nStatus: delivered."
+}

@@ -1,0 +1,11 @@
+{
+  "id": "3e64ebde-bf70-4582-8ecc-fa2d77c9fb18",
+  "chunk_ix": 0,
+  "created_at": "2025-08-10T15:52:26",
+  "source": "web",
+  "tags": [
+    "memory",
+    "system"
+  ],
+  "content": "TITLE: Claude Ops: Nonce‑Protected Memory Mirror — Order of Operations\n\nClaude Ops: Nonce‑Protected Memory Mirror — Order of Operations\r\n(Short)\r\nPurpose: Keep Claude on rails. Follow these steps in order. Minimal choices, no\r\nimprovisation.\r\nA) What this is\r\nRead‑only, nonce‑protected Git mirror of conversations (redacted). Public only if you\r\npossess the exact URL. No headers. No POST.\r\nB) One‑time setup (human on server)\r\n1) Repo: create a public Git repo (e.g., github.com/HoffmanM361/memory-mirror) and\r\nclone on the server to /srv/memory-git.\r\n2) Dependency: `python3 -m pip install mysql-connector-python`.\r\n3) SQL (optional but recommended):\r\nALTER TABLE chats ADD COLUMN public TINYINT(1) NOT NULL DEFAULT 0;\r\nCREATE INDEX idx_public_created ON chats(public, created_at);\r\n4) Save exporter.py (v1.3 nonce‑only) from the long guide into /srv/memory-\r\ngit/exporter.py.\r\n5) Add .gitignore entries (in repo root):\r\n.current_nonce\r\n.nonce_history\r\nC) Environment (human on server)\r\nSet once (or in systemd unit / shell profile):\r\nexport MEM_MIRROR_NONCE_TTL_HOURS=24\r\nexport MEM_MIRROR_KEEP_NONCES=2\r\n# Optional: DB vars MEM_DB_HOST/NAME/USER/PASS if different from defaults\r\nD) First export (human on server)\r\nsudo mkdir -p /srv/memory-git &amp;&amp; cd /srv/memory-git\r\ngit init &amp;&amp; git remote add origin https://github.com/HoffmanM361/memory-mirror.git\r\ngit pull origin main || true\r\n\r\npython3 /srv/memory-git/exporter.py\r\nResult: a NEW NONCE is minted; files are written under catalog/&lt;NONCE&gt;/ and\r\nchunks/&lt;NONCE&gt;/ and pushed.\r\nE) Share exactly two URLs with AI (each run)\r\nPaste BOTH URLs verbatim into the chat (replace &lt;NONCE&gt; with the current one):\r\n1) Search map (entrypoint):\r\nhttps://raw.githubusercontent.com/HoffmanM361/memory-\r\nmirror/main/catalog/&lt;NONCE&gt;/search_map_&lt;NONCE&gt;.json\r\n2) One shard (by tag):\r\nhttps://raw.githubusercontent.com/HoffmanM361/memory-\r\nmirror/main/catalog/&lt;NONCE&gt;/shards/by_tag/memory.json\r\nF) What Claude shoul"
+}

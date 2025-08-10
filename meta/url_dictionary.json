@@ -1,0 +1,27 @@
+{
+  "access_info": {
+    "token": "8bba14962f9f2318",
+    "instructions": "Append '?key=' + token to any URL for access",
+    "example": "https://raw.githubusercontent.com/HoffmanM361/memory-mirror/main/catalog/search_map.json?key=8bba14962f9f2318"
+  },
+  "main_entry": {
+    "search_map": "https://raw.githubusercontent.com/HoffmanM361/memory-mirror/main/catalog/search_map.json?key=8bba14962f9f2318",
+    "description": "Start here - contains navigation to all topics"
+  },
+  "topic_shards": {
+    "memory": "https://raw.githubusercontent.com/HoffmanM361/memory-mirror/main/catalog/shards/by_tag/memory.json?key=8bba14962f9f2318",
+    "breakthrough": "https://raw.githubusercontent.com/HoffmanM361/memory-mirror/main/catalog/shards/by_tag/breakthrough.json?key=8bba14962f9f2318",
+    "historic": "https://raw.githubusercontent.com/HoffmanM361/memory-mirror/main/catalog/shards/by_tag/historic.json?key=8bba14962f9f2318",
+    "system": "https://raw.githubusercontent.com/HoffmanM361/memory-mirror/main/catalog/shards/by_tag/system.json?key=8bba14962f9f2318",
+    "development": "https://raw.githubusercontent.com/HoffmanM361/memory-mirror/main/catalog/shards/by_tag/development.json?key=8bba14962f9f2318"
+  },
+  "metadata": {
+    "latest_build": "https://raw.githubusercontent.com/HoffmanM361/memory-mirror/main/meta/latest_build.json?key=8bba14962f9f2318",
+    "counts": "https://raw.githubusercontent.com/HoffmanM361/memory-mirror/main/meta/counts.json?key=8bba14962f9f2318",
+    "url_dictionary": "https://raw.githubusercontent.com/HoffmanM361/memory-mirror/main/meta/url_dictionary.json?key=8bba14962f9f2318"
+  },
+  "date_shards": {
+    "2025-08": "https://raw.githubusercontent.com/HoffmanM361/memory-mirror/main/catalog/shards/by_date/2025-08.json?key=8bba14962f9f2318"
+  },
+  "note": "Individual conversation chunk URLs are listed in each shard's 'chunk_urls' field"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "e8a72f5e-ea4b-4c9c-a182-977f5a6b184c",
+  "chunk_ix": 4,
+  "created_at": "2025-08-10T15:50:12",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "META_DIR}/counts.json&quot;, counts)\r\nsave_json(f&quot;{META_DIR}/ai_diagnostics.json&quot;, {\r\n&quot;generated_at&quot;: now_iso,\r\n&quot;hints&quot;: [&quot;Start at catalog/search_map.json&quot;, &quot;Then load shards&quot;, &quot;Then follow\r\nchunk_urls&quot;],\r\n&quot;top_tags&quot;: sorted([(k,len(v)) for k,v in items_by_tag.items()], key=lambda x: -\r\nx[1])[:5]\r\n})\r\nsubprocess.run([&quot;git&quot;,&quot;-C&quot;,REPO_DIR,&quot;add&quot;,&quot;-A&quot;], check=True)\r\nsubprocess.run([&quot;git&quot;,&quot;-C&quot;,REPO_DIR,&quot;commit&quot;,&quot;-m&quot;,&quot;export: refresh public shards&quot;],\r\ncheck=False)\r\n\r\nsubprocess.run([&quot;git&quot;,&quot;-C&quot;,REPO_DIR,&quot;push&quot;], check=True)\r\nif __name__ == &quot;__main__&quot;:\r\nmain()\r\n```\r\n5) SQL Migration (Public Flag + Index)\r\n```\r\nALTER TABLE chats ADD COLUMN public TINYINT(1) NOT NULL DEFAULT 0;\r\nCREATE INDEX idx_public_created ON chats(public, created_at);\r\n-- Example: mark a specific chat as public\r\nUPDATE chats SET public = 1 WHERE id IN (&#39;53ee4294-44a2-414e-baf7-\r\nd4b49e158dbb&#39;);\r\n```\r\n\r\n6) Setup &amp; Run\r\n```\r\nsudo mkdir -p /srv/memory-git\r\ncd /srv/memory-git\r\ngit init\r\ngit remote add origin https://github.com/HoffmanM361/memory-mirror.git\r\ngit pull origin main || true\r\npython3 -m pip install mysql-connector-python\r\npython3 /srv/memory-git/exporter.py\r\n```\r\n\r\n7) Automation (Cron)\r\n```\r\ncrontab -e\r\n*/15 * * * * /usr/bin/python3 /srv/memory-git/exporter.py &gt;&gt; /var/log/memory_exporter.log\r\n2&gt;&amp;1\r\n```\r\n\r\n8) Verification Checklist (Phone-Friendly)\r\n1) Open STABLE search map:\r\nhttps://raw.githubusercontent.com/HoffmanM361/memory-\r\nmirror/main/catalog/search_map.json\r\n\r\n2) Open a shard (e.g., memory):\r\nhttps://raw.githubusercontent.com/HoffmanM361/memory-\r\nmirror/main/catalog/shards/by_tag/memory.json\r\n3) Open one chunk from that shard; confirm ~2 KB text per file.\r\n4) Open diagnostics:\r\nhttps://raw.githubusercontent.com/HoffmanM361/memory-\r\nmirror/main/meta/latest_build.json\r\n"
+}

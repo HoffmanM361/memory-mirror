@@ -1,1 +1,13 @@
-gAAAAABomOutdd8pDDIbYpuY1ht9OnzNxWaSS7BTuII6AMCMMG3mfnFy9zviHAD69VXf5OwyBKMyfXUXA1Sp_7ZMifMaKlKUdap3UkUsOuYRpPn94khGau707rI7QiI3TG0wU4x7le75e2e5f1DlRij6CG3uyqUKM5bSKDVbMB8oYOFh_NHNPgCDcjBKJVfVTk2qBJ7EXtuOB6qfUF8j8CFQOvnJW8SHL0-M0zax2WlCfou3cidJUAIxN0bzBU16ghtwoIUWodAdXs9SbE_1w1MwWIAhG9jNJ1vD3BJ4Qr3gPCfFDcSqu16nC8XzlWz_5iSl02SBtK-vjKu5ySmEFzaRmUGqySAFvLJuxPe4ORqX__e-94PhFkHnTKzqpF48FJl02nJDcf9etpdMkh6HCz2WR9_xM7TeL-gMl3bAPS9QuWvaPHWij97ib4SDrlpFLfyf4s3y6dh466Z-2noU8fJdQrMLLQltRI1vUNXD6L61OhUiVcWYBP4C4bHgdGqsGYj2D4V7bmvmAzgOwWyLV-gOhTSnhR52vFBN8VSFWOmatXsPETWxKdYateiWeJ-2CCxQVp8vk3U5WzrWTu7tKhr6jAS5n4QO7xtVXeKXERkRWmRicoY1__pEodnPBz2UgZ2-PG3EjBZmoHJSm8I5stRw84MfFzIbLYn5OgJbpI-KuW9sdcKMVvhBdL85ehLZnJyAEM1_dJelFzhqRWNJPVjKe2Spavd6wFUTQ5E0TW885vepUod4cX83fAog2FW_U0-4zjPkcLPbbebaZZD5gMdOuk_c3sf1U_2k2diyyRW7Rmd7_4cZF7UQWSP4jFFevOSxdkaxI8av_oPPRq1WAaosYtDheIg8L1P96xwOe8RD0I681BfmWV3C0Kg1KViTIr3isaYq_NMP5JRkDfk4ANreRQnD9lUktfxCMlGqfletme9eiCKolDesAdH9lT1uM4CDDK9S37WFsAY2Q_26uhXS0wwG6ptVeJysUiA9Dfs1uuCStnIElZrL-_X2UdIhwvKG3Xm0j2umYflOzeUyCLTXb_jNNcCdK0ePdcoYGkBE_0uT2KvCrwbDi65h7vd0n2nTN0gmXxb-_OxOQMUh43FQneu7xNtmaWwnSSZKK0jPW2otUMiYlsCXhm64HtoWmtSBTrfumyNKJbtDdlaqjOM2yQyDYUmw8ZfOaI-8qknMcTLd4QWQBLoUwnJGXGdjimMM5Q5BDnTuvS6vOTvWYf6x4gqotGJZs7ml2jV0WhJmQ-jS0_raYK4z3pySsfo8GIFmVdsySNxk4ODXtOJZUkdHbhf4iGG0OTip9rhSpZohOgfcvK7CQ588PQH0sRsSBb4QwNDSAROAqZgwu6ZYfrffptm526hV6TruZNBJ9IBW06_UnUhE2kcE6SUZwB-1jLT3HjgZFdAxIlENCTxxUgjNrGdRpa8R-zlJ2BMa9QZ3wZWODr2-cR1_Zr_h_dv5KwVh8RfAKPo_VM7jwG9muxALC7Yo-VfpVtR7ni6xA8xOv-eOrUe9zrCPuFhnNHHAyLzR2F2JJrcH63vqPY3RGtbUmoGDVo-oM_qMnNWGFBIq026du8aDdBI=
+{
+  "id": "a2760416-da6e-493e-a4db-d10b78d13932",
+  "chunk_ix": 0,
+  "created_at": "2025-08-10T11:22:51",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "TITLE: Fetch\n\nHere are the fetch commands I can use to access your memory system:\r\nHealth Check:\r\nfetch http://104.191.236.122/memory/health\r\nSearch Conversations:\r\nfetch http://104.191.236.122/memory/search?keyword=HISTORIC&key=public-read-2025\r\nGet Specific Conversation:\r\nfetch http://104.191.236.122/memory/get/53ee4294-44a2-414e-baf7-d4b49e158dbb?key=public-read-2025\r\nSearch by Source:\r\nfetch http://104.191.236.122/memory/search?source=claude&key=public-read-2025\r\nRecent Conversations:\r\nfetch http://104.191.236.122/memory/search?limit=5&key=public-read-2025\r\nJust tell me which one you want me to run! For example:\r\n\"fetch the health endpoint\"\r\n\"fetch and search for HISTORIC conversations\"\r\n\"fetch the first breakthrough conversation\"\r\nThe key is key=public-read-2025 at the end for read-only access, which allows me to access your stored conversations directly!"
+}

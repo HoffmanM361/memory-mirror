@@ -1,0 +1,11 @@
+{
+  "id": "cd9bd4a6-13a5-4cb4-81b7-01615a052a22",
+  "chunk_ix": 2,
+  "created_at": "2025-08-10T15:53:49",
+  "source": "web",
+  "tags": [
+    "memory",
+    "system"
+  ],
+  "content": "ummarized context packs for fast recall.\r\n• Organization plan: team workspaces with role-based access.\r\nLegal &amp; Policy Notes\r\n• Terms: reasonable-use, no illegal content, no sensitive personal data in public mirrors.\r\n• Privacy: only redacted content is mirrored; private content stays in DB behind token.\r\n• Data retention: 12-month rolling mirror by default; full DB retention for hosted plans\r\nunless canceled.\r\nOnboarding Flow (Hosted)\r\n1) User signs up and chooses Standard or Pro.\r\n2) System allocates a tenant DB and mirror path; generates nonce; enables HTTPS.\r\n3) User receives two links: health check and search map entry URL.\r\n4) User pastes entry URL to their AI assistant to use memory immediately.\r\n5) Weekly status email: export counts, storage used, rotation status.\r\n30-Second Pitch\r\n\r\nKeep your AI’s memory under your control. For $3/month, get a personal, secure memory\r\nnode that any assistant can read. It preserves your work across chats and models, without\r\nlock-in. Set up once, use everywhere.\r\nFAQ (Brief)\r\nQ: What if AI vendors block web fetch?\r\nA: We’ll attempt to adapt (e.g., through a relay or packaged context files). If no solution\r\nworks, you can export your data and cancel anytime.\r\nQ: Is my data public?\r\nA: Only redacted mirrors are public and nonce-protected; full data is private in your DB.\r\nQ: Can I self-host?\r\nA: Yes, via the $35 DIY kit. You can move between hosted and DIY at any time."
+}

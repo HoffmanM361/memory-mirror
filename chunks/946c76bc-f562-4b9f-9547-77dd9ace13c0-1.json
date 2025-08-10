@@ -1,0 +1,13 @@
+{
+  "id": "946c76bc-f562-4b9f-9547-77dd9ace13c0",
+  "chunk_ix": 1,
+  "created_at": "2025-08-10T15:51:41",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "nts.json # counts per tag/month\r\nai_diagnostics.json # freshness hints for AI\r\n.gitignore # excludes local nonce tracker files\r\n```\r\n\r\n4) JSON Schemas (unchanged)\r\nShard (by_tag or by_date):\r\n```\r\n{\r\n&quot;version&quot;:&quot;1&quot;,\r\n&quot;generated_at&quot;:&quot;2025-08-10T23:59:00Z&quot;,\r\n&quot;items&quot;:[{\r\n&quot;id&quot;:&quot;53ee4294-...-dbb&quot;, &quot;created_at&quot;:&quot;2025-08-09T14:54:00Z&quot;, &quot;source&quot;:&quot;claude&quot;,\r\n&quot;title&quot;:&quot;Breakthrough...&quot;, &quot;tags&quot;:[&quot;breakthrough&quot;,&quot;memory&quot;], &quot;summary&quot;:&quot;Safe\r\nabstract...&quot;,\r\n&quot;chunk_urls&quot;:[ &quot;chunks/&lt;NONCE&gt;/53ee4294-...-0.json&quot; ],\r\n&quot;preview_240&quot;:&quot;First 240 safe chars…&quot;\r\n}]\r\n}\r\n```\r\n\r\n5) exporter.py — v1.3 (Nonce‑only, Rotation, Prune, Pretty JSON)\r\n```python\r\n#!/usr/bin/env python3\r\n# exporter.py v1.3\r\n\r\n# MariaDB -&gt; redacted JSON shards/chunks in a public Git repo\r\n# NONCE-ONLY mode: every published file lives under a rotating nonce folder and\r\nincludes the nonce in URLs.\r\n# Pretty JSON, shard splitting, local nonce rotation with TTL, pruning of old nonces, and\r\ndiagnostics.\r\nimport os, json, datetime, pathlib, subprocess, re, time, shutil\r\nimport mysql.connector\r\nfrom secrets import token_urlsafe\r\n# ------------------- Config -------------------\r\nREPO_DIR = os.getenv(&quot;MEM_MIRROR_REPO_DIR&quot;, &quot;/srv/memory-git&quot;)\r\nCAT_DIR = f&quot;{REPO_DIR}/catalog&quot;\r\nCHUNK_DIR = f&quot;{REPO_DIR}/chunks&quot;\r\nMETA_DIR = f&quot;{REPO_DIR}/meta&quot;\r\nCHUNK_SIZE = int(os.getenv(&quot;MEM_MIRROR_CHUNK_SIZE&quot;, &quot;2000&quot;))\r\nMAX_ITEMS_PER_SHARD =\r\nint(os.getenv(&quot;MEM_MIRROR_MAX_ITEMS_PER_SHARD&quot;, &quot;200&quot;))\r\nPUBLIC_TAGS =\r\nset((os.getenv(&quot;MEM_MIRROR_PUBLIC_TAGS&quot;,&quot;memory,policy,housing,breakthrough&quot;\r\n)).split(&quot;,&quot;))\r\n# Nonce settings\r\nNONCE_TTL_HOURS = int(os.getenv(&quot;MEM_MIRROR_NONCE_TTL_HOURS&quot;, &quot;24&quot;))\r\n# "
+}

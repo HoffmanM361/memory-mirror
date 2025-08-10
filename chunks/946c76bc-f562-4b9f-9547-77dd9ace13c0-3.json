@@ -1,0 +1,13 @@
+{
+  "id": "946c76bc-f562-4b9f-9547-77dd9ace13c0",
+  "chunk_ix": 3,
+  "created_at": "2025-08-10T15:51:41",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": ";{int(now)} {nonce}\\n&quot;)\r\nreturn nonce\r\ndef list_nonce_dirs(base):\r\nout = []\r\nif not os.path.isdir(base):\r\nreturn out\r\nfor name in os.listdir(base):\r\np = os.path.join(base, name)\r\nif os.path.isdir(p) and len(name) &gt;= 8: # crude filter\r\nout.append(name)\r\nreturn sorted(out, key=lambda s: os.path.getmtime(os.path.join(base, s)),\r\nreverse=True)\r\ndef prune_old_nonces(current_nonce):\r\n# Keep current + (KEEP_NONCES-1) previous; delete older ones\r\nkept = KEEP_NONCES\r\nfor base in (CAT_DIR, CHUNK_DIR):\r\nndirs = list_nonce_dirs(base)\r\nidx = 0\r\nfor name in ndirs:\r\nif name == current_nonce:\r\ncontinue\r\nidx += 1\r\nif idx &gt;= kept:\r\nshutil.rmtree(os.path.join(base, name), ignore_errors=True)\r\n# Also remove old catalog/search_map_&lt;nonce&gt;.json files (not in folders) beyond\r\nKEEP_NONCES\r\nroot_maps = [f for f in os.listdir(CAT_DIR) if f.startswith(&quot;search_map_&quot;) and\r\nf.endswith(&quot;.json&quot;)]\r\nroot_maps.sort(key=lambda fn: os.path.getmtime(os.path.join(CAT_DIR, fn)),\r\nreverse=True)\r\nfor i, fn in enumerate(root_maps):\r\nif i &gt;= KEEP_NONCES:\r\ntry: os.remove(os.path.join(CAT_DIR, fn))\r\n\r\nexcept: pass\r\n# ------------------- Main -------------------\r\ndef main():\r\nnonce = get_or_rotate_nonce(NONCE_TTL_HOURS)\r\nCAT_NONCE_DIR = os.path.join(CAT_DIR, nonce)\r\nSHARD_TAG_DIR = os.path.join(CAT_NONCE_DIR, &quot;shards/by_tag&quot;)\r\nSHARD_DATE_DIR = os.path.join(CAT_NONCE_DIR, &quot;shards/by_date&quot;)\r\nCHUNK_NONCE_DIR = os.path.join(CHUNK_DIR, nonce)\r\nrows = load_rows()\r\nitems_by_tag, items_by_month = {}, {}\r\nexported = 0\r\nfor (chat_id, created_at, source, content, summary, public) in rows:\r\nlower = (content[:2000] + &quot; &quot; + (summary or &quot;&quot;)).lower()\r\ntags = set(t for t in PUBLIC_TAGS if t and t.lower() in lower)\r\nif not public and not tags:\r\ncontinue\r\nrc = redact(content)\r\nchunk_urls = []\r\nfor ix, part in chunk_text(rc):\r\nfn = f&quot;{CHUNK_NONCE_DIR}/{chat_id}-{ix}.json&quot;\r\nsave_json(fn, {\r\n&quot;id&quot;: chat_id, &quot;chunk_ix&quot;: ix,\r\n&q"
+}

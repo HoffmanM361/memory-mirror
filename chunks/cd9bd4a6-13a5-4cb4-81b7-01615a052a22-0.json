@@ -1,0 +1,11 @@
+{
+  "id": "cd9bd4a6-13a5-4cb4-81b7-01615a052a22",
+  "chunk_ix": 0,
+  "created_at": "2025-08-10T15:53:49",
+  "source": "web",
+  "tags": [
+    "memory",
+    "system"
+  ],
+  "content": "TITLE: Persistent AI Memory Service — Mini Business Plan (V1)\n\nPersistent AI Memory Service — Mini Business Plan (V1)\r\nExecutive Summary\r\nOffer a low-cost, human-controlled memory service that any AI assistant can read via\r\nHTTPS. Users get a working persistent memory node in hours, with secure read-only access\r\nlinks and automated mirroring. Pricing targets mass affordability to drive adoption.\r\nProduct Definition\r\nCore features:\r\n• Personal memory node: MariaDB + Flask API + nonce-protected Git mirror (read-only).\r\n• AI-ready: assistants read JSON via HTTPS without headers or logins.\r\n• Automated exporter: pretty-printed JSON, shard-size guard, rotating nonce, pruning.\r\n• Backups: optional Git mirror for disaster recovery.\r\n• Operator console: health check, export status, storage usage (MVP).\r\nTarget Market &amp; Value Proposition\r\nTargets: power users, independent professionals, small teams, technical creators, and early\r\nadopters who want continuity across AI sessions and models.\r\nValue: saves time, preserves work, and provides model-agnostic continuity without relying\r\non vendor memory.\r\nPricing Model\r\nSubscription (hosted):\r\n• Standard: $3/month — 1GB storage, read-only nonce URLs, nightly export, email support\r\n(48h).\r\n• Pro: $5/month — 5GB storage, faster exports (4/day), priority email support (24h),\r\ncustom tags.\r\nOne-time DIY License:\r\n• $35 — Script + docs to self-host; no support or hosting included.\r\nAdd-ons:\r\n• Custom domain + HTTPS setup: $25 one-time.\r\n• Extra storage: +$2/month per 10GB.\r\n\r\nFounding cohort discount: 20% off first 6 months (limit 100 users).\r\nKey Disclaimers (Transparency)\r\n• AI vendor dependency: Access depends on AI assistants being able to fetch public HTTPS\r\nURLs. If that changes, compatibility may be affected. We will attempt to adapt but cannot\r\nguarantee permanent support.\r\n• Read-only exposure: Mirrors are intentionally read-only and nonce-protected. Do not\r\npublish secrets.\r\n• Data ownership: Users own their data; export av"
+}

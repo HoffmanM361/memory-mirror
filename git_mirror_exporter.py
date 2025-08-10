@@ -1,17 +1,15 @@
 # CHANGE LOG
 # File: /srv/memory-git/git_mirror_exporter.py
 # Document Type: Python Utility Script
-# Purpose: Export memory conversations to Git mirror using nonce-based URLs for security
+# Purpose: Export memory conversations with simple token-based URLs for universal AI access
 # Main App: memory_app.py
 # Dependencies: mysql.connector, json, os, subprocess, pathlib, secrets
-# Context: Creates plain JSON files with hard-to-guess URLs for AI access via GitHub raw
-# Security Strategy: URL obscurity with random nonces instead of encryption
+# Context: Creates plain JSON files with simple URLs + token parameters for AI access
+# Security Strategy: Simple token parameters (?key=TOKEN) for basic access control
 # Version History:
+# 2025-08-10 v3.0 - Simple token-based URLs with automatic URL dictionary generation
 # 2025-08-10 v2.0 - Simplified to nonce-based URLs, removed encryption complexity
 # 2025-08-10 v1.3 - Fixed function order and directory creation issues
-# 2025-08-10 v1.2 - Added incremental updates and change tracking
-# 2025-08-10 v1.1 - Added encryption with passphrase-based key
-# 2025-08-10 v1.0 - Initial creation following development standards
 
 import os
 import json
@@ -33,83 +31,72 @@ META_DIR = f"{REPO_DIR}/meta"
 CHUNK_SIZE = 2000
 PUBLIC_TAGS = {"memory", "breakthrough", "historic", "system", "development"}
 
-# Incremental update tracking
-LAST_EXPORT_FILE = f"{META_DIR}/last_export.json"
-NONCE_MAP_FILE = f"{META_DIR}/nonce_map.json"
+# Token configuration
+TOKEN_FILE = f"{META_DIR}/access_token.txt"
+URL_DICTIONARY_FILE = f"{META_DIR}/url_dictionary.json"
+GITHUB_BASE_URL = "https://raw.githubusercontent.com/HoffmanM361/memory-mirror/main"
 
-def generate_nonce():
-    """Generate random nonce for file naming"""
+def generate_or_load_token():
+    """Generate new token or load existing one"""
     try:
-        nonce = secrets.token_urlsafe(12)  # 12-byte random string
-        print(f"DEBUG: generate_nonce - Generated nonce: {nonce}")
-        return nonce
-    except Exception as e:
-        print(f"ERROR: generate_nonce - Error generating nonce: {e}")
-        return None
-
-def load_nonce_map():
-    """Load existing nonce mappings"""
-    try:
-        print("DEBUG: load_nonce_map - Loading existing nonce mappings")
+        if os.path.exists(TOKEN_FILE):
+            with open(TOKEN_FILE, 'r', encoding='utf-8') as f:
+                token = f.read().strip()
+            print(f"DEBUG: generate_or_load_token - Using existing token: {token}")
+            return token
         
-        if not os.path.exists(NONCE_MAP_FILE):
-            print("DEBUG: load_nonce_map - No existing nonce map, creating new one")
-            return {}
+        # Generate new token
+        token = secrets.token_hex(8)  # 16-character hex string
         
-        with open(NONCE_MAP_FILE, 'r', encoding='utf-8') as f:
-            nonce_map = json.load(f)
+        with open(TOKEN_FILE, 'w', encoding='utf-8') as f:
+            f.write(token)
         
-        print(f"DEBUG: load_nonce_map - Loaded {len(nonce_map)} nonce mappings")
-        return nonce_map
+        print(f"DEBUG: generate_or_load_token - Generated new token: {token}")
+        return token
         
     except Exception as e:
-        print(f"ERROR: load_nonce_map - Error loading nonce map: {e}")
+        print(f"ERROR: generate_or_load_token - Error with token: {e}")
+        return "fallback_token_12345678"
+
+def build_url_dictionary(token):
+    """Build dictionary of all URLs with tokens for easy access"""
+    try:
+        print("DEBUG: build_url_dictionary - Creating URL dictionary")
+        
+        url_dict = {
+            "access_info": {
+                "token": token,
+                "instructions": "Append '?key=' + token to any URL for access",
+                "example": f"{GITHUB_BASE_URL}/catalog/search_map.json?key={token}"
+            },
+            "main_entry": {
+                "search_map": f"{GITHUB_BASE_URL}/catalog/search_map.json?key={token}",
+                "description": "Start here - contains navigation to all topics"
+            },
+            "topic_shards": {
+                "memory": f"{GITHUB_BASE_URL}/catalog/shards/by_tag/memory.json?key={token}",
+                "breakthrough": f"{GITHUB_BASE_URL}/catalog/shards/by_tag/breakthrough.json?key={token}",
+                "historic": f"{GITHUB_BASE_URL}/catalog/shards/by_tag/historic.json?key={token}",
+                "system": f"{GITHUB_BASE_URL}/catalog/shards/by_tag/system.json?key={token}",
+                "development": f"{GITHUB_BASE_URL}/catalog/shards/by_tag/development.json?key={token}"
+            },
+            "metadata": {
+                "latest_build": f"{GITHUB_BASE_URL}/meta/latest_build.json?key={token}",
+                "counts": f"{GITHUB_BASE_URL}/meta/counts.json?key={token}",
+                "url_dictionary": f"{GITHUB_BASE_URL}/meta/url_dictionary.json?key={token}"
+            },
+            "date_shards": {
+                "2025-08": f"{GITHUB_BASE_URL}/catalog/shards/by_date/2025-08.json?key={token}"
+            },
+            "note": "Individual conversation chunk URLs are listed in each shard's 'chunk_urls' field"
+        }
+        
+        print(f"DEBUG: build_url_dictionary - Created dictionary with {len(url_dict)} sections")
+        return url_dict
+        
+    except Exception as e:
+        print(f"ERROR: build_url_dictionary - Error creating URL dictionary: {e}")
         return {}
-
-def save_nonce_map(nonce_map):
-    """Save nonce mappings for future reference"""
-    try:
-        print("DEBUG: save_nonce_map - Saving nonce mappings")
-        
-        with open(NONCE_MAP_FILE, 'w', encoding='utf-8') as f:
-            json.dump(nonce_map, f, ensure_ascii=False, indent=2)
-        
-        print(f"DEBUG: save_nonce_map - Saved {len(nonce_map)} nonce mappings")
-        return True
-        
-    except Exception as e:
-        print(f"ERROR: save_nonce_map - Error saving nonce map: {e}")
-        return False
-
-def get_nonce_filename(base_name, nonce_map):
-    """Get nonce-based filename, creating new nonce if needed"""
-    try:
-        print(f"DEBUG: get_nonce_filename - Getting nonce filename for {base_name}")
-        
-        if base_name in nonce_map:
-            filename = nonce_map[base_name]
-            print(f"DEBUG: get_nonce_filename - Using existing nonce: {filename}")
-            return filename
-        
-        nonce = generate_nonce()
-        if not nonce:
-            print(f"ERROR: get_nonce_filename - Failed to generate nonce for {base_name}")
-            return f"{base_name}.json"  # Fallback
-        
-        # Create nonce-based filename
-        name_parts = base_name.split('.')
-        if len(name_parts) > 1:
-            filename = f"{name_parts[0]}_{nonce}.{name_parts[1]}"
-        else:
-            filename = f"{base_name}_{nonce}.json"
-        
-        nonce_map[base_name] = filename
-        print(f"DEBUG: get_nonce_filename - Created new nonce filename: {filename}")
-        return filename
-        
-    except Exception as e:
-        print(f"ERROR: get_nonce_filename - Error creating nonce filename: {e}")
-        return f"{base_name}.json"  # Fallback
 
 def save_json_file(path, data):
     """Save data as plain JSON file"""
@@ -154,63 +141,13 @@ def get_db_connection():
         print(f"ERROR: get_db_connection - Unexpected error: {e}")
         return None
 
-def get_last_export_timestamp():
-    """Get timestamp of last successful export"""
-    try:
-        print("DEBUG: get_last_export_timestamp - Checking for previous export")
-        
-        if not os.path.exists(LAST_EXPORT_FILE):
-            print("DEBUG: get_last_export_timestamp - No previous export found, doing full export")
-            return None
-        
-        with open(LAST_EXPORT_FILE, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-            timestamp_str = data.get('last_export_timestamp')
-            
-            if timestamp_str:
-                # Convert ISO string back to datetime
-                timestamp = datetime.fromisoformat(timestamp_str.replace('Z', '+00:00'))
-                print(f"DEBUG: get_last_export_timestamp - Last export: {timestamp}")
-                return timestamp
-        
-        print("DEBUG: get_last_export_timestamp - Could not parse timestamp, doing full export")
-        return None
-        
-    except Exception as e:
-        print(f"ERROR: get_last_export_timestamp - Error reading timestamp: {e}")
-        return None
-
-def save_export_timestamp(timestamp):
-    """Save timestamp of successful export"""
-    try:
-        print(f"DEBUG: save_export_timestamp - Saving timestamp: {timestamp}")
-        
-        data = {
-            'last_export_timestamp': timestamp.isoformat(),
-            'export_completed': True
-        }
-        
-        if save_json_file(LAST_EXPORT_FILE, data):
-            print("DEBUG: save_export_timestamp - Timestamp saved successfully")
-            return True
-        else:
-            print("ERROR: save_export_timestamp - Failed to save timestamp")
-            return False
-            
-    except Exception as e:
-        print(f"ERROR: save_export_timestamp - Error saving timestamp: {e}")
-        return False
-
-def load_conversations_from_db(since_timestamp=None, limit=1000):
-    """Load conversations from database for export - incremental if timestamp provided"""
+def load_conversations_from_db(limit=1000):
+    """Load conversations from database for export"""
     conn = None
     cursor = None
     
     try:
-        if since_timestamp:
-            print(f"DEBUG: load_conversations_from_db - Loading conversations since {since_timestamp}")
-        else:
-            print(f"DEBUG: load_conversations_from_db - Loading all conversations (full export)")
+        print(f"DEBUG: load_conversations_from_db - Loading up to {limit} conversations")
         
         conn = get_db_connection()
         if not conn:
@@ -219,32 +156,17 @@ def load_conversations_from_db(since_timestamp=None, limit=1000):
         
         cursor = conn.cursor()
         
-        # Build query based on incremental vs full export
-        if since_timestamp:
-            query = """
-                SELECT id, created_at, source, content, summary
-                FROM chats 
-                WHERE created_at > %s
-                ORDER BY created_at DESC 
-                LIMIT %s
-            """
-            cursor.execute(query, (since_timestamp, limit))
-        else:
-            query = """
-                SELECT id, created_at, source, content, summary
-                FROM chats 
-                ORDER BY created_at DESC 
-                LIMIT %s
-            """
-            cursor.execute(query, (limit,))
+        query = """
+            SELECT id, created_at, source, content, summary
+            FROM chats 
+            ORDER BY created_at DESC 
+            LIMIT %s
+        """
+        cursor.execute(query, (limit,))
         
         rows = cursor.fetchall()
         
-        if since_timestamp:
-            print(f"DEBUG: load_conversations_from_db - Loaded {len(rows)} new conversations since last export")
-        else:
-            print(f"DEBUG: load_conversations_from_db - Loaded {len(rows)} total conversations")
-        
+        print(f"DEBUG: load_conversations_from_db - Loaded {len(rows)} conversations")
         return rows
         
     except MySQLError as e:
@@ -337,37 +259,24 @@ def chunk_content(text, size=CHUNK_SIZE):
         return []
 
 def export_memory_to_git():
-    """Main export function - creates nonce-based Git mirror from MariaDB"""
+    """Main export function - creates simple token-based Git mirror from MariaDB"""
     try:
-        print(f"DEBUG: export_memory_to_git - Starting nonce-based export at {datetime.now()}")
+        print(f"DEBUG: export_memory_to_git - Starting token-based export at {datetime.now()}")
         
-        # Load existing nonce mappings
-        nonce_map = load_nonce_map()
+        # Generate or load access token
+        token = generate_or_load_token()
         
-        # Check for incremental vs full export
-        last_export = get_last_export_timestamp()
-        is_incremental = last_export is not None
-        
-        if is_incremental:
-            print(f"DEBUG: export_memory_to_git - Incremental export since {last_export}")
-        else:
-            print("DEBUG: export_memory_to_git - Full export (first run)")
-        
-        # Load conversations from database (incremental if possible)
-        conversations = load_conversations_from_db(since_timestamp=last_export)
+        # Load conversations from database
+        conversations = load_conversations_from_db()
         
         if not conversations:
-            if is_incremental:
-                print("DEBUG: export_memory_to_git - No new conversations since last export")
-                return True  # Success - just nothing new
-            else:
-                print("ERROR: export_memory_to_git - No conversations loaded")
-                return False
+            print("ERROR: export_memory_to_git - No conversations loaded")
+            return False
         
-        # Process new conversations
-        new_items_by_tag = {}
-        new_items_by_month = {}
-        new_exported_count = 0
+        # Process conversations
+        items_by_tag = {}
+        items_by_month = {}
+        exported_count = 0
         
         for chat_id, created_at, source, content, summary in conversations:
             
@@ -384,9 +293,8 @@ def export_memory_to_git():
             chunk_urls = []
             
             for chunk_index, chunk_text in chunks:
-                # Create nonce-based chunk filename
-                chunk_base_name = f"{chat_id}-{chunk_index}"
-                chunk_filename = get_nonce_filename(chunk_base_name, nonce_map)
+                # Simple chunk filename
+                chunk_filename = f"{chat_id}-{chunk_index}.json"
                 chunk_path = f"{CHUNK_DIR}/{chunk_filename}"
                 
                 chunk_data = {
@@ -399,7 +307,8 @@ def export_memory_to_git():
                 }
                 
                 if save_json_file(chunk_path, chunk_data):
-                    chunk_urls.append(f"chunks/{chunk_filename}")
+                    # URLs include token parameter
+                    chunk_urls.append(f"chunks/{chunk_filename}?key={token}")
             
             # Create item metadata
             item = {
@@ -415,117 +324,111 @@ def export_memory_to_git():
             
             # Group by tags
             for tag in tags:
-                if tag not in new_items_by_tag:
-                    new_items_by_tag[tag] = []
-                new_items_by_tag[tag].append(item)
+                if tag not in items_by_tag:
+                    items_by_tag[tag] = []
+                items_by_tag[tag].append(item)
             
             # Group by month
             month_key = created_at.strftime("%Y-%m")
-            if month_key not in new_items_by_month:
-                new_items_by_month[month_key] = []
-            new_items_by_month[month_key].append(item)
+            if month_key not in items_by_month:
+                items_by_month[month_key] = []
+            items_by_month[month_key].append(item)
             
-            new_exported_count += 1
-        
-        # For simplicity, just use new items (no merging for now)
-        final_items_by_tag = new_items_by_tag
-        final_items_by_month = new_items_by_month
+            exported_count += 1
         
         # Generate timestamp
         now_iso = datetime.utcnow().isoformat() + "Z"
         
-        # Save tag-based shards with nonce filenames
-        for tag, items in final_items_by_tag.items():
+        # Save tag-based shards with simple names
+        for tag, items in items_by_tag.items():
             shard_data = {
                 "version": "1",
                 "generated_at": now_iso,
                 "items": items
             }
             
-            shard_filename = get_nonce_filename(f"{tag}", nonce_map)
-            shard_path = f"{SHARD_TAG_DIR}/{shard_filename}"
+            shard_path = f"{SHARD_TAG_DIR}/{tag}.json"
             if not save_json_file(shard_path, shard_data):
                 print(f"ERROR: export_memory_to_git - Failed to save tag shard: {tag}")
         
-        # Save month-based shards with nonce filenames
-        for month, items in final_items_by_month.items():
+        # Save month-based shards with simple names
+        for month, items in items_by_month.items():
             shard_data = {
                 "version": "1", 
                 "generated_at": now_iso,
                 "items": items
             }
             
-            month_filename = get_nonce_filename(f"{month}", nonce_map)
-            shard_path = f"{SHARD_DATE_DIR}/{month_filename}"
+            shard_path = f"{SHARD_DATE_DIR}/{month}.json"
             if not save_json_file(shard_path, shard_data):
                 print(f"ERROR: export_memory_to_git - Failed to save month shard: {month}")
         
-        # Create search map with nonce-based URLs
+        # Create search map with simple URLs
         search_tokens = {}
-        for tag in final_items_by_tag.keys():
-            tag_filename = nonce_map.get(tag, f"{tag}.json")
-            search_tokens[tag] = [f"catalog/shards/by_tag/{tag_filename}"]
+        for tag in items_by_tag.keys():
+            search_tokens[tag] = [f"catalog/shards/by_tag/{tag}.json?key={token}"]
         
         search_map = {
             "version": "1",
             "tokens": search_tokens,
-            "security": "nonce_based_urls",
-            "access_note": "URLs use random nonces for security through obscurity"
+            "security": "token_parameter",
+            "access_token": token,
+            "access_note": "Append ?key=" + token + " to any URL for access"
         }
         
-        # Search map gets its own nonce
-        search_map_filename = get_nonce_filename("search_map", nonce_map)
-        if not save_json_file(f"{CATALOG_DIR}/{search_map_filename}", search_map):
+        # Save search map with simple name
+        if not save_json_file(f"{CATALOG_DIR}/search_map.json", search_map):
             print("ERROR: export_memory_to_git - Failed to save search map")
         
-        # Save nonce mappings
-        if not save_nonce_map(nonce_map):
-            print("ERROR: export_memory_to_git - Failed to save nonce mappings")
+        # Create and save URL dictionary
+        url_dictionary = build_url_dictionary(token)
+        if not save_json_file(URL_DICTIONARY_FILE, url_dictionary):
+            print("ERROR: export_memory_to_git - Failed to save URL dictionary")
         
         # Create metadata files
-        total_exported = sum(len(items) for items in final_items_by_tag.values())
         latest_build = {
             "generated_at": now_iso,
-            "total_conversations": total_exported,
-            "new_conversations": new_exported_count,
-            "incremental_update": is_incremental,
-            "security": "nonce_based_urls",
-            "search_map_url": f"catalog/{search_map_filename}"
+            "total_conversations": exported_count,
+            "security": "token_parameter",
+            "access_token": token,
+            "url_dictionary_location": "meta/url_dictionary.json"
         }
         
-        build_filename = get_nonce_filename("latest_build", nonce_map)
-        if not save_json_file(f"{META_DIR}/{build_filename}", latest_build):
+        if not save_json_file(f"{META_DIR}/latest_build.json", latest_build):
             print("ERROR: export_memory_to_git - Failed to save build metadata")
+        
+        counts = {
+            "by_tag": {k: len(v) for k, v in items_by_tag.items()},
+            "by_month": {k: len(v) for k, v in items_by_month.items()},
+            "access_token": token
+        }
+        
+        if not save_json_file(f"{META_DIR}/counts.json", counts):
+            print("ERROR: export_memory_to_git - Failed to save counts")
         
         # Git operations
         print("DEBUG: export_memory_to_git - Starting git operations")
         
         subprocess.run(["git", "-C", REPO_DIR, "add", "-A"], check=True)
-        
-        if is_incremental:
-            commit_message = f"incremental: {new_exported_count} new conversations (nonce-based)"
-        else:
-            commit_message = f"full export: {total_exported} total conversations (nonce-based)"
-            
-        subprocess.run(["git", "-C", REPO_DIR, "commit", "-m", commit_message], check=False)
+        subprocess.run(["git", "-C", REPO_DIR, "commit", "-m", f"simple token export: {exported_count} conversations"], check=False)
         subprocess.run(["git", "-C", REPO_DIR, "push"], check=True)
         
-        # Save timestamp of successful export
-        export_timestamp = datetime.now()
-        if not save_export_timestamp(export_timestamp):
-            print("ERROR: export_memory_to_git - Failed to save export timestamp")
-            return False
-        
         print(f"DEBUG: export_memory_to_git - Export completed successfully")
+        print(f"DEBUG: export_memory_to_git - Exported {exported_count} conversations")
+        print(f"DEBUG: export_memory_to_git - Access token: {token}")
+        print(f"DEBUG: export_memory_to_git - Tags: {list(items_by_tag.keys())}")
         
-        if is_incremental:
-            print(f"DEBUG: export_memory_to_git - Incremental update: {new_exported_count} new conversations")
-            print(f"DEBUG: export_memory_to_git - Total conversations now: {total_exported}")
-        else:
-            print(f"DEBUG: export_memory_to_git - Full export: {total_exported} conversations")
-        
-        print(f"DEBUG: export_memory_to_git - Tags: {list(final_items_by_tag.keys())}")
-        print(f"DEBUG: export_memory_to_git - Search map URL: catalog/{search_map_filename}")
+        # Print URL dictionary for easy access
+        print("\n" + "="*60)
+        print("🔑 ACCESS TOKEN:", token)
+        print("📋 READY-TO-USE URLs:")
+        print("="*60)
+        print(f"🗺️  Search Map: {GITHUB_BASE_URL}/catalog/search_map.json?key={token}")
+        print(f"📊 URL Dictionary: {GITHUB_BASE_URL}/meta/url_dictionary.json?key={token}")
+        print("\n📚 Topic Shards:")
+        for tag in items_by_tag.keys():
+            print(f"   {tag.title()}: {GITHUB_BASE_URL}/catalog/shards/by_tag/{tag}.json?key={token}")
+        print("="*60)
         
         return True
         
@@ -539,18 +442,18 @@ def export_memory_to_git():
 
 if __name__ == '__main__':
     print("=" * 60)
-    print("SIMPLE NONCE-BASED MEMORY SYSTEM GIT MIRROR EXPORTER v2.0")
+    print("SIMPLE TOKEN-BASED MEMORY SYSTEM GIT MIRROR EXPORTER v3.0")
     print(f"Starting export at {datetime.now()}")
-    print("Security: Nonce-based URLs for AI accessibility")
+    print("Security: Simple token parameters for universal AI access")
     print("=" * 60)
     
     success = export_memory_to_git()
     
     if success:
-        print("\nSUCCESS: Simple nonce-based Git mirror export completed!")
-        print("All conversations saved as plain JSON with nonce-based URLs")
-        print("AI assistants can directly access content with the nonce URLs")
-        print("Check meta/nonce_map.json for URL mappings")
+        print("\nSUCCESS: Simple token-based Git mirror export completed!")
+        print("All conversations saved with simple URLs + token parameters")
+        print("AI assistants (Claude, ChatGPT, etc.) can access with token URLs")
+        print("Check the URLs printed above for immediate access!")
     else:
-        print("\nFAILED: Simple nonce-based Git mirror export failed")
+        print("\nFAILED: Simple token-based Git mirror export failed")
         print("Check error messages above for details")

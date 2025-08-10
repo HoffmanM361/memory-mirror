@@ -1,0 +1,13 @@
+{
+  "id": "946c76bc-f562-4b9f-9547-77dd9ace13c0",
+  "chunk_ix": 2,
+  "created_at": "2025-08-10T15:51:41",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "rotate at most daily\r\nKEEP_NONCES = int(os.getenv(&quot;MEM_MIRROR_KEEP_NONCES&quot;, &quot;2&quot;)) # keep\r\ncurrent + 1 prior\r\nNONCE_FILE = os.path.join(REPO_DIR, &quot;.current_nonce&quot;) # not committed\r\nNONCE_HISTORY = os.path.join(REPO_DIR, &quot;.nonce_history&quot;) # not committed\r\nDB = dict(\r\nhost = os.getenv(&quot;MEM_DB_HOST&quot;,&quot;localhost&quot;),\r\ndatabase = os.getenv(&quot;MEM_DB_NAME&quot;,&quot;memory_system&quot;),\r\nuser = os.getenv(&quot;MEM_DB_USER&quot;,&quot;memory_user&quot;),\r\npassword = os.getenv(&quot;MEM_DB_PASS&quot;,&quot;memory_pass_2025&quot;)\r\n)\r\n\r\n# ------------------- Helpers -------------------\r\ndef db():\r\nreturn mysql.connector.connect(**DB)\r\ndef ensure_dir(p):\r\npathlib.Path(p).parent.mkdir(parents=True, exist_ok=True)\r\ndef save_json(path, obj):\r\nensure_dir(path)\r\nwith open(path, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:\r\njson.dump(obj, f, ensure_ascii=False, indent=2) # pretty (multi-line)\r\ndef chunk_text(text, size=CHUNK_SIZE):\r\nfor i in range(0, len(text), size):\r\nyield i//size, text[i:i+size]\r\nEMAIL_RE = re.compile(r&quot;[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+&quot;)\r\ndef redact(text: str) -&gt; str:\r\ntext = EMAIL_RE.sub(&quot;&lt;redacted.email&gt;&quot;, text)\r\nreturn text\r\ndef load_rows(limit=5000):\r\nq = (\r\n&quot;SELECT id, created_at, source, content, summary, IFNULL(public,0) as public &quot;\r\n&quot;FROM chats ORDER BY created_at DESC LIMIT %s&quot;\r\n)\r\ncn = db(); cur = cn.cursor()\r\ncur.execute(q, (limit,))\r\nrows = cur.fetchall()\r\ncur.close(); cn.close()\r\nreturn rows\r\ndef get_or_rotate_nonce(ttl_hours=24):\r\nnow = time.time()\r\nif os.path.exists(NONCE_FILE):\r\nage = now - os.path.getmtime(NONCE_FILE)\r\nif age &lt; ttl_hours * 3600:\r\nreturn open(NONCE_FILE, &quot;r&quot;, encoding=&quot;utf-8&quot;).read().strip()\r\nnonce = token_urlsafe(12)\r\n\r\nwith open(NONCE_FILE, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:\r\nf.write(nonce)\r\nwith open(NONCE_HISTORY, &quot;a&quot;, encoding=&quot;utf-8&quot;) as f:\r\nf.write(f&quot"
+}

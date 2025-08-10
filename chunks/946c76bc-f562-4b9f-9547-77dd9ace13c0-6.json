@@ -1,0 +1,13 @@
+{
+  "id": "946c76bc-f562-4b9f-9547-77dd9ace13c0",
+  "chunk_ix": 6,
+  "created_at": "2025-08-10T15:51:41",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "e add origin https://github.com/HoffmanM361/memory-mirror.git\r\ngit pull origin main || true\r\npython3 -m pip install mysql-connector-python\r\nexport MEM_MIRROR_NONCE_TTL_HOURS=24 # rotate daily (change as needed)\r\nexport MEM_MIRROR_KEEP_NONCES=2 # keep current + previous\r\npython3 /srv/memory-git/exporter.py\r\n```\r\n\r\n9) Automation (Cron)\r\n```\r\ncrontab -e\r\n0 2 * * * /usr/bin/python3 /srv/memory-git/exporter.py &gt;&gt; /var/log/memory_exporter.log\r\n2&gt;&amp;1\r\n```\r\nRuns nightly at 2am; rotates nonce at most once per 24 hours.\r\n10) How to Share with ChatGPT/Claude\r\nAfter each export, copy the two URLs below **with the actual nonce** and paste them\r\ninto chat:\r\n1) Search map:\r\nhttps://raw.githubusercontent.com/HoffmanM361/memory-\r\nmirror/main/catalog/&lt;NONCE&gt;/search_map_&lt;NONCE&gt;.json\r\n\r\n2) One shard (e.g., memory):\r\nhttps://raw.githubusercontent.com/HoffmanM361/memory-\r\nmirror/main/catalog/&lt;NONCE&gt;/shards/by_tag/memory.json\r\nI (or Claude) will traverse `chunk_urls` from there.\r\n\r\n11) Verification Checklist (Phone‑Friendly)\r\n☐ Open the nonce search map URL; confirm pretty JSON and a `tokens` object.\r\n☐ Open a shard under the same nonce path; confirm it’s multi‑line and modest size.\r\n☐ Open one chunk under `chunks/&lt;NONCE&gt;/...` (~2 KB per file).\r\n☐ Open meta/latest_build.json; verify the `nonce` matches the URLs you shared.\r\n\r\n12) Rotation &amp; Revocation\r\n• To rotate immediately: delete `.current_nonce` and re‑run exporter — a new nonce is\r\nminted.\r\n• Old nonces are pruned automatically, keeping only the latest N (`KEEP_NONCES`).\r\n• For hard removal from history, rewrite Git history with `git filter-repo` (optional,\r\nadvanced).\r\n13) Troubleshooting\r\n• 404 on shard/chunk → Ensure the **same nonce** is present in the URL path and file\r\nname.\r\n• Single‑line JSON → Confirm exporter uses `indent=2`.\r\n• Mirror empty → Set `public` flags or broaden tag inference.\r\n• Too big → Lower `MAX_ITEMS_PER_SHARD`.\r\n\r\n14) Security Posture Summary\r\nThis is **nonce‑protec"
+}
