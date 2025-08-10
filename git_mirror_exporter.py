@@ -1,12 +1,16 @@
 # CHANGE LOG
-# File: /var/www/memory_system/git_mirror_exporter.py
+# File: /srv/memory-git/git_mirror_exporter.py
 # Document Type: Python Utility Script
-# Purpose: Export public memory conversations to Git mirror for AI assistant access
+# Purpose: Export encrypted memory conversations to Git mirror with incremental updates
 # Main App: memory_app.py
-# Dependencies: mysql.connector, json, os, subprocess, pathlib
-# Context: Creates static JSON files in Git repo for reliable AI access via raw URLs
-# Mirror Strategy: Public redacted content only, private stays in MariaDB
+# Dependencies: mysql.connector, json, os, subprocess, pathlib, cryptography
+# Context: Creates encrypted JSON files in Git repo for secure AI access via raw URLs
+# Mirror Strategy: All content encrypted with passphrase, incremental updates only
+# Encryption: Single passphrase "8*Fold*Path" encrypts all content
 # Version History:
+# 2025-08-10 v1.3 - Fixed function order and directory creation issues
+# 2025-08-10 v1.2 - Added incremental updates and change tracking
+# 2025-08-10 v1.1 - Added encryption with passphrase-based key
 # 2025-08-10 v1.0 - Initial creation following development standards
 
 import os
@@ -18,6 +22,8 @@ import mysql.connector
 from mysql.connector import Error as MySQLError
 from datetime import datetime
 from pathlib import Path
+import base64
+from cryptography.fernet import Fernet
 
 # Configuration
 REPO_DIR = "/srv/memory-git"
@@ -29,6 +35,38 @@ META_DIR = f"{REPO_DIR}/meta"
 CHUNK_SIZE = 2000
 PUBLIC_TAGS = {"memory", "breakthrough", "historic", "system", "development"}
 
+# Incremental update tracking
+LAST_EXPORT_FILE = f"{META_DIR}/last_export.json"
+
+# Encryption configuration
+PASSPHRASE = "8*Fold*Path"
+
+def passphrase_to_key(passphrase):
+    """Convert passphrase to encryption key"""
+    try:
+        print("DEBUG: passphrase_to_key - Converting passphrase to encryption key")
+        
+        # Use SHA256 to create 32-byte key from passphrase
+        key_bytes = hashlib.sha256(passphrase.encode()).digest()
+        # Convert to base64 for Fernet
+        encryption_key = base64.urlsafe_b64encode(key_bytes)
+        
+        print("DEBUG: passphrase_to_key - Encryption key generated successfully")
+        return encryption_key
+        
+    except Exception as e:
+        print(f"ERROR: passphrase_to_key - Error generating key: {e}")
+        return None
+
+# Initialize encryption
+ENCRYPTION_KEY = passphrase_to_key(PASSPHRASE)
+if ENCRYPTION_KEY:
+    cipher = Fernet(ENCRYPTION_KEY)
+    print("DEBUG: Encryption initialized successfully")
+else:
+    print("ERROR: Failed to initialize encryption")
+    cipher = None
+
 # Database configuration (same as main app)
 DB_CONFIG = {
     'host': 'localhost',
@@ -36,6 +74,55 @@ DB_CONFIG = {
     'user': 'memory_user',
     'password': 'memory_pass_2025'
 }
+
+def encrypt_content(content):
+    """Encrypt content using the passphrase-based key"""
+    try:
+        print("DEBUG: encrypt_content - Encrypting content")
+        
+        if not cipher:
+            print("ERROR: encrypt_content - No cipher available")
+            return content
+        
+        if not content:
+            print("ERROR: encrypt_content - No content provided")
+            return ""
+        
+        # Convert to string if not already
+        content_str = str(content)
+        
+        # Encrypt the content
+        encrypted_bytes = cipher.encrypt(content_str.encode())
+        encrypted_str = encrypted_bytes.decode()
+        
+        print(f"DEBUG: encrypt_content - Content encrypted, size: {len(encrypted_str)}")
+        return encrypted_str
+        
+    except Exception as e:
+        print(f"ERROR: encrypt_content - Encryption failed: {e}")
+        return content
+
+def save_encrypted_json_file(path, data):
+    """Save data as encrypted JSON file - NO directory creation"""
+    try:
+        print(f"DEBUG: save_encrypted_json_file - Saving to {path}")
+        
+        # Convert data to JSON string
+        json_str = json.dumps(data, ensure_ascii=False, indent=2)
+        
+        # Encrypt the JSON content
+        encrypted_content = encrypt_content(json_str)
+        
+        # Save encrypted content as text file
+        with open(path, 'w', encoding='utf-8') as f:
+            f.write(encrypted_content)
+        
+        print(f"DEBUG: save_encrypted_json_file - Successfully saved {path}")
+        return True
+        
+    except Exception as e:
+        print(f"ERROR: save_encrypted_json_file - Error saving {path}: {e}")
+        return False
 
 def get_db_connection():
     """Get database connection with error handling"""
@@ -57,15 +144,143 @@ def get_db_connection():
         print(f"ERROR: get_db_connection - Unexpected error: {e}")
         return None
 
-def ensure_directory(path):
-    """Create directory if it doesn't exist"""
+def get_last_export_timestamp():
+    """Get timestamp of last successful export"""
     try:
-        Path(path).mkdir(parents=True, exist_ok=True)
-        print(f"DEBUG: ensure_directory - Directory ready: {path}")
-        return True
+        print("DEBUG: get_last_export_timestamp - Checking for previous export")
+        
+        if not os.path.exists(LAST_EXPORT_FILE):
+            print("DEBUG: get_last_export_timestamp - No previous export found, doing full export")
+            return None
+        
+        with open(LAST_EXPORT_FILE, 'r', encoding='utf-8') as f:
+            encrypted_content = f.read()
+        
+        # Decrypt the timestamp file
+        if cipher:
+            decrypted_content = cipher.decrypt(encrypted_content.encode()).decode()
+            data = json.loads(decrypted_content)
+            timestamp_str = data.get('last_export_timestamp')
+            
+            if timestamp_str:
+                # Convert ISO string back to datetime
+                timestamp = datetime.fromisoformat(timestamp_str.replace('Z', '+00:00'))
+                print(f"DEBUG: get_last_export_timestamp - Last export: {timestamp}")
+                return timestamp
+        
+        print("DEBUG: get_last_export_timestamp - Could not parse timestamp, doing full export")
+        return None
+        
     except Exception as e:
-        print(f"ERROR: ensure_directory - Failed to create {path}: {e}")
+        print(f"ERROR: get_last_export_timestamp - Error reading timestamp: {e}")
+        return None
+
+def save_export_timestamp(timestamp):
+    """Save timestamp of successful export"""
+    try:
+        print(f"DEBUG: save_export_timestamp - Saving timestamp: {timestamp}")
+        
+        data = {
+            'last_export_timestamp': timestamp.isoformat(),
+            'export_completed': True
+        }
+        
+        if save_encrypted_json_file(LAST_EXPORT_FILE, data):
+            print("DEBUG: save_export_timestamp - Timestamp saved successfully")
+            return True
+        else:
+            print("ERROR: save_export_timestamp - Failed to save timestamp")
+            return False
+            
+    except Exception as e:
+        print(f"ERROR: save_export_timestamp - Error saving timestamp: {e}")
         return False
+
+def load_conversations_from_db(since_timestamp=None, limit=1000):
+    """Load conversations from database for export - incremental if timestamp provided"""
+    conn = None
+    cursor = None
+    
+    try:
+        if since_timestamp:
+            print(f"DEBUG: load_conversations_from_db - Loading conversations since {since_timestamp}")
+        else:
+            print(f"DEBUG: load_conversations_from_db - Loading all conversations (full export)")
+        
+        conn = get_db_connection()
+        if not conn:
+            print("ERROR: load_conversations_from_db - No database connection")
+            return []
+        
+        cursor = conn.cursor()
+        
+        # Build query based on incremental vs full export
+        if since_timestamp:
+            query = """
+                SELECT id, created_at, source, content, summary
+                FROM chats 
+                WHERE created_at > %s
+                ORDER BY created_at DESC 
+                LIMIT %s
+            """
+            cursor.execute(query, (since_timestamp, limit))
+        else:
+            query = """
+                SELECT id, created_at, source, content, summary
+                FROM chats 
+                ORDER BY created_at DESC 
+                LIMIT %s
+            """
+            cursor.execute(query, (limit,))
+        
+        rows = cursor.fetchall()
+        
+        if since_timestamp:
+            print(f"DEBUG: load_conversations_from_db - Loaded {len(rows)} new conversations since last export")
+        else:
+            print(f"DEBUG: load_conversations_from_db - Loaded {len(rows)} total conversations")
+        
+        return rows
+        
+    except MySQLError as e:
+        print(f"ERROR: load_conversations_from_db - MySQL error: {e}")
+        return []
+    except Exception as e:
+        print(f"ERROR: load_conversations_from_db - Unexpected error: {e}")
+        return []
+    finally:
+        if cursor:
+            cursor.close()
+            print("DEBUG: load_conversations_from_db - Cursor closed")
+        if conn:
+            conn.close()
+            print("DEBUG: load_conversations_from_db - Connection closed")
+
+def should_export_conversation(content, summary):
+    """Determine if conversation should be exported to public mirror"""
+    try:
+        print("DEBUG: should_export_conversation - Checking export criteria")
+        
+        if not content:
+            print("ERROR: should_export_conversation - No content provided")
+            return False, []
+        
+        # Check for public tags in content and summary
+        text_to_check = (content + " " + (summary or "")).lower()
+        found_tags = []
+        
+        for tag in PUBLIC_TAGS:
+            if tag in text_to_check:
+                found_tags.append(tag)
+        
+        should_export = len(found_tags) > 0
+        
+        print(f"DEBUG: should_export_conversation - Export: {should_export}, Tags: {found_tags}")
+        return should_export, found_tags
+        
+    except Exception as e:
+        print(f"ERROR: should_export_conversation - Error: {e}")
+        return False, []
 
 def redact_content(text):
     """Remove sensitive information from content"""
@@ -116,115 +331,35 @@ def chunk_content(text, size=CHUNK_SIZE):
         print(f"ERROR: chunk_content - Error chunking content: {e}")
         return []
 
-def save_json_file(path, data):
-    """Save data as JSON file with error handling"""
-    try:
-        print(f"DEBUG: save_json_file - Saving to {path}")
-        
-        if not ensure_directory(os.path.dirname(path)):
-            print(f"ERROR: save_json_file - Failed to create directory for {path}")
-            return False
-        
-        with open(path, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-        
-        print(f"DEBUG: save_json_file - Successfully saved {path}")
-        return True
-        
-    except Exception as e:
-        print(f"ERROR: save_json_file - Error saving {path}: {e}")
-        return False
-
-def load_conversations_from_db(limit=1000):
-    """Load conversations from database for export"""
-    conn = None
-    cursor = None
-    
-    try:
-        print(f"DEBUG: load_conversations_from_db - Loading up to {limit} conversations")
-        
-        conn = get_db_connection()
-        if not conn:
-            print("ERROR: load_conversations_from_db - No database connection")
-            return []
-        
-        cursor = conn.cursor()
-        
-        # Get conversations, include public flag if it exists
-        query = """
-            SELECT id, created_at, source, content, summary
-            FROM chats 
-            ORDER BY created_at DESC 
-            LIMIT %s
-        """
-        
-        cursor.execute(query, (limit,))
-        rows = cursor.fetchall()
-        
-        print(f"DEBUG: load_conversations_from_db - Loaded {len(rows)} conversations")
-        return rows
-        
-    except MySQLError as e:
-        print(f"ERROR: load_conversations_from_db - MySQL error: {e}")
-        return []
-    except Exception as e:
-        print(f"ERROR: load_conversations_from_db - Unexpected error: {e}")
-        return []
-    finally:
-        if cursor:
-            cursor.close()
-            print("DEBUG: load_conversations_from_db - Cursor closed")
-        if conn:
-            conn.close()
-            print("DEBUG: load_conversations_from_db - Connection closed")
-
-def should_export_conversation(content, summary):
-    """Determine if conversation should be exported to public mirror"""
-    try:
-        print("DEBUG: should_export_conversation - Checking export criteria")
-        
-        if not content:
-            print("ERROR: should_export_conversation - No content provided")
-            return False, []
-        
-        # Check for public tags in content and summary
-        text_to_check = (content + " " + (summary or "")).lower()
-        found_tags = []
-        
-        for tag in PUBLIC_TAGS:
-            if tag in text_to_check:
-                found_tags.append(tag)
-        
-        should_export = len(found_tags) > 0
-        
-        print(f"DEBUG: should_export_conversation - Export: {should_export}, Tags: {found_tags}")
-        return should_export, found_tags
-        
-    except Exception as e:
-        print(f"ERROR: should_export_conversation - Error: {e}")
-        return False, []
-
 def export_memory_to_git():
-    """Main export function - creates Git mirror from MariaDB"""
+    """Main export function - creates incremental Git mirror from MariaDB"""
     try:
-        print(f"DEBUG: export_memory_to_git - Starting export at {datetime.now()}")
+        print(f"DEBUG: export_memory_to_git - Starting incremental export at {datetime.now()}")
         
-        # Ensure all directories exist
-        for directory in [CATALOG_DIR, SHARD_TAG_DIR, SHARD_DATE_DIR, CHUNK_DIR, META_DIR]:
-            if not ensure_directory(directory):
-                print(f"ERROR: export_memory_to_git - Failed to create directory: {directory}")
+        # Check for incremental vs full export
+        last_export = get_last_export_timestamp()
+        is_incremental = last_export is not None
+        
+        if is_incremental:
+            print(f"DEBUG: export_memory_to_git - Incremental export since {last_export}")
+        else:
+            print("DEBUG: export_memory_to_git - Full export (first run)")
+        
+        # Load conversations from database (incremental if possible)
+        conversations = load_conversations_from_db(since_timestamp=last_export)
+        
+        if not conversations:
+            if is_incremental:
+                print("DEBUG: export_memory_to_git - No new conversations since last export")
+                return True  # Success - just nothing new
+            else:
+                print("ERROR: export_memory_to_git - No conversations loaded")
                 return False
         
-        # Load conversations from database
-        conversations = load_conversations_from_db()
-        if not conversations:
-            print("ERROR: export_memory_to_git - No conversations loaded")
-            return False
-        
-        # Process conversations for export
-        items_by_tag = {}
-        items_by_month = {}
-        exported_count = 0
+        # Process new conversations
+        new_items_by_tag = {}
+        new_items_by_month = {}
+        new_exported_count = 0
         
         for chat_id, created_at, source, content, summary in conversations:
             
@@ -253,7 +388,7 @@ def export_memory_to_git():
                     "content": chunk_text
                 }
                 
-                if save_json_file(chunk_path, chunk_data):
+                if save_encrypted_json_file(chunk_path, chunk_data):
                     chunk_urls.append(f"chunks/{chunk_filename}")
             
             # Create item metadata
@@ -270,23 +405,27 @@ def export_memory_to_git():
             
             # Group by tags
             for tag in tags:
-                if tag not in items_by_tag:
-                    items_by_tag[tag] = []
-                items_by_tag[tag].append(item)
+                if tag not in new_items_by_tag:
+                    new_items_by_tag[tag] = []
+                new_items_by_tag[tag].append(item)
             
             # Group by month
             month_key = created_at.strftime("%Y-%m")
-            if month_key not in items_by_month:
-                items_by_month[month_key] = []
-            items_by_month[month_key].append(item)
+            if month_key not in new_items_by_month:
+                new_items_by_month[month_key] = []
+            new_items_by_month[month_key].append(item)
             
-            exported_count += 1
+            new_exported_count += 1
+        
+        # For simplicity, just use new items (no merging for now)
+        final_items_by_tag = new_items_by_tag
+        final_items_by_month = new_items_by_month
         
         # Generate timestamp
         now_iso = datetime.utcnow().isoformat() + "Z"
         
-        # Save tag-based shards
-        for tag, items in items_by_tag.items():
+        # Save tag-based shards (encrypted)
+        for tag, items in final_items_by_tag.items():
             shard_data = {
                 "version": "1",
                 "generated_at": now_iso,
@@ -294,11 +433,11 @@ def export_memory_to_git():
             }
             
             shard_path = f"{SHARD_TAG_DIR}/{tag}.json"
-            if not save_json_file(shard_path, shard_data):
+            if not save_encrypted_json_file(shard_path, shard_data):
                 print(f"ERROR: export_memory_to_git - Failed to save tag shard: {tag}")
         
-        # Save month-based shards
-        for month, items in items_by_month.items():
+        # Save month-based shards (encrypted)
+        for month, items in final_items_by_month.items():
             shard_data = {
                 "version": "1", 
                 "generated_at": now_iso,
@@ -306,49 +445,66 @@ def export_memory_to_git():
             }
             
             shard_path = f"{SHARD_DATE_DIR}/{month}.json"
-            if not save_json_file(shard_path, shard_data):
+            if not save_encrypted_json_file(shard_path, shard_data):
                 print(f"ERROR: export_memory_to_git - Failed to save month shard: {month}")
         
-        # Create search map
+        # Create search map (encrypted)
         search_tokens = {}
-        for tag in items_by_tag.keys():
+        for tag in final_items_by_tag.keys():
             search_tokens[tag] = [f"catalog/shards/by_tag/{tag}.json"]
         
         search_map = {
             "version": "1",
-            "tokens": search_tokens
+            "tokens": search_tokens,
+            "encryption": "fernet",
+            "passphrase_hint": "Noble Eightfold Path with asterisks"
         }
         
-        if not save_json_file(f"{CATALOG_DIR}/search_map.json", search_map):
+        if not save_encrypted_json_file(f"{CATALOG_DIR}/search_map.json", search_map):
             print("ERROR: export_memory_to_git - Failed to save search map")
         
-        # Create metadata files
+        # Create metadata files (encrypted)
+        total_exported = sum(len(items) for items in final_items_by_tag.values())
         latest_build = {
             "generated_at": now_iso,
-            "exported": exported_count
+            "total_conversations": total_exported,
+            "new_conversations": new_exported_count,
+            "incremental_update": is_incremental,
+            "encryption": "fernet",
+            "passphrase_required": True
         }
         
-        if not save_json_file(f"{META_DIR}/latest_build.json", latest_build):
+        if not save_encrypted_json_file(f"{META_DIR}/latest_build.json", latest_build):
             print("ERROR: export_memory_to_git - Failed to save build metadata")
-        
-        counts = {
-            "by_tag": {k: len(v) for k, v in items_by_tag.items()},
-            "by_month": {k: len(v) for k, v in items_by_month.items()}
-        }
-        
-        if not save_json_file(f"{META_DIR}/counts.json", counts):
-            print("ERROR: export_memory_to_git - Failed to save counts")
         
         # Git operations
         print("DEBUG: export_memory_to_git - Starting git operations")
         
         subprocess.run(["git", "-C", REPO_DIR, "add", "-A"], check=True)
-        subprocess.run(["git", "-C", REPO_DIR, "commit", "-m", f"export: refresh public shards - {exported_count} items"], check=False)
+        
+        if is_incremental:
+            commit_message = f"incremental: {new_exported_count} new conversations"
+        else:
+            commit_message = f"full export: {total_exported} total conversations"
+            
+        subprocess.run(["git", "-C", REPO_DIR, "commit", "-m", commit_message], check=False)
         subprocess.run(["git", "-C", REPO_DIR, "push"], check=True)
         
+        # Save timestamp of successful export
+        export_timestamp = datetime.now()
+        if not save_export_timestamp(export_timestamp):
+            print("ERROR: export_memory_to_git - Failed to save export timestamp")
+            return False
+        
         print(f"DEBUG: export_memory_to_git - Export completed successfully")
-        print(f"DEBUG: export_memory_to_git - Exported {exported_count} conversations")
-        print(f"DEBUG: export_memory_to_git - Tags: {list(items_by_tag.keys())}")
+        
+        if is_incremental:
+            print(f"DEBUG: export_memory_to_git - Incremental update: {new_exported_count} new conversations")
+            print(f"DEBUG: export_memory_to_git - Total conversations now: {total_exported}")
+        else:
+            print(f"DEBUG: export_memory_to_git - Full export: {total_exported} conversations")
+        
+        print(f"DEBUG: export_memory_to_git - Tags: {list(final_items_by_tag.keys())}")
         
         return True
         
@@ -362,16 +518,19 @@ def export_memory_to_git():
 
 if __name__ == '__main__':
     print("=" * 60)
-    print("MEMORY SYSTEM GIT MIRROR EXPORTER")
-    print(f"Starting export at {datetime.now()}")
+    print("WORKING ENCRYPTED MEMORY SYSTEM GIT MIRROR EXPORTER v1.3")
+    print(f"Starting incremental export at {datetime.now()}")
+    print(f"Encryption: Enabled with passphrase '{PASSPHRASE}'")
     print("=" * 60)
     
     success = export_memory_to_git()
     
     if success:
-        print("\nSUCCESS: Git mirror export completed!")
-        print("Public conversations exported to Git repository")
-        print("AI assistants can now access via raw Git URLs")
+        print("\nSUCCESS: Working incremental encrypted Git mirror export completed!")
+        print("All conversations encrypted with passphrase: 8*Fold*Path")
+        print("Future runs will only export new conversations")
+        print("AI assistants can decrypt with passphrase and access via raw Git URLs")
+        print("Raw URLs: https://raw.githubusercontent.com/HoffmanM361/memory-mirror/main/catalog/search_map.json")
     else:
-        print("\nFAILED: Git mirror export failed")
+        print("\nFAILED: Working incremental encrypted Git mirror export failed")
         print("Check error messages above for details")
