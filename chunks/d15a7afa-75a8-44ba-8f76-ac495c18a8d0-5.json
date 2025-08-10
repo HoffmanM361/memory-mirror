@@ -1,0 +1,11 @@
+{
+  "id": "d15a7afa-75a8-44ba-8f76-ac495c18a8d0",
+  "chunk_ix": 5,
+  "created_at": "2025-08-10T11:15:41",
+  "source": "web",
+  "tags": [
+    "memory",
+    "system"
+  ],
+  "content": "tion_bp.route('/detail/<chat_id>')\r\ndef conversation_detail(chat_id):\r\n    \"\"\"View full conversation details\"\"\"\r\n    conn = None\r\n    cursor = None\r\n    \r\n    try:\r\n        conn = get_db_connection()\r\n        if not conn:\r\n            flash('Database connection failed', 'error')\r\n            return redirect(url_for('conversations.view_conversations'))\r\n        \r\n        cursor = conn.cursor(dictionary=True)\r\n        cursor.execute('''\r\n            SELECT id, created_at, source, content, summary, content_hash\r\n            FROM chats WHERE id = %s\r\n        ''', (chat_id,))\r\n        \r\n        conversation = cursor.fetchone()\r\n        if not conversation:\r\n            flash('Conversation not found', 'error')\r\n            return redirect(url_for('conversations.view_conversations'))\r\n        \r\n        return render_template('conversation_detail.html', conversation=conversation)\r\n        \r\n    except Exception as e:\r\n        write_log(f\"ERROR: conversation_detail - Error: {e}\")\r\n        flash('Error loading conversation', 'error')\r\n        return redirect(url_for('conversations.view_conversations'))\r\n        \r\n    finally:\r\n        if cursor:\r\n            cursor.close()\r\n        if conn:\r\n            conn.close()\r\n\r\n@conversation_bp.route('/delete/<chat_id>', methods=['POST'])\r\ndef delete_conversation(chat_id):\r\n    \"\"\"Delete a conversation\"\"\"\r\n    conn = None\r\n    cursor = None\r\n    \r\n    try:\r\n        conn = get_db_connection()\r\n        if not conn:\r\n            flash('Database connection failed', 'error')\r\n            return redirect(url_for('conversations.view_conversations'))\r\n        \r\n        cursor = conn.cursor()\r\n        cursor.execute(\"DELETE FROM chats WHERE id = %s\", (chat_id,))\r\n        \r\n        if cursor.rowcount > 0:\r\n            conn.commit()\r\n            flash('Conversation deleted successfully', 'success')\r\n            write_log(f\"DEBUG: delete_conversation - Deleted conversation: {chat_id}\")\r\n        else:\r\n            flash('Conversation not found', '"
+}

@@ -1,0 +1,17 @@
+{
+  "version": "1",
+  "tokens": {
+    "system": [
+      "catalog/shards/by_tag/system.json"
+    ],
+    "memory": [
+      "catalog/shards/by_tag/memory.json"
+    ],
+    "historic": [
+      "catalog/shards/by_tag/historic.json"
+    ],
+    "breakthrough": [
+      "catalog/shards/by_tag/breakthrough.json"
+    ]
+  }
+}

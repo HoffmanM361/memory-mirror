@@ -1,0 +1,11 @@
+{
+  "id": "d15a7afa-75a8-44ba-8f76-ac495c18a8d0",
+  "chunk_ix": 4,
+  "created_at": "2025-08-10T11:15:41",
+  "source": "web",
+  "tags": [
+    "memory",
+    "system"
+  ],
+  "content": "conversations\r\n        query = f'''\r\n            SELECT id, created_at, source, summary, \r\n                   LEFT(content, 200) as preview,\r\n                   CHAR_LENGTH(content) as content_length\r\n            FROM chats \r\n            WHERE {where_clause}\r\n            ORDER BY created_at DESC \r\n            LIMIT %s OFFSET %s\r\n        '''\r\n        params.extend([per_page, offset])\r\n        \r\n        cursor.execute(query, params)\r\n        conversations = cursor.fetchall()\r\n        \r\n        # Get total count for pagination\r\n        count_query = f\"SELECT COUNT(*) as total FROM chats WHERE {where_clause}\"\r\n        cursor.execute(count_query, params[:-2])  # Exclude limit and offset\r\n        total_count = cursor.fetchone()['total']\r\n        \r\n        # Calculate pagination info\r\n        total_pages = (total_count + per_page - 1) // per_page\r\n        has_prev = page > 1\r\n        has_next = page < total_pages\r\n        \r\n        # Get unique sources for filter\r\n        cursor.execute(\"SELECT DISTINCT source FROM chats ORDER BY source\")\r\n        sources = [row['source'] for row in cursor.fetchall()]\r\n        \r\n        return render_template('view_conversations.html',\r\n                             conversations=conversations,\r\n                             search=search,\r\n                             source_filter=source_filter,\r\n                             sources=sources,\r\n                             page=page,\r\n                             total_pages=total_pages,\r\n                             has_prev=has_prev,\r\n                             has_next=has_next,\r\n                             total_count=total_count)\r\n        \r\n    except Exception as e:\r\n        write_log(f\"ERROR: view_conversations - Error: {e}\")\r\n        flash('Error loading conversations', 'error')\r\n        return render_template('view_conversations.html', conversations=[])\r\n        \r\n    finally:\r\n        if cursor:\r\n            cursor.close()\r\n        if conn:\r\n            conn.close()\r\n\r\n@conversa"
+}

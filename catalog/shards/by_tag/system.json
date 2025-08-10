@@ -1,0 +1,110 @@
+{
+  "version": "1",
+  "generated_at": "2025-08-10T18:25:45.401964Z",
+  "items": [
+    {
+      "id": "a2760416-da6e-493e-a4db-d10b78d13932",
+      "created_at": "2025-08-10T11:22:51",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "breakthrough",
+        "historic",
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/a2760416-da6e-493e-a4db-d10b78d13932-0.json"
+      ],
+      "preview_240": "TITLE: Fetch\n\nHere are the fetch commands I can use to access your memory system:\r\nHealth Check:\r\nfetch http://104.191.236.122/memory/health\r\nSearch Conversations:\r\nfetch http://104.191.236.122/memory/search?keyword=HISTORIC&key=public-read..."
+    },
+    {
+      "id": "2d10f563-0960-421f-a0a7-f79dad46a696",
+      "created_at": "2025-08-10T11:20:36",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "historic",
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/2d10f563-0960-421f-a0a7-f79dad46a696-0.json",
+        "chunks/2d10f563-0960-421f-a0a7-f79dad46a696-1.json"
+      ],
+      "preview_240": "TITLE: Persistent Memory System - Fetch &amp; Access Instructions\n\nPersistent Memory System - Fetch &amp; Access Instructions\r\nThis document provides detailed instructions for fetching and interacting with your local\r\npersistent memory syst..."
+    },
+    {
+      "id": "d15a7afa-75a8-44ba-8f76-ac495c18a8d0",
+      "created_at": "2025-08-10T11:15:41",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/d15a7afa-75a8-44ba-8f76-ac495c18a8d0-0.json",
+        "chunks/d15a7afa-75a8-44ba-8f76-ac495c18a8d0-1.json",
+        "chunks/d15a7afa-75a8-44ba-8f76-ac495c18a8d0-2.json",
+        "chunks/d15a7afa-75a8-44ba-8f76-ac495c18a8d0-3.json",
+        "chunks/d15a7afa-75a8-44ba-8f76-ac495c18a8d0-4.json",
+        "chunks/d15a7afa-75a8-44ba-8f76-ac495c18a8d0-5.json",
+        "chunks/d15a7afa-75a8-44ba-8f76-ac495c18a8d0-6.json"
+      ],
+      "preview_240": "TITLE: # CHANGE LOG # File: /var/www/memory_system/blueprints/conversation_bp.py # Document Type: Flask Blueprint # Purpose: Human-friendly conversation management interface # Main App: memory_app.py # Routes: /conversations/, /conversation..."
+    },
+    {
+      "id": "f3130251-b0a1-4129-b9b7-96980709e06a",
+      "created_at": "2025-08-10T00:35:23",
+      "source": "claude",
+      "title": "First successful AI access to external persistent memory - breakthrough moment",
+      "tags": [
+        "breakthrough",
+        "historic",
+        "memory",
+        "system"
+      ],
+      "summary": "First successful AI access to external persistent memory - breakthrough moment",
+      "chunk_urls": [
+        "chunks/f3130251-b0a1-4129-b9b7-96980709e06a-0.json"
+      ],
+      "preview_240": "HISTORIC BREAKTHROUGH: First AI assistant to successfully access external persistent memory system. Built system with MariaDB backend, Flask API, nginx proxy. Claude successfully accessed health endpoint directly at http://104.191.236.122/m..."
+    },
+    {
+      "id": "53ee4294-44a2-414e-baf7-d4b49e158dbb",
+      "created_at": "2025-08-10T00:34:32",
+      "source": "claude",
+      "title": "First successful AI access to external persistent memory - historic breakthrough",
+      "tags": [
+        "breakthrough",
+        "historic",
+        "memory",
+        "system"
+      ],
+      "summary": "First successful AI access to external persistent memory - historic breakthrough",
+      "chunk_urls": [
+        "chunks/53ee4294-44a2-414e-baf7-d4b49e158dbb-0.json"
+      ],
+      "preview_240": "HISTORIC BREAKTHROUGH: First AI assistant to successfully access external persistent memory system.\n\nWhat we accomplished:\n1. Built persistent memory system with MariaDB backend\n2. Created Flask API with authentication\n3. Set up nginx proxy..."
+    },
+    {
+      "id": "0bd19a85-69ad-43d1-83b1-60ee8e25e1f7",
+      "created_at": "2025-08-10T00:18:19",
+      "source": "manual_test",
+      "title": "First test of memory system functionality",
+      "tags": [
+        "memory",
+        "system"
+      ],
+      "summary": "First test of memory system functionality",
+      "chunk_urls": [
+        "chunks/0bd19a85-69ad-43d1-83b1-60ee8e25e1f7-0.json"
+      ],
+      "preview_240": "This is our first test conversation in the memory system!"
+    }
+  ]
+}

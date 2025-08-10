@@ -1,0 +1,13 @@
+{
+  "id": "a2760416-da6e-493e-a4db-d10b78d13932",
+  "chunk_ix": 0,
+  "created_at": "2025-08-10T11:22:51",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "TITLE: Fetch\n\nHere are the fetch commands I can use to access your memory system:\r\nHealth Check:\r\nfetch http://104.191.236.122/memory/health\r\nSearch Conversations:\r\nfetch http://104.191.236.122/memory/search?keyword=HISTORIC&key=public-read-2025\r\nGet Specific Conversation:\r\nfetch http://104.191.236.122/memory/get/53ee4294-44a2-414e-baf7-d4b49e158dbb?key=public-read-2025\r\nSearch by Source:\r\nfetch http://104.191.236.122/memory/search?source=claude&key=public-read-2025\r\nRecent Conversations:\r\nfetch http://104.191.236.122/memory/search?limit=5&key=public-read-2025\r\nJust tell me which one you want me to run! For example:\r\n\"fetch the health endpoint\"\r\n\"fetch and search for HISTORIC conversations\"\r\n\"fetch the first breakthrough conversation\"\r\nThe key is key=public-read-2025 at the end for read-only access, which allows me to access your stored conversations directly!"
+}

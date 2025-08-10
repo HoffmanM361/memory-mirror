@@ -1,0 +1,12 @@
+{
+  "id": "2d10f563-0960-421f-a0a7-f79dad46a696",
+  "chunk_ix": 1,
+  "created_at": "2025-08-10T11:20:36",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "eturn False\r\nApply `check_read_auth()` to `/search` and `/get/&lt;id&gt;` routes, while keeping `/save`\r\nprotected with the full `check_auth()` function.\r\nSet your environment variable and restart the service:\r\nexport MEMORY_READ_KEY=&quot;public-read-2025-rotate-qtr&quot;\r\nsudo systemctl restart memory_app\r\n3. Optional Nginx Hardening\r\nYou can configure Nginx to accept either Bearer tokens or the query key for GET requests,\r\nand to rate-limit reads:\r\nmap $arg_key $ok_qs_key {\r\ndefault 0;\r\npublic-read-2025-rotate-qtr 1;\r\n}\r\nlocation /memory/ {\r\nproxy_pass http://<redacted.ip>:40001/;\r\nif ($request_method = GET) {\r\nset $get_ok 0;\r\nif ($http_authorization ~* &quot;^Bearer\\s+&quot;) { set $get_ok 1; }\r\nif ($ok_qs_key = 1) { set $get_ok 1; }\r\nif ($get_ok = 0) { return 401; }\r\nlimit_req zone=read_rl burst=20 nodelay;\r\n}\r\n}\r\n4. Troubleshooting\r\n- 401 Unauthorized: Missing or wrong `?key=`; confirm `MEMORY_READ_KEY` value.\r\n- 404 Not Found on `/get/&lt;id&gt;`: Chat ID doesn’t exist; search first.\r\n- Connection Timeout: Check port 40001 is open in firewall and Nginx.\r\n- 409 Conflict on `/save`: Duplicate content hash; adjust logic or content."
+}
