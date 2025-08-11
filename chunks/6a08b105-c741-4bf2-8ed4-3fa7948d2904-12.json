@@ -1,0 +1,14 @@
+{
+  "id": "6a08b105-c741-4bf2-8ed4-3fa7948d2904",
+  "chunk_ix": 12,
+  "created_at": "2025-08-11T00:46:21",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "development",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "s real ID:\r\nbashcurl -s \"http://104.191.236.122:40001/mem/get?id=1369de11-d01f-4cb5-9b37-87d26ef0677b&key=public-read-2025\" | head -20\r\nGreat! The HTML endpoints are working perfectly. Now let's configure nginx to serve them over HTTPS:\r\nbashsudo nano /etc/nginx/sites-available/api.nsgia.com\r\nAdd this location block (after the existing /api/ block):\r\nnginx    # Memory System HTML endpoints for ChatGPT\r\n    location /mem/ {\r\n        proxy_pass http://<redacted.ip>:40001/mem/;\r\n        proxy_set_header Host $host;\r\n        proxy_set_header X-Forwarded-For $remote_addr;\r\n        proxy_set_header X-Forwarded-Proto https;\r\n        proxy_buffering off;\r\n        proxy_redirect off;\r\n        \r\n        # Keep HTML content type\r\n        add_header Access-Control-Allow-Origin \"*\" always;\r\n        add_header Access-Control-Allow-Methods \"GET, OPTIONS\" always;\r\n        add_header Access-Control-Allow-Headers \"Content-Type\" always;\r\n    }\r\nThen reload nginx and test:\r\nbashsudo nginx -t\r\nsudo systemctl reload nginx\r\n\r\n# Test the HTTPS endpoints\r\ncurl -s \"https://api.nsgia.com/mem/search?limit=2&key=public-read-2025\" | head -15\r\n\r\ncurl -s \"https://api.nsgia.com/mem/get?id=1369de11-d01f-4cb5-9b37-87d26ef0677b&key=public-read-2025\" | head -15\r\nOnce this works, ChatGPT will be able to access your live MariaDB memory system through clean HTML endpoints! 🎯\r\nFinal ChatGPT test URLs:\r\n\r\nhttps://api.nsgia.com/mem/search?keyword=memory&limit=5&key=public-read-2025\r\nhttps://api.nsgia.com/mem/get?id=1369de11-d01f-4cb5-9b37-87d26ef0677b&key=public-read-2025\r\nRetryMHcurl -s \"http://104.191.236.122:40001/mem/get?id=1369de11-d01f-4cb5-9b37-87d26ef0677b&key=public-read-2025\" | head -20\r\n<!doctype html>\r\n<html lang=\"en\">\r\n<head><meta charset=\"utf-8\"><title>Entry 1369de11-d01f-4cb5-9b37-87d26ef0677b</title></head>\r\n<body>\r\n<h1>Entry</h1>\r\n<p>Machine-readable payload for AI assistants below.</p>\r\n<script id=\"memory_payload\" type=\"application/json\">\r\n{\r\n\"memory_header\": {\r\n\"policy\": \"requires_user_sal"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "6a08b105-c741-4bf2-8ed4-3fa7948d2904",
+  "chunk_ix": 17,
+  "created_at": "2025-08-11T00:46:21",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "development",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "ass http://<redacted.ip>:40001/mem/;\r\n        proxy_set_header Host $host;\r\n        proxy_set_header X-Forwarded-For $remote_addr;\r\n        proxy_set_header X-Forwarded-Proto https;\r\n        proxy_buffering off;\r\n        proxy_redirect off;\r\n        \r\n        # Keep HTML content type\r\n        add_header Access-Control-Allow-Origin \"*\" always;\r\n        add_header Access-Control-Allow-Methods \"GET, OPTIONS\" always;\r\n        add_header Access-Control-Allow-Headers \"Content-Type\" always;\r\n    }\r\nSo the end of your config should look like:\r\nnginx    # Dynamic Memory Search API endpoints\r\n    location /api/ {\r\n        proxy_pass http://<redacted.ip>:40004/api/;\r\n        proxy_set_header Host $host;\r\n        proxy_set_header X-Forwarded-For $remote_addr;\r\n        proxy_set_header X-Forwarded-Proto https;\r\n        proxy_buffering off;\r\n        proxy_redirect off;\r\n        \r\n        # Force JSON content type\r\n        proxy_hide_header Content-Type;\r\n        add_header Content-Type \"application/json; charset=utf-8\" always;\r\n        \r\n        # CORS headers\r\n        add_header Access-Control-Allow-Origin \"*\" always;\r\n        add_header Access-Control-Allow-Methods \"GET, OPTIONS\" always;\r\n        add_header Access-Control-Allow-Headers \"Content-Type\" always;\r\n    }\r\n    \r\n    # Memory System HTML endpoints for ChatGPT\r\n    location /mem/ {\r\n        proxy_pass http://<redacted.ip>:40001/mem/;\r\n        proxy_set_header Host $host;\r\n        proxy_set_header X-Forwarded-For $remote_addr;\r\n        proxy_set_header X-Forwarded-Proto https;\r\n        proxy_buffering off;\r\n        proxy_redirect off;\r\n        \r\n        # Keep HTML content type\r\n        add_header Access-Control-Allow-Origin \"*\" always;\r\n        add_header Access-Control-Allow-Methods \"GET, OPTIONS\" always;\r\n        add_header Access-Control-Allow-Headers \"Content-Type\" always;\r\n    }\r\n}\r\nThen test and reload:\r\nbashsudo nginx -t\r\nsudo systemctl reload nginx\r\n\r\n# Test the HTTPS MariaDB endpoints\r\ncurl -s \"https://api.nsgi"
+}

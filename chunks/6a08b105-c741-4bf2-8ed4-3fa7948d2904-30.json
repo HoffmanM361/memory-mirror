@@ -1,0 +1,14 @@
+{
+  "id": "6a08b105-c741-4bf2-8ed4-3fa7948d2904",
+  "chunk_ix": 30,
+  "created_at": "2025-08-11T00:46:21",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "development",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "try again.</p>\r\nmh@NSG:/var/www/memory_system$ grep -n \"@app.route.*mem\" /var/www/memory_system/memory_app.py\r\n573:@app.route('/mem/search', methods=['GET'])\r\n671:@app.route('/mem/get', methods=['GET'])\r\nmh@NSG:/var/www/memory_system$EditPerfect! The routes exist correctly in memory_app.py. Now let's test the backend directly to confirm they work:\r\nbash# Test the backend routes directly\r\ncurl -I \"http://<redacted.ip>:40001/mem/search?limit=1&key=public-read-2025\"\r\ncurl -I \"http://<redacted.ip>:40001/mem/get?id=1369de11-d01f-4cb5-9b37-87d26ef0677b&key=public-read-2025\"\r\nIf those work, then the nginx proxy configuration needs to be corrected. The correct nginx config should be:\r\nbashsudo nano /etc/nginx/sites-available/api.nsgia.com\r\nMake sure the /mem/ location block is:\r\nnginx    location /mem/ {\r\n        proxy_pass http://<redacted.ip>:40001/mem/;\r\n        proxy_set_header Host $host;\r\n        proxy_set_header X-Forwarded-For $remote_addr;\r\n        proxy_set_header X-Forwarded-Proto https;\r\n        proxy_buffering off;\r\n        proxy_redirect off;\r\n        \r\n        # Keep HTML content type from backend\r\n        add_header Access-Control-Allow-Origin \"*\" always;\r\n        add_header Access-Control-Allow-Methods \"GET, OPTIONS\" always;\r\n        add_header Access-Control-Allow-Headers \"Content-Type\" always;\r\n    }\r\nThen reload nginx:\r\nbashsudo nginx -t\r\nsudo systemctl reload nginx\r\n\r\n# Test again\r\ncurl -I \"https://api.nsgia.com/mem/get?id=1369de11-d01f-4cb5-9b37-87d26ef0677b&key=public-read-2025\"\r\nThe key is that:\r\n\r\nRoutes in Flask: /mem/search and /mem/get\r\nNginx proxy: /mem/ → http://<redacted.ip>:40001/mem/\r\nFinal URL: https://api.nsgia.com/mem/search → http://<redacted.ip>:40001/mem/search\r\n\r\nWhat do the direct backend tests show?Retrymh@NSG:/var/www/memory_system$ cat /etc/nginx/sites-available/api.nsgia.com\r\n# CHANGE LOG\r\n# File: /etc/nginx/sites-available/api.nsgia.com\r\n# Document Type: Nginx Configuration\r\n# Purpose: Serve memory API endpoints for ChatGPT acce"
+}

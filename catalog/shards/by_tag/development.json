@@ -1,0 +1,57 @@
+{
+  "version": "1",
+  "generated_at": "2025-08-11T07:07:23.898799Z",
+  "items": [
+    {
+      "id": "6a08b105-c741-4bf2-8ed4-3fa7948d2904",
+      "created_at": "2025-08-11T00:46:21",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "breakthrough",
+        "development",
+        "historic",
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-0.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-1.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-2.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-3.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-4.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-5.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-6.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-7.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-8.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-9.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-10.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-11.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-12.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-13.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-14.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-15.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-16.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-17.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-18.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-19.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-20.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-21.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-22.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-23.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-24.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-25.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-26.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-27.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-28.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-29.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-30.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-31.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-32.json?key=8bba14962f9f2318",
+        "chunks/6a08b105-c741-4bf2-8ed4-3fa7948d2904-33.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: source memory _venv /bin/activate python memory_app.py\n\n# CORS headers\r\n        add_header Access-Control-Allow-Origin \"*\" always;\r\n        add_header Access-Control-Allow-Methods \"GET, OPTIONS\" always;\r\n        add_header Access-Con..."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "6a08b105-c741-4bf2-8ed4-3fa7948d2904",
+  "chunk_ix": 1,
+  "created_at": "2025-08-11T00:46:21",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "development",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "est again\r\ncurl -s \"https://api.nsgia.com/api/\" | head -5\r\nThe Flask app is definitely working (we can see it in the logs), so once nginx proxy is working correctly, ChatGPT will be able to access these clean API endpoints:\r\n\r\nhttps://api.nsgia.com/api/ - API help/documentation\r\nhttps://api.nsgia.com/api/search/memory - Search for \"memory\"\r\nhttps://api.nsgia.com/api/tags - Get all available tags\r\n\r\nAll with SaltStream-256 encryption requiring your salt 8*Fold*Path! 🎯\r\nLet me know what the curl tests show.RetryMHunctions in generate_api_data.py\r\nDEBUG: extract_python_functions - Found 2 functions in saltstream256.py\r\nDEBUG: extract_python_functions - Found 2 functions in proxy_app.py\r\nDEBUG: extract_python_functions - Found 2 functions in api_proxy_app.py\r\nDEBUG: extract_python_functions - Found 5 functions in publish_clean_static.py\r\nDEBUG: extract_python_functions - Found 5 functions in endpoints.py\r\nDEBUG: extract_python_functions - Found 10 functions in memory_search_api.py\r\n=== EXTRACTING JAVASCRIPT FUNCTIONS ===\r\n=== EXTRACTING AJAX ENDPOINTS ===\r\nERROR: extract_project_reference - Permission denied writing project_reference.txt\r\nDEBUG: extract_project_reference - Function completed at 2025-08-10 21:25:25.377840\r\nFAILED: Could not generate project reference.\r\nCheck error messages above for details.\r\n(api_venv) mh@NSG:/var/www/api.nsgia.com$ # Check current nginx config\r\ncat /etc/nginx/sites-available/api.nsgia.com | grep -A 5 \"location /api/\"\r\n    location /api/ {\r\n        proxy_pass http://<redacted.ip>:40004/api/;\r\n        proxy_set_header Host $host;\r\n        proxy_set_header X-Forwarded-For $remote_addr;\r\n        proxy_set_header X-Forwarded-Proto https;\r\n        proxy_buffering off;\r\n(api_venv) mh@NSG:/var/www/api.nsgia.com$ # Test the API endpoints\r\ncurl -s \"https://api.nsgia.com/api/\" | head -10\r\ncurl -s \"https://api.nsgia.com/api/search/memory\" | head -10\r\n# Also test directly on the Flask port to make sure it's working\r\ncurl -s \"http://<redacted.ip>:40"
+}

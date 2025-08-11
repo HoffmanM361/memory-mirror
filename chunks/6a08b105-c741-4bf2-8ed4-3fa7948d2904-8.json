@@ -1,0 +1,14 @@
+{
+  "id": "6a08b105-c741-4bf2-8ed4-3fa7948d2904",
+  "chunk_ix": 8,
+  "created_at": "2025-08-11T00:46:21",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "development",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "TML wrapper for search results - ChatGPT compatible\"\"\"\r\n    conn = None\r\n    cursor = None\r\n    \r\n    try:\r\n        write_log(\"DEBUG: mem_sea3. Restart the memory system:\r\nbashcd /var/www/memory_system\r\n\r\n# Check if it's running and stop it\r\nps aux | grep memory_app\r\n# If running, kill the process or restart systemd service\r\n\r\n# Activate the virtual environment and restart\r\nsource memory_venv/bin/activate\r\npython memory_app.py\r\n4. Test the new HTML endpoints:\r\nbash# Test search (you'll need a real keyword that exists in your DB)\r\ncurl -s \"http://104.191.236.122:40001/mem/search?keyword=HISTORIC&limit=5&key=public-read-2025\" | head -10\r\n\r\n# Get the health check to see how many chats exist\r\ncurl -s \"http://104.191.236.122:40001/health\"\r\n\r\n# Test with a real chat ID (you'll need to get one from a search first)\r\ncurl -s \"http://104.191.236.122:40001/mem/get?id=<REAL-CHAT-ID>&key=public-read-2025\" | head -10\r\nLet me know when you've added the routes and restarted the app. Then we can test and configure nginx to serve these at https://api.nsgia.com/mem/!RetryMHmh@NSG:/var/www/memory_system$ # Test search (you'll need a real keyword that exists in your DB)\r\ncurl -s \"http://104.191.236.122:40001/mem/search?keyword=HISTORIC&limit=5&key=public-read-2025\" | head -10\r\n# Get the health check to see how many chats exist\r\ncurl -s \"http://104.191.236.122:40001/health\"\r\n# Test with a real chat ID (you'll need to get one from a search first)\r\ncurl -s \"http://104.191.236.122:40001/mem/get?id=<REAL-CHAT-ID>&key=public-read-2025\" | head -10\r\n<!doctype html>\r\n<html lang=en>\r\n<title>404 Not Found</title>\r\n<h1>Not Found</h1>\r\n<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>\r\n{\"chat_count\":13,\"database\":\"MariaDB\",\"read_access\":\"query_key_supported\",\"status\":\"healthy\",\"timestamp\":\"2025-08-10T22:32:23.828846\"}\r\n<!doctype html>\r\n<html lang=en>\r\n<title>404 Not Found</title>\r\n<h1>Not Found</h1>\r\n<p>The requested URL w"
+}

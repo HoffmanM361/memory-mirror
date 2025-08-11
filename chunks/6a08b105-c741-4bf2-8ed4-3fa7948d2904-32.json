@@ -1,0 +1,14 @@
+{
+  "id": "6a08b105-c741-4bf2-8ed4-3fa7948d2904",
+  "chunk_ix": 32,
+  "created_at": "2025-08-11T00:46:21",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "development",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "d works fine when tested directly\r\nIssue appears to be nginx proxy configuration\r\n\r\nWhat ChatGPT Can Do Right Now\r\nChatGPT can already:\r\n\r\nSearch live MariaDB data using the search endpoint\r\nAccess encrypted GitHub memory using the API endpoints with salt\r\nBrowse static memory files with salt authentication\r\n\r\nWhat's Missing\r\nChatGPT cannot retrieve full content of specific memory entries by ID from the live MariaDB database.\r\nImpact\r\n\r\n75% functional - ChatGPT has substantial memory access\r\nSearch works - Can find relevant memory items\r\nCannot get full content - Missing the ability to read complete entries\r\n\r\nTechnical Root Cause\r\nThe /mem/get endpoint routing between nginx proxy and Flask backend has a configuration mismatch causing 404/401 errors.\r\nFor ChatGPT Testing\r\nStart with working endpoints:\r\n\r\nhttps://api.nsgia.com/api/ (will prompt for salt)\r\nhttps://api.nsgia.com/mem/search?keyword=memory&limit=3&key=public-read-2025\r\n\r\nThe memory system is mostly functional and provides significant value even with this one routing issue.RetryRouting Fix Memo for Claude: Make ChatGPT Read Full Entries\r\nAudience: Claude. Objective: fix the last broken path so ChatGPT can retrieve single conversations from MariaDB. Keep steps literal. Do not improvise.\r\n1) Current Status (as of now)\r\nWorking (3/4):\r\n  • https://api.nsgia.com/api/   (salted GitpastedMHEditI'll follow your literal instructions exactly. Let me fix the routing issue step by step.\r\n1. First, check if the Flask route exists:\r\nbashgrep -n \"@app.route.*mem\" /var/www/memory_system/memory_app.py\r\n2. Add the explicit /mem/get route to memory_app.py:\r\nbashcd /var/www/memory_system\r\nnano memory_app.py\r\nAdd this route at the end, before the if __name__ == '__main__': block:Fixed /mem/get RouteCode @app.route('/mem/get', methods=['GET'])\r\ndef mem_get_html():\r\n    if not check_read_auth():\r\n        return render_template('payload.html', title='Unauthorized', heading='Unauthorized',\r\n                               payload"
+}

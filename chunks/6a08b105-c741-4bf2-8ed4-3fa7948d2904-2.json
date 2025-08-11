@@ -1,0 +1,14 @@
+{
+  "id": "6a08b105-c741-4bf2-8ed4-3fa7948d2904",
+  "chunk_ix": 2,
+  "created_at": "2025-08-11T00:46:21",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "development",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "004/api/\" | head -10\r\n{\"data_b64\":\"GqRxMEABhxmGVx/LPNeeo2ZJ/5ZF+6AAhQ0e2GBMPMBkWepn5tX36R0gHVslwUg4m9qlr56ApgVvQhKWeYxodyc82dm5XU7U6QLsgjc/zOwGtwHthJ2v2kzQvRUlriqNbgBxLKrQnsFSrhMelfmZidYeUFnBkoexGYVFEO8kz4u6ZVe4YbhFMdDVko7XsIQQjt0VAaJ2j3B+VbwEEEiAX5KqTo9zb01KAwRLL877I/8mfO5yPbXvjX99d4xozB5UN9fS4vzWgF8c9SYuKR2X0Ic5h+8T772i2kHdC0oxh1JHNtTFL0ECAV1C73VI8ZBYtwMlujGnPz/b2dKcEfFGFDggN8PW9yltDbwRVr4p8mx7XnK+cpb4cyJl7Ckjd3bbmhVcKi2srufen2ywXAF2qH0J6+RD4/+F2+Wb7wnIB02CpYxjPGmtqJaUQtftNygedpGXN2TuMRtB10C2bDu9BLi23k1XWCKrySasj3CsDWAf/xaUXCJV0PMKZ8NGl9cI9rbR5MB8h9YDa+wtpSMLflqfOtqkQAQmisgDwN4ZeNRK3QPl7S0Y2Mq9KeEKcuIZLqo1cGdahamD/dgaS8Udp1jf7FdEVzI5IOI5+5w+vkGXiwMIe5kJQSp9/kZJQqK+OltZSlaSUv+ujaB0Y87XGDOrnGTub0Q61sgn12AzRR5QNNQUJAkumTvgsjmfJ5qt\",\"memory_header\":{\"encoding\":\"saltstream-256\",\"notes\":\"Light obfuscation only; not strong encryption.\",\"policy\":\"requires_user_salt_ack\",\"salt_prompt\":\"Provide session salt to proceed.\"}}\r\n{\"data_b64\":\"GqRhNUwskFrREh+ceZi8tHIEoc9HxKwMnhpUwgEtRc5oW6t+9snwokhuDlEpw1tkzov848iW6ls/dgDaZJtodydlysXuFEOeq1aglGRmhf1GuxOxyprv01vf1kcg7n+AKF0idvLAxc0Q9UcDjuWVyMNVF1fTn9W2VMcTV7I23pb8eVz7P/sPbZnMkJ/MqpgFkpNeQOsgxTMjBrxtVXLQUZ/nVpR+JUEYRARHMM6+IrQWObpwdvan3TsoOvElmB5BdoWJ/amG2UAYvXlqD1X9g9Yzn+YE79bnjBLUC1Q+wh0Ye5nAMwNFQwkS5idP/tl0hAMzujHcFxv+s5zdN8tEfn1wA8/Roy1vFbw9RbIv7HQjElT2c5n0aW4u7Gpicib/0BNYIiO5q+W3zyuBUAtwqnhd7+5A0OOglcCzuziNE0yEu9hBO2nFkJHbUIm0L20lf4mJMGjzdAEA4gb+VSq5Fub4hU0HYnyg2Sijhz2uFmRf8DqPLz9k2egaL4hBm9cW+rbC5og5w9cZeu9+62RBP0+OddejBw4v0cUHxJ8fKNwLykbp+joRk8asJa4Le6hPZeB8MW5amLae55FaWJUH/VmCpRAHBH12Nu8x79cr6gKTnBg3M41KGWg4qAVGT7ScNANUAAKDFb3wz/M2ds6VSCGvwDW+OhRsx8VzzGxlFx4hIt0CVx4zkizo7XjLZdG/n2r1XyDNuGiDVojO3OiC9JeW9LkAVs83EsrQOeoKEXsZTmfw55s9hN79U/gxONlLdzrwTLA9lGH1uw3QMFrBwOHm3jkdGC0uwrlPg11XibObCaIBktEkXcH6+HY3ac8Qed5HRDBZe97laiVSXo9XoFSJ1An3CLZbxrYMXTy41IYIApC/XwsYJTjkYvMg9BhVJlG6Yiyd7YSFZTcfR6VL4pfkPZxjDqy2ErfF8lCp+BuWOUD/7O8FOfj9yLrTeBkR0I0jKFcusT1WZCcqriLQ/DziYHmWeEIjQJRAjFCCvH6mUQepc8HlIytaNEj0+0GAY9YF7MICjfCyUiKPAv+wyZ98E9RT4CBa3a"
+}

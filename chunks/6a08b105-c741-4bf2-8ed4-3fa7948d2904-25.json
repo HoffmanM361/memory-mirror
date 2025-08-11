@@ -1,0 +1,14 @@
+{
+  "id": "6a08b105-c741-4bf2-8ed4-3fa7948d2904",
+  "chunk_ix": 25,
+  "created_at": "2025-08-11T00:46:21",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "development",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "Memory Search API for ChatGPT Access\r\n     Loaded: loaded (/etc/systemd/system/memory-search-api.service; enabled; vendor preset: enabled)\r\n     Active: active (running) since Sun 2025-08-10 21:22:57 CDT; 1h 31min ago\r\n   Main PID: 69476 (python)\r\n      Tasks: 1 (limit: 18984)\r\n     Memory: 22.8M\r\n        CPU: 1.007s\r\n     CGroup: /system.slice/memory-search-api.service\r\n             └─69476 /var/www/api.nsgia.com/api_venv/bin/python memory_search_api.py\r\nAug 10 21:26:42 NSG python[69476]: <redacted.ip> - - [10/Aug/2025 21:26:42] \"GET /api/ HTTP/1.0\" 200 -\r\nAug 10 21:26:42 NSG python[69476]: <redacted.ip> - - [10/Aug/2025 21:26:42] \"GET /api/search/memory HTTP/1.0\" 200 -\r\nAug 10 21:26:42 NSG python[69476]: <redacted.ip> - - [10/Aug/2025 21:26:42] \"GET /api/ HTTP/1.1\" 200 -\r\nAug 10 21:27:52 NSG python[69476]: <redacted.ip> - - [10/Aug/2025 21:27:52] \"GET /api/ HTTP/1.0\" 200 -\r\nAug 10 22:28:39 NSG python[69476]: <redacted.ip> - - [10/Aug/2025 22:28:39] \"GET /api/.git/config HTTP/1.0\" 404 -\r\nAug 10 22:28:49 NSG python[69476]: <redacted.ip> - - [10/Aug/2025 22:28:49] \"GET /api/.env HTTP/1.0\" 404 -\r\nAug 10 22:40:06 NSG python[69476]: <redacted.ip> - - [10/Aug/2025 22:40:06] \"GET /api/ HTTP/1.0\" 200 -\r\nAug 10 22:46:00 NSG python[69476]: <redacted.ip> - - [10/Aug/2025 22:46:00] \"GET /api/ HTTP/1.0\" 200 -\r\nAug 10 22:53:37 NSG python[69476]: <redacted.ip> - - [10/Aug/2025 22:53:37] \"HEAD /api/ HTTP/1.0\" 200 -\r\nAug 10 22:54:28 NSG python[69476]: <redacted.ip> - - [10/Aug/2025 22:54:28] \"HEAD /api/ HTTP/1.0\" 200 -\r\nmh         71433  0.0  0.2 201468 37132 pts/4    S+   22:43   0:00 python3 memory_app.py\r\nmh         71676  0.0  0.0   9212  2560 pts/6    S+   22:54   0:00 grep --color=auto memory_app\r\nmh@NSG:/var/www/memory_system$EditGood! Now I can see the status clearly:\r\n📊 Updated Status Analysis\r\n✅ WORKING:\r\n\r\n/api/ - HTTP 200 ✅ (Dynamic API working!)\r\n/mem/search - HTTP 200 ✅ (MariaDB search working)\r\n/memory - HTTP 200 ✅ (Static files working)\r\n\r\n❌ ISSUE:\r\n\r\n/mem/get - HTT"
+}

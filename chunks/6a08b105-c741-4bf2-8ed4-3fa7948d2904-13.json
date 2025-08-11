@@ -1,0 +1,14 @@
+{
+  "id": "6a08b105-c741-4bf2-8ed4-3fa7948d2904",
+  "chunk_ix": 13,
+  "created_at": "2025-08-11T00:46:21",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "development",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "t_ack\",\r\n\"encoding\": \"plain\",\r\n\"notes\": \"HTML page with embedded JSON payload (no salt in URL)\"\r\n},\r\n\"data\": {\"content\": \"TITLE: AI Persistent Memory: Chunking and Metadata Specification\\n\\nAI Persistent Memory: Chunking and Metadata Specification\\r\\nThis document defines the exact chunking and metadata specification for storing\\r\\nconversation or document data in the persistent memory system. This ensures all stored\\r\\ndata is AI-friendly and supports fast, accurate retrieval.\\r\\n1. Chunking Rules\\r\\n1.1 Maximum Chunk Size: 1,000\\u20131,200 characters (including spaces). This size is small\\r\\nenough for AI models to process without truncation, while large enough to preserve\\r\\ncontext.\\r\\n1.2 Natural Breaks: Always split at paragraph or sentence boundaries where possible. Avoid\\r\\nbreaking mid-sentence.\\r\\n1.3 Overlap: Include a 10\\u201315 word overlap between consecutive chunks to preserve\\r\\ncontinuity.\\r\\n1.4 Tagging Within Chunks: Tag each chunk with conversation ID, date/time, topic, and\\r\\nsequence number.\\r\\n2. Metadata Specification\\r\\nEach chunk must have a metadata object stored alongside the text in JSON format. This\\r\\nmetadata supports filtering, search maps, and relevance scoring.\\r\\nExample metadata structure:\\r\\n{\\r\\n\\u0026quot;conversation_id\\u0026quot;: \\u0026quot;uuid\\u0026quot;,\\r\\n\\u0026quot;source\\u0026quot;: \\u0026quot;chatgpt\\u0026quot;,\\r\\n\\u0026quot;date\\u0026quot;: \\u0026quot;2025-08-10T14:32:00Z\\u0026quot;,\\r\\n\\u0026quot;topic\\u0026quot;: \\u0026quot;rain_garden_marketing_plan\\u0026quot;,\\r\\n\\u0026quot;sequence\\u0026quot;: 3,\\r\\n\\u0026quot;chunk_text\\u0026quot;: \\u0026quot;Actual chunk content here...\\u0026quot;\\r\\n}\\r\\n3. Processing Flow\\r\\nStep 1 \\u2013 Ingest:\\r\\n- Accept raw document or conversation transcript.\\r\\n- Assign a unique conversation ID.\\r\\nStep 2 \\u2013 Chunk:\\r\\n- Apply the chunking rules above.\\r\\n- Generate sequence numbers starting at 1.\\r\\nStep 3 \\u2013 Metadata Attach:\\r\\n\\r\\n- Generate metadata JSON for each chunk.\\"
+}

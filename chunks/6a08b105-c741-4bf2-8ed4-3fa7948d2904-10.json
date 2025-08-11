@@ -1,0 +1,14 @@
+{
+  "id": "6a08b105-c741-4bf2-8ed4-3fa7948d2904",
+  "chunk_ix": 10,
+  "created_at": "2025-08-11T00:46:21",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "development",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "h embedded JSON payloads exactly as specified.\r\nLet's test the get endpoint too:\r\nbash# Get a real chat ID from the search results first\r\ncurl -s \"http://104.191.236.122:40001/mem/search?keyword=test&limit=1&key=public-read-2025\" | grep -o '\"id\":\"[^\"]*\"' | head -1\r\n\r\n# Test the get endpoint with a real ID (replace with actual ID from above)\r\ncurl -s \"http://104.191.236.122:40001/mem/get?id=<ACTUAL-CHAT-ID>&key=public-read-2025\" | head -10\r\nNow let's configure nginx to serve these endpoints at https://api.nsgia.com/mem/:\r\nbashsudo nano /etc/nginx/sites-available/api.nsgia.com\r\nAdd this location block after the existing API blocks:\r\nnginx    # Memory System HTML endpoints for ChatGPT\r\n    location /mem/ {\r\n        proxy_pass http://<redacted.ip>:40001/mem/;\r\n        proxy_set_header Host $host;\r\n        proxy_set_header X-Forwarded-For $remote_addr;\r\n        proxy_set_header X-Forwarded-Proto https;\r\n        proxy_buffering off;\r\n        proxy_redirect off;\r\n        \r\n        # Keep HTML content type\r\n        add_header Access-Control-Allow-Origin \"*\" always;\r\n        add_header Access-Control-Allow-Methods \"GET, OPTIONS\" always;\r\n        add_header Access-Control-Allow-Headers \"Content-Type\" always;\r\n    }\r\nThen reload nginx:\r\nbashsudo nginx -t\r\nsudo systemctl reload nginx\r\n\r\n# Test the HTTPS endpoints\r\ncurl -s \"https://api.nsgia.com/mem/search?keyword=test&limit=3&key=public-read-2025\" | head -10\r\nOnce this works, ChatGPT will be able to access:\r\n\r\nhttps://api.nsgia.com/mem/search?keyword=HISTORIC&limit=5&key=public-read-2025\r\nhttps://api.nsgia.com/mem/get?id=<chat-id>&key=public-read-2025\r\n\r\nAnd get HTML pages with embedded JSON payloads! 🎯RetryMHack\",\r\nmh@NSG:/var/www/memory_system$ curl -s \"http://104.191.236.122:40001/mem/search?keyword=test&limit=1&key=public-read-2025\" | grep -o '\"id\":\"[^\"]*\"' | head -1\r\nmh@NSG:/var/www/memory_system$ curl -s \"http://104.191.236.122:40001/mem/get?id=<ACTUAL-CHAT-ID>&key=public-read-2025\" | head -10\r\n<!doctype html>\r\n<html lang"
+}

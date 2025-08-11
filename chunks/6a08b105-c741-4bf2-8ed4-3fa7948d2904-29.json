@@ -1,0 +1,14 @@
+{
+  "id": "6a08b105-c741-4bf2-8ed4-3fa7948d2904",
+  "chunk_ix": 29,
+  "created_at": "2025-08-11T00:46:21",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "development",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "ams\":{\"date_from\":\"\",\"date_to\":\"\",\"keyword\":\"\",\"limit\":1,\"source\":\"\"}}\r\n<!doctype html>\r\n<html lang=en>\r\n<title>404 Not Found</title>\r\n<h1>Not Found</h1>\r\n<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>\r\nmh@NSG:/var/www/memory_system$EditI see the issue! The proxy change created a new problem. The search endpoint is now returning pure JSON instead of HTML+JSON, and the get endpoint is 404.\r\nThe proxy path mapping is wrong. Let me fix this properly:\r\nbashsudo nano /etc/nginx/sites-available/api.nsgia.com\r\nChange the /mem/ location block back to the correct mapping:\r\nnginx    # MariaDB HTML endpoints (Live database with embedded JSON)\r\n    location /mem/ {\r\n        proxy_pass http://<redacted.ip>:40001/mem/;\r\n        proxy_set_header Host $host;\r\n        proxy_set_header X-Forwarded-For $remote_addr;\r\n        proxy_set_header X-Forwarded-Proto https;\r\n        proxy_buffering off;\r\n        proxy_redirect off;\r\n        \r\n        # Keep HTML content type from backend\r\n        add_header Access-Control-Allow-Origin \"*\" always;\r\n        add_header Access-Control-Allow-Methods \"GET, OPTIONS\" always;\r\n        add_header Access-Control-Allow-Headers \"Content-Type\" always;\r\n    }\r\nThe issue might be that the backend routes are /mem/search and /mem/get, but nginx is forwarding correctly. Let's check if the routes exist:\r\nbash# Check what routes actually exist in memory_app.py\r\ngrep -n \"@app.route.*mem\" /var/www/memory_system/memory_app.py\r\n\r\n# Test the backend directly to confirm routes\r\ncurl -I \"http://<redacted.ip>:40001/mem/search?limit=1&key=public-read-2025\"\r\ncurl -I \"http://<redacted.ip>:40001/mem/get?id=1369de11-d01f-4cb5-9b37-87d26ef0677b&key=public-read-2025\"\r\nLet me know what the route check shows - we need to verify the exact route paths that were added to memory_app.py.RetryMH<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and "
+}

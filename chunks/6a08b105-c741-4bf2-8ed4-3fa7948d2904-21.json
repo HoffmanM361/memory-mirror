@@ -1,0 +1,14 @@
+{
+  "id": "6a08b105-c741-4bf2-8ed4-3fa7948d2904",
+  "chunk_ix": 21,
+  "created_at": "2025-08-11T00:46:21",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "development",
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": " = get_record_by_id(record_id)\r\nreturn render_template(&#39;payload.html&#39;, payload=record)\r\n\r\n5. Minimal HTML Template\r\nFile: templates/payload.html\r\n\r\n&lt;html&gt;&lt;head&gt;&lt;meta charset=&#39;utf-8&#39;&gt;&lt;title&gt;Memory Payload&lt;/title&gt;&lt;/head&gt;&lt;body&gt;\r\n&lt;pre&gt;{{ payload | tojson(indent=2) }}&lt;/pre&gt;\r\n&lt;/body&gt;&lt;/html&gt;\r\n\r\n6. Nginx Proxy for /mem/\r\n\r\nlocation /mem/ {\r\nproxy_pass http://<redacted.ip>:40001/;\r\nproxy_set_header Host $host;\r\nproxy_set_header X-Forwarded-For $remote_addr;\r\nproxy_set_header X-Forwarded-Proto https;\r\nproxy_buffering off;\r\nproxy_redirect off;\r\nadd_header Access-Control-Allow-Origin &#39;*&#39; always;\r\nadd_header Access-Control-Allow-Methods &#39;GET, OPTIONS&#39; always;\r\nadd_header Access-Control-Allow-Headers &#39;Content-Type&#39; always;\r\n}\r\n\r\n7. Testing\r\nTo test the endpoints:\r\n1. /mem/search — e.g.,\r\nhttps://api.nsgia.com/mem/search?keyword=memory&amp;limit=5&amp;key=public-read-2025\r\n2. /mem/get — e.g., https://api.nsgia.com/mem/get?id=&lt;record_id&gt;&amp;key=public-read-\r\n2025\r\n3. /api/ — Prompt user for salt before decrypting.\r\n4. /memory/ — Prompt user for salt before decrypting.\r\n8. Troubleshooting\r\n- If HTML loads but JSON inside is empty, check the MariaDB query.\r\n- If the browser hangs, verify the Flask port is correct in Nginx.\r\n- If JSON shows as text only, ensure &#39;Content-Type&#39; headers are correct.\r\n9. Acceptance Criteria\r\nThe system is complete when:\r\n- All four endpoints load in a browser.\r\n- ChatGPT can read from /mem/search and /mem/get without errors.\r\n- /api/ and /memory/ prompt for salt and return decrypted content.EditI can see that all the systems are already working perfectly based on our testing! Let me verify the current status and ensure everything meets your acceptance criteria:\r\n🔍 Current Status Verification\r\nFrom our tests, we confirmed:\r\n✅ All four endpoints are working:\r\n\r\n/mem/search - MariaDB HTML+JSON ✅\r\n/mem/get - MariaDB HTML+JSON ✅\r\n/api/ - Git"
+}
