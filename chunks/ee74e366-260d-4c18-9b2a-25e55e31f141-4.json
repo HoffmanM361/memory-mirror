@@ -1,0 +1,11 @@
+{
+  "id": "ee74e366-260d-4c18-9b2a-25e55e31f141",
+  "chunk_ix": 4,
+  "created_at": "2025-08-11T11:30:49",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "\nCHANGE LOG TEMPLATE FOR JAVASCRIPT FILES\r\n/*\r\nCHANGE LOG\r\nFile: /static/js/login-handler.js\r\nDocument Type: JavaScript Module (Orchestrator)\r\nPurpose: Orchestrates login form submission and 2FA photo handling\r\nMain App: area_mapping_app.py\r\nBlueprint: auth_blueprint.py\r\nRoute: /login\r\nContext: Handles client-side photo compression and form submission for secure authentication\r\nOrchestrator Role: Coordinates photo-compression.js and login-api.js modules\r\nHTML Template: login.html\r\nDependencies: photo-compression.js, login-api.js\r\nVersion History:\r\n2025-07-04 v1.1 - Added photo compression integration\r\n2025-07-01 v1.0 - Initial creation\r\n*/\r\nCHANGE LOG TEMPLATE FOR CSS FILES\r\n/*\r\nCHANGE LOG\r\nFile: /static/css/login.css\r\nDocument Type: CSS Stylesheet\r\nPurpose: Styling for login and registration forms in area mapping system\r\nMain App: area_mapping_app.py\r\nBlueprint: auth_blueprint.py\r\nRoutes: /login, /register\r\nContext: Simple black and white styling for professional appearance in grant documentation\r\nHTML Templates: login.html, register.html\r\nDependencies: None\r\nVersion History:\r\n2025-07-04 v1.1 - Added photo upload styling\r\n2025-07-01 v1.0 - Initial creation\r\n*/\r\nINFORMATION GATHERING REQUIREMENTS (MANDATORY)\r\nASK FIRST - CODE SECOND\r\nWhen user says \"don't do any coding yet\" - STOP and ASK for information\r\nNEVER start coding without complete information\r\nIf endpoints are unknown - ASK for exact endpoint names\r\nIf variable names are unclear - ASK for existing naming conventions\r\nIf file structure is unknown - ASK for directory paths\r\nIf dependencies are unclear - ASK for import statements\r\nREQUIRED INFORMATION BEFORE CODING\r\nExact endpoint names and routes\r\nExisting variable naming patterns\r\nFile paths and directory structure\r\nDatabase table names and column names\r\nFunction names that already exist\r\nBlueprint names and registration patterns\r\nSMART QUESTIONING PATTERN\r\nAsk: \"Before I code, can you provide the following information:\"\r\nList exactly what information is ne"
+}

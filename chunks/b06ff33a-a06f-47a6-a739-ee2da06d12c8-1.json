@@ -1,0 +1,10 @@
+{
+  "id": "b06ff33a-a06f-47a6-a739-ee2da06d12c8",
+  "chunk_ix": 1,
+  "created_at": "2025-08-11T09:41:31",
+  "source": "web",
+  "tags": [
+    "system"
+  ],
+  "content": " downloadable\r\nAPK, making it easier for mobile users to access. Offline functionality would require\r\nimplementing a map tile caching system. No reliance on outdated or unsupported libraries\r\nis planned.\r\n4. Pricing &amp; Offer Structure\r\nA freemium model is recommended:\r\n- Free tier: 3 fully functional maps/reports without watermark\r\n- Paid tier: $5/month subscription with unlimited maps, full export options, and photo\r\nintegration\r\nThe $5/month rate positions the program as an affordable, low-friction tool, encouraging\r\nadoption by a broad audience while maintaining recurring revenue.\r\n\r\n5. Sales Funnel Design\r\nThe proposed sales funnel includes:\r\n1. Awareness – Demonstration maps and reports shared via social media, YouTube, or\r\npartner referrals.\r\n2. Engagement – Call to action: &#39;Make Your Own Map&#39; directing users to sign up.\r\n3. Trial – New accounts receive 3 free maps with full export capability.\r\n4. Conversion – In-app prompts and email campaigns to upgrade once free maps are used.\r\n5. Retention – Regular updates and seasonal content (e.g., flood risk maps, zoning overlays).\r\n\r\n6. Differentiators\r\nKey advantages over existing commercial mapping software:\r\n- Simplicity: Designed for non-technical users (&#39;Walk it, Map it, Download it&#39;)\r\n- Affordability: $5/month undercuts most GIS platforms\r\n- Versatility: Supports multiple export formats and use cases\r\n- Accessibility: Can be wrapped for Android and used in low-connectivity environments via\r\ncaching\r\n7. Retention &amp; Growth Strategy\r\nTo sustain user engagement and drive growth:\r\n- Offer seasonal map packs (flood data, foliage coverage, zoning overlays)\r\n- Enable easy sharing to real estate sites and social media with branding\r\n- Implement referral incentives (e.g., one free month per referral)\r\n- Expand offline features for field-heavy industries"
+}

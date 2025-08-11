@@ -1,0 +1,11 @@
+{
+  "id": "ee74e366-260d-4c18-9b2a-25e55e31f141",
+  "chunk_ix": 8,
+  "created_at": "2025-08-11T11:30:49",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "@blueprint.route decorators from Python file\r\n    \"\"\"\r\n    routes = []\r\n    \r\n    try:\r\n        with open(file_path, 'r', encoding='utf-8') as f:\r\n            lines = f.readlines()\r\n            \r\n        for line_num, line in enumerate(lines, 1):\r\n            line = line.strip()\r\n            \r\n            # Match @app.route or @blueprint.route patterns\r\n            route_pattern = r'@(?:app|blueprint|[\\w_]+)\\.route\\([\\'\"]([^\\'\"]+)[\\'\"](?:.*methods\\s*=\\s*\\[(.*?)\\])?.*\\)'\r\n            match = re.search(route_pattern, line)\r\n            \r\n            if match:\r\n                route_path = match.group(1)\r\n                methods = match.group(2) if match.group(2) else 'GET'\r\n                routes.append(f\"{file_path}:{line_num}: @route('{route_path}', methods=[{methods}])\")\r\n                \r\n        # Only show debug message if routes found\r\n        if routes:\r\n            print(f\"DEBUG: extract_python_routes - Found {len(routes)} routes in {file_path}\")\r\n        return routes\r\n        \r\n    except FileNotFoundError:\r\n        print(f\"ERROR: extract_python_routes - File not found: {file_path}\")\r\n        return []\r\n    except UnicodeDecodeError:\r\n        print(f\"ERROR: extract_python_routes - Cannot decode file: {file_path}\")\r\n        return []\r\n    except Exception as e:\r\n        print(f\"ERROR: extract_python_routes - Error processing {file_path}: {e}\")\r\n        print(f\"ERROR: extract_python_routes - Traceback: {traceback.format_exc()}\")\r\n        return []\r\n\r\ndef extract_python_functions(file_path):\r\n    \"\"\"\r\n    Extract function definitions from Python file\r\n    \"\"\"\r\n    functions = []\r\n    \r\n    try:\r\n        with open(file_path, 'r', encoding='utf-8') as f:\r\n            lines = f.readlines()\r\n            \r\n        for line_num, line in enumerate(lines, 1):\r\n            line = line.strip()\r\n            \r\n            # Match function definitions\r\n            func_pattern = r'^def\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\('\r\n            match = re.match(func_pattern, line)\r\n    "
+}

@@ -1,0 +1,11 @@
+{
+  "id": "0f1d3a4b-ca4a-4fc6-9b5b-1a12140a2aff",
+  "chunk_ix": 0,
+  "created_at": "2025-08-11T09:50:32",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "TITLE: 2. Traceability &amp; Mapping Program Strategy 2.1 Overview\n\n2. Traceability &amp; Mapping Program Strategy\r\n2.1 Overview\r\nThe traceability and mapping program is designed to address regulatory compliance\r\nrequirements for agricultural and food product traceability, specifically targeting the\r\nupcoming European Union regulations (2025/2026) and applicable U.S. requirements. The\r\ninitial proof-of-concept has been implemented in Africa, demonstrating feasibility in low-\r\nconnectivity environments.\r\n2.2 Current State\r\nThe system is operational as a web-based platform with ESRI satellite imaging and\r\nOpenStreetMap layers. It supports geofencing and GPS-based walking perimeter capture to\r\nverify farm boundaries. The tool has not yet been ported to Android as a standalone offline\r\napplication, but development plans include a caching mechanism to allow users to\r\ndownload maps when connected and verify locations in the field without data service.\r\n2.3 Target Users\r\nThe primary target users are agricultural producers, cooperatives, and certification\r\nagencies seeking cost-effective, low-barrier-to-entry compliance tools. In Africa, this\r\nincludes smallholder farmers who often operate in low-connectivity regions and lack access\r\nto specialized hardware.\r\n2.4 Business Models\r\nTwo primary monetization approaches are envisioned:\r\n1. **Standalone Commercial Offering** – Subscription-based access (e.g., $5/month per\r\nuser) for agricultural, real estate, and environmental mapping purposes in developed\r\nmarkets with stable connectivity.\r\n2. **Traceability Compliance Platform** – Integration into larger agricultural compliance\r\nsystems to support certification, supply chain monitoring, and regulatory reporting.\r\n2.5 Strategic Fit\r\nWhile the mapping program has value for public housing authorities in certain contexts\r\n(e.g., siting community gardens), it is not considered the core offer for PHAs. Its strongest\r\nalignment is with traceability projects and standalone commercial u"
+}

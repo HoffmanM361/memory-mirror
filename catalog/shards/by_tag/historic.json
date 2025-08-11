@@ -1,7 +1,22 @@
 {
   "version": "1",
-  "generated_at": "2025-08-11T07:07:23.898799Z",
+  "generated_at": "2025-08-11T20:47:47.120977Z",
   "items": [
+    {
+      "id": "3a20cff2-4faa-4db7-9895-3e6d586d63ce",
+      "created_at": "2025-08-11T11:48:26",
+      "source": "web",
+      "title": "Sample Pew Manufacturers List",
+      "tags": [
+        "historic",
+        "system"
+      ],
+      "summary": "Sample Pew Manufacturers List",
+      "chunk_urls": [
+        "chunks/3a20cff2-4faa-4db7-9895-3e6d586d63ce-0.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Sample Pew Manufacturers List\n\nAppendix B: Sample Pew Manufacturers List\r\nThis appendix provides a preliminary list of ten reputable pew manufacturers based on\r\nindustry knowledge and public trade references. The list is intended to ..."
+    },
     {
       "id": "6a08b105-c741-4bf2-8ed4-3fa7948d2904",
       "created_at": "2025-08-11T00:46:21",

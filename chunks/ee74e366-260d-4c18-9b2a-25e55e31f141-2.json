@@ -1,0 +1,11 @@
+{
+  "id": "ee74e366-260d-4c18-9b2a-25e55e31f141",
+  "chunk_ix": 2,
+  "created_at": "2025-08-11T11:30:49",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "urn default_value\r\n        \r\n        # 4. Get database connection\r\n        conn = get_db_connection()\r\n        if not conn:\r\n            print(f\"ERROR: function_name - Failed to get database connection\")\r\n            return default_value\r\n            \r\n        # 5. Your database operations here\r\n        cur = conn.cursor(dictionary=True)\r\n        # ... database operations ...\r\n        \r\n        # 6. Success debug message\r\n        print(f\"DEBUG: function_name - Operation successful\")\r\n        return result\r\n        \r\n    except MySQLError as e:\r\n        # 7. Handle database-specific errors\r\n        print(f\"ERROR: function_name - MySQL error: {e}\")\r\n        if conn:\r\n            conn.rollback()\r\n        return default_value\r\n        \r\n    except Exception as e:\r\n        # 8. Handle all other errors\r\n        print(f\"ERROR: function_name - Unexpected error: {e}\")\r\n        print(f\"ERROR: function_name - Traceback: {traceback.format_exc()}\")\r\n        if conn:\r\n            conn.rollback()\r\n        return default_value\r\n        \r\n    finally:\r\n        # 9. ALWAYS clean up resources\r\n        if cur:\r\n            cur.close()\r\n            print(f\"DEBUG: function_name - Database cursor closed\")\r\n        if conn:\r\n            conn.close()\r\n            print(f\"DEBUG: function_name - Database connection closed\")\r\n        print(f\"DEBUG: function_name - Function completed at {datetime.now()}\")\r\nCHANGE LOG REQUIREMENTS (MANDATORY FOR ALL FILES)\r\nPURPOSE OF CHANGE LOGS\r\nSaves time when returning to code - Know immediately what file does\r\nInforms AI assistants - Provides context for code modifications\r\nHelps users understand - Clear purpose and dependencies at a glance\r\nPrevents confusion - No guessing about file relationships or routes\r\nTracks evolution - See what changed and when for debugging\r\nIdentifies ownership - Know which blueprint or system owns the file\r\nProvides AI context - Next chat session will be faster with full context\r\nShows hierarchy - Which orchestrator, blueprint, "
+}

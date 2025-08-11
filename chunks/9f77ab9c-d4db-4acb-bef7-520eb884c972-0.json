@@ -1,0 +1,12 @@
+{
+  "id": "9f77ab9c-d4db-4acb-bef7-520eb884c972",
+  "chunk_ix": 0,
+  "created_at": "2025-08-11T12:28:23",
+  "source": "web",
+  "tags": [
+    "development",
+    "memory",
+    "system"
+  ],
+  "content": "TITLE: 20250811  CRM System Documentation for Future Claude Interactions 20250811\n\n# CRM System Documentation for Future Claude Interactions\r\n\r\n## Overview\r\nNorth Star Group uses a custom MariaDB-based CRM system in the \"modular\" database. This document provides complete context for future conversations about CRM operations, data updates, and business tracking.\r\n\r\n## Database Structure\r\n\r\n### Core Tables\r\n\r\n**deals** - Primary opportunity tracking\r\n- `id` (PK, auto-increment)\r\n- `title`, `description` \r\n- `deal_type_id` (FK to deal_types)\r\n- `stage_id` (FK to deal_stages)\r\n- `company_id` (FK to companies)\r\n- `value` (DECIMAL 15,2), `currency`, `probability`\r\n- `expected_close_date`, `actual_close_date`\r\n- `created_by`, `assigned_to` (FK to users)\r\n- `created_at`, `updated_at`\r\n\r\n**companies** - Customer/vendor/partner records\r\n- `company_id` (PK, auto-increment)\r\n- `name`, `website`, `email`, `phone`\r\n- `address`, `city`, `state`, `postal_code`, `country`\r\n- `industry`, `description`\r\n- `field_group` (enum: General, Vendor, Customer, Contractor, Specific)\r\n- `company_details`, `is_active`, `user_id`\r\n- `created_at`, `updated_at`\r\n\r\n**deal_stages** - Pipeline stages with display order and colors\r\n- Standard stages: New(25), Started(26), Processing(27), Close(28), Hold(29), Won(30), Lost(31)\r\n\r\n**deal_types** - Business line categorization\r\n- Current types: Housing(47), Grants(48), Broadband(49), Church Refuge(50), Manufacturing(51), Artificial Intelligence(52), Rain Garden(53), Intellectual Property(54), FairTrace(55), PHA Housing(56), Convertible Pew(57)\r\n\r\n**deal_activities** - Task and interaction tracking\r\n- `activity_type` (UPPERCASE): MEETING, EMAIL, MILESTONE, RESEARCH, CALL, SETUP, TRAINING, FIELDWORK, DOCUMENTATION\r\n- `subject`, `description`, `due_date`\r\n- `completed` (boolean), `completed_at`\r\n- `created_by`, `assigned_to`\r\n\r\n**deal_notes** - Conversation and update records\r\n- Free-form content with creator and timestamps\r\n\r\n**deal_contacts** - Many-to-man"
+}

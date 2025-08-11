@@ -1,0 +1,12 @@
+{
+  "id": "1cf300e4-1d42-45d7-a048-911f64785f6a",
+  "chunk_ix": 9,
+  "created_at": "2025-08-11T15:37:11",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "memory",
+    "system"
+  ],
+  "content": "rce={{ source_filter }}{% endif %}\" \r\n           class=\"btn btn-secondary\">← Previous</a>\r\n    {% endif %}\r\n    \r\n    <span class=\"page-info\">Page {{ page }} of {{ total_pages }}</span>\r\n    \r\n    {% if has_next %}\r\n        <a href=\"?page={{ page + 1 }}{% if search %}&search={{ search }}{% endif %}{% if source_filter %}&source={{ source_filter }}{% endif %}\" \r\n           class=\"btn btn-secondary\">Next →</a>\r\n    {% endif %}\r\n</div>\r\n{% endif %}\r\n{% endblock %}\r\n(modular_venv) mh@NSG:/var/www/memory_system/templates$"
+}

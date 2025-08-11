@@ -1,0 +1,11 @@
+{
+  "id": "c69bf4c8-51ed-4de1-b181-7b4ee64645be",
+  "chunk_ix": 0,
+  "created_at": "2025-08-11T11:18:15",
+  "source": "web",
+  "tags": [
+    "memory",
+    "system"
+  ],
+  "content": "TITLE: # Claude Persistent Memory System Instructions\n\n# Claude Persistent Memory System Instructions\r\n\r\n## Overview\r\nThis persistent memory system allows Claude to store, search, and retrieve information across conversations. Unlike standard Claude conversations that don't retain information, this system provides true persistent memory that works reliably.\r\n\r\n## Key Endpoints\r\n\r\n### Health Check\r\n**URL:** `https://api.nsgia.com/health`\r\n**Purpose:** Verify the system is operational\r\n**Expected Response:** JSON with status \"healthy\" and database info\r\n\r\n### Search Memory\r\n**URL:** `https://api.nsgia.com/mem/search?keyword=SEARCH_TERM&limit=NUMBER&key=public-read-2025`\r\n**Purpose:** Find stored conversations and documents\r\n**Parameters:**\r\n- `keyword`: Search term (keep simple, 1-6 words work best)\r\n- `limit`: Number of results (typically 5-10)\r\n- `key`: Always use `public-read-2025`\r\n\r\n### Retrieve Specific Item\r\n**URL:** `https://api.nsgia.com/mem/get?id=CONVERSATION_ID&key=public-read-2025`\r\n**Purpose:** Get full content of a specific stored item\r\n**Parameters:**\r\n- `id`: The unique conversation ID from search results\r\n- `key`: Always use `public-read-2025`\r\n\r\n## Usage Workflow\r\n\r\n### 1. Health Check First\r\nAlways start by checking system health:\r\n```\r\nhttps://api.nsgia.com/health\r\n```\r\nIf not healthy, stop and report the issue.\r\n\r\n### 2. Search for Information\r\nUse targeted searches:\r\n```\r\nhttps://api.nsgia.com/mem/search?keyword=PHA&limit=10&key=public-read-2025\r\nhttps://api.nsgia.com/mem/search?keyword=Southeast&limit=5&key=public-read-2025\r\n```\r\n\r\n**Search Tips:**\r\n- Keep keywords short and specific\r\n- Start broad, then narrow if needed\r\n- Try different terms if first search doesn't find what you need\r\n\r\n### 3. Retrieve Full Content\r\nOnce you find relevant items in search results, get the full content:\r\n```\r\nhttps://api.nsgia.com/mem/get?id=35dc73d9-6d72-45ca-bbd7-4476d483ded3&key=public-read-2025\r\n```\r\n\r\n## Important Rules\r\n\r\n### Authentication\r\n- **Read Acce"
+}

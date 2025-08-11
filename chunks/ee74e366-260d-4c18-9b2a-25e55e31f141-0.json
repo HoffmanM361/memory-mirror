@@ -1,0 +1,11 @@
+{
+  "id": "ee74e366-260d-4c18-9b2a-25e55e31f141",
+  "chunk_ix": 0,
+  "created_at": "2025-08-11T11:30:49",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "TITLE: DEVELOPMENT STANDARDS - AI PROMPT\n\nDEVELOPMENT STANDARDS - AI PROMPT\r\nPURPOSE OF THIS AI PROMPT\r\nWhat This Document Does\r\nProvides development standards - Consistent coding practices across all files\r\nProvides context for AI assistants - Complete information for faster debugging\r\nMakes debugging rational and easy - Clear patterns and error handling\r\nSaves time in AI conversations - Context eliminates repetitive explanations\r\nThe Debugging Reality\r\nWhen Claude has ALL information: Debugging process is almost instantaneous\r\nWhen Claude lacks context: Debugging process is sometimes very painful\r\nChange logs provide context: AI understands file relationships immediately\r\nError handling provides clues: Debug messages show exactly what failed\r\nWhy These Standards Matter\r\nNo IDE available - Standards compensate for lack of advanced tooling\r\nManual debugging required - Clear patterns make problems obvious\r\nPrograms are already complex - Standards keep everything else simple\r\nAdding complications to complicated systems creates chaos - Simplicity prevents this\r\nProfessional code required - Clean standards support serious applications\r\nCRITICAL REQUIREMENTS - ALL MANDATORY\r\nERROR HANDLING AND CHANGE LOGS ARE NON-NEGOTIABLE\r\nFILE LENGTH LIMITS ARE HARD LIMITS - CODE OVER 300 LINES WILL BE REJECTED\r\nFILE LENGTH LIMITS (ABSOLUTELY MANDATORY)\r\nMaximum File Sizes - NO EXCEPTIONS\r\nPython files: 300 lines maximum (HARD LIMIT)\r\nJavaScript files: 300 lines maximum\r\nCSS files: 200 lines maximum\r\nHTML files: 150 lines maximum\r\nWhy 300 Lines Maximum\r\nNo IDE available - Must be manageable in basic text editor\r\nManual refactoring required - Cannot handle large files\r\nDebugging becomes impossible - Large files are unmanageable\r\nCode over 300 lines WILL BE REJECTED\r\nPYTHON CODING STANDARDS (CRITICAL)\r\nNO CLASSES RULE\r\nNO classes unless absolutely unavoidable\r\nSmall volume application - classes add unnecessary complexity\r\nFunction-based approach only\r\nKeep everything simple and direct\r\n"
+}

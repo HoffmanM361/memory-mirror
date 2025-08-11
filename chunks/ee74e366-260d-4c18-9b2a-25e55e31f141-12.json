@@ -1,0 +1,11 @@
+{
+  "id": "ee74e366-260d-4c18-9b2a-25e55e31f141",
+  "chunk_ix": 12,
+  "created_at": "2025-08-11T11:30:49",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "files\")\r\n        print(f\"DEBUG: extract_project_reference - Found {len(js_files)} JavaScript files\")\r\n        \r\n        if not python_files and not js_files:\r\n            print(\"ERROR: extract_project_reference - No Python or JavaScript files found\")\r\n            return False\r\n        \r\n        results = []\r\n        \r\n        # Add header with timestamp\r\n        results.append(\"=\" * 60)\r\n        results.append(f\"PROJECT REFERENCE GENERATED: {datetime.now()}\")\r\n        results.append(\"=\" * 60)\r\n        results.append(\"\")\r\n        \r\n        # Extract Python routes and show them immediately\r\n        print(\"\\n=== EXTRACTING PYTHON ROUTES ===\")\r\n        results.append(\"=== PYTHON ROUTES ===\")\r\n        route_count = 0\r\n        for py_file in python_files:\r\n            routes = extract_python_routes(py_file)\r\n            if routes:\r\n                for route in routes:\r\n                    print(route)  # Show route immediately\r\n                    results.append(route)\r\n                route_count += len(routes)\r\n        results.append(f\"Total routes found: {route_count}\")\r\n        results.append(\"\")\r\n        \r\n        # Extract Python functions\r\n        print(f\"\\n=== EXTRACTING PYTHON FUNCTIONS ===\")\r\n        results.append(\"=== PYTHON FUNCTIONS ===\")\r\n        func_count = 0\r\n        for py_file in python_files:\r\n            functions = extract_python_functions(py_file)\r\n            results.extend(functions)\r\n            func_count += len(functions)\r\n        results.append(f\"Total functions found: {func_count}\")\r\n        results.append(\"\")\r\n        \r\n        # Extract JavaScript functions\r\n        print(f\"\\n=== EXTRACTING JAVASCRIPT FUNCTIONS ===\")\r\n        results.append(\"=== JAVASCRIPT FUNCTIONS ===\")\r\n        js_func_count = 0\r\n        for js_file in js_files:\r\n            js_functions = extract_javascript_functions(js_file)\r\n            results.extend(js_functions)\r\n            js_func_count += len(js_functions)\r\n        results.append(f\"Total JavaScript functions fo"
+}

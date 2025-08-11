@@ -1,0 +1,11 @@
+{
+  "id": "ee74e366-260d-4c18-9b2a-25e55e31f141",
+  "chunk_ix": 7,
+  "created_at": "2025-08-11T11:30:49",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "in', methods=['POST'])\r\n/routes/auth_blueprint.py:45: @blueprint.route('/upload-photos', methods=['POST'])\r\n/routes/mapping_blueprint.py:12: @blueprint.route('/save-mapping', methods=['POST'])\r\n\r\n=== PYTHON FUNCTIONS ===\r\n/utils/auth_helpers.py:15: def login_user(email, password):\r\n/utils/image_processing.py:8: def compress_image(file):\r\n/routes/auth_blueprint.py:67: def verify_photo_hash(uploaded, stored):\r\n\r\n=== JAVASCRIPT FUNCTIONS ===\r\n/static/js/login-handler.js:23: function handlePhotoUpload() {\r\n/static/js/login-api.js:15: function submitLoginForm(data) {\r\n/static/js/photo-compression.js:8: function compressImage(file) {\r\n\r\n=== AJAX ENDPOINTS ===\r\n/static/js/login-api.js:25: fetch('/login', {\r\n/static/js/photo-upload.js:12: fetch('/upload-photos', {\r\n/static/js/mapping-api.js:18: fetch('/save-mapping', {\r\nUSAGE\r\nDrop script in project root directory\r\nRun: python extract_project_reference.py\r\nCreates: project_reference.txt\r\nCopy contents to AI assistant for complete context\r\nSpot endpoint mismatches and inconsistencies instantly\r\nSCRIPT TEMPLATE\r\n# CHANGE LOG\r\n# File: /endpoints.py\r\n# Document Type: Python Utility Script\r\n# Purpose: Extract all routes, functions, and AJAX calls from project files recursively\r\n# Main App: Any Flask project (portable script)\r\n# Dependencies: pathlib, re, os, datetime\r\n# Context: Creates complete project reference for AI assistants to prevent endpoint mismatches\r\n# Version History:\r\n# 2025-07-04 v1.1 - Fixed virtual environment scanning, suppressed zero results, show actual endpoints\r\n# 2025-07-04 v1.0 - Initial creation with full error handling and extraction logic\r\n\r\n#!/usr/bin/env python3\r\n\"\"\"\r\nProject Reference Generator\r\nDrop in project root and run to extract all callable items\r\nCreates project_reference.txt with complete API/function inventory\r\n\"\"\"\r\n\r\nimport os\r\nimport re\r\nimport traceback\r\nfrom pathlib import Path\r\nfrom datetime import datetime\r\n\r\ndef extract_python_routes(file_path):\r\n    \"\"\"\r\n    Extract @app.route and "
+}

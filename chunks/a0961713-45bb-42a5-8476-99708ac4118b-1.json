@@ -1,0 +1,11 @@
+{
+  "id": "a0961713-45bb-42a5-8476-99708ac4118b",
+  "chunk_ix": 1,
+  "created_at": "2025-08-11T09:42:47",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": " marketing material showing how pew sales + grant eligibility create mutual\r\nbenefit.\r\n3. Prepare talking points for manufacturers to use when approaching churches.\r\n3. Product Line: Public Housing Authority (PHA) Development Model\r\nPHAs often face budget shortfalls. Our model leverages Mortgage Revenue Bonds (MRBs)\r\nand workforce housing development to generate developer fees without increasing debt\r\n\r\nobligations (non-recourse financing where applicable). This allows PHAs to own resilient\r\nassets without the constraints of traditional LIHTC models.\r\nKey leverage: Developer fees provide immediate cash flow, while long-term ownership of\r\nworkforce housing strengthens financial resilience.\r\nAction Items\r\n1. Verify and document non-recourse nature of MRBs in target states.\r\n2. Create a shortlist of top 10% PHAs in the Southeast region.\r\n3. Develop pitch materials emphasizing immediate cash flow benefits and non-LIHTC\r\nflexibility.\r\n4. Product Line: Mapping Program\r\nWe have developed a web-based mapping program capable of farm or property boundary\r\nverification using walking paths. It uses ESRI satellite and OpenStreetMap imagery, with\r\npotential global applicability. Target users include farmers, realtors, and other land-based\r\nprofessionals.\r\nPlanned features:\r\n• Android wrapper for distribution via Google Play.\r\n• Offline capability via pre-downloaded map cache.\r\n• Simple onboarding for semi-literate or illiterate users via assisted setup.\r\n\r\nRevenue potential includes subscription models (e.g., $5/month/user) and bundling with\r\ntraceability/compliance systems.\r\nAction Items\r\n1. Finalize offline cache implementation.\r\n2. Develop Android wrapper for deployment.\r\n3. Identify pilot users in target markets (e.g., agriculture in Africa, real estate in the U.S.).\r\n5. Sales Funnel &amp; Targeting Strategy\r\nOur sales funnel begins with identifying stakeholders who will directly benefit from our\r\nproducts, offering them a compelling gift or value, and enabling them to promot"
+}

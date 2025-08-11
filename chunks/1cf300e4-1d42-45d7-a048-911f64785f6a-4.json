@@ -1,0 +1,12 @@
+{
+  "id": "1cf300e4-1d42-45d7-a048-911f64785f6a",
+  "chunk_ix": 4,
+  "created_at": "2025-08-11T15:37:11",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "memory",
+    "system"
+  ],
+  "content": "wse</a>\r\n                <a href=\"{{ url_for('home') }}\">API Docs</a>\r\n            </div>\r\n        </div>\r\n    </nav>\r\n\r\n    <main class=\"main-content\">\r\n        {% with messages = get_flashed_messages(with_categories=true) %}\r\n            {% if messages %}\r\n                <div class=\"flash-messages\">\r\n                    {% for category, message in messages %}\r\n                        <div class=\"flash-message flash-{{ category }}\">\r\n                            {{ message }}\r\n                            <button class=\"flash-close\" onclick=\"this.parentElement.remove()\">×</button>\r\n                        </div>\r\n                    {% endfor %}\r\n                </div>\r\n            {% endif %}\r\n        {% endwith %}\r\n\r\n        {% block content %}{% endblock %}\r\n    </main>\r\n\r\n    <footer class=\"footer\">\r\n        <div class=\"footer-content\">\r\n            <p>&copy; 2025 Memory System - Persistent AI Memory</p>\r\n            <p>Database: MariaDB | Storage: {{ \"%.1f\"|format(38.1) }}GB Available</p>\r\n        </div>\r\n    </footer>\r\n\r\n    <script src=\"{{ url_for('static', filename='js/app.js') }}\"></script>\r\n    {% block extra_scripts %}{% endblock %}\r\n</body>\r\n</html>\r\n<!doctype html>\r\n<html lang=\"en\">\r\n<head><meta charset=\"utf-8\"><title>{{ title }}</title></head>\r\n<body>\r\n<h1>{{ heading }}</h1>\r\n<p>Machine-readable payload for AI assistants below.</p>\r\n<script id=\"memory_payload\" type=\"application/json\">\r\n{\r\n\"memory_header\": {\r\n\"policy\": \"requires_user_salt_ack\",\r\n\"encoding\": \"plain\",\r\n\"notes\": \"HTML page with embedded JSON payload (no salt in URL)\"\r\n},\r\n\"data\": {{ payload | tojson }}\r\n}\r\n</script>\r\n</body>\r\n</html>\r\n<!-- CHANGE LOG -->\r\n<!-- File: /var/www/memory_system/templates/save_conversation.html -->\r\n<!-- Document Type: HTML Template -->\r\n<!-- Purpose: Form for saving AI conversations to memory system -->\r\n<!-- Context: Human-friendly interface for conversation storage -->\r\n<!-- Version History: -->\r\n<!-- 2025-08-10 v1.0 - Initial creation with auto-formatting -->"
+}

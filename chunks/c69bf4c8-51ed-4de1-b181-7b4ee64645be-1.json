@@ -1,0 +1,11 @@
+{
+  "id": "c69bf4c8-51ed-4de1-b181-7b4ee64645be",
+  "chunk_ix": 1,
+  "created_at": "2025-08-11T11:18:15",
+  "source": "web",
+  "tags": [
+    "memory",
+    "system"
+  ],
+  "content": "ss:** Always include `key=public-read-2025` in the URL\r\n- **No Custom Headers:** Don't try to use Bearer tokens or custom headers\r\n- **HTTPS Only:** Always use `https://api.nsgia.com`, never the IP address\r\n\r\n### URL Requirements\r\n- URLs must be provided by the user or appear in search results\r\n- Cannot construct URLs independently - must be given the exact URL\r\n- If you need a specific URL, ask the user to provide it\r\n\r\n### Response Format\r\n- Search returns HTML pages with embedded JSON in `<script id=\"memory_payload\">` tags\r\n- Get requests return HTML pages with JSON content in the `content` field\r\n- Extract the JSON data from these HTML responses\r\n\r\n## Typical Use Cases\r\n\r\n### Finding Previous Conversations\r\n1. Search by topic: `keyword=housing` or `keyword=strategy`\r\n2. Search by entity: `keyword=PHA` or `keyword=Novogradac`\r\n3. Search by document type: `keyword=proposal` or `keyword=addresses`\r\n\r\n### Retrieving Specific Documents\r\n1. Get conversation IDs from search results\r\n2. Use the get endpoint to retrieve full content\r\n3. Extract relevant information for current conversation\r\n\r\n### Research and Reference\r\n1. Search for background information on topics\r\n2. Find previous analysis or recommendations\r\n3. Locate contact lists, financial models, or other reference materials\r\n\r\n## Best Practices\r\n\r\n### Efficient Searching\r\n- Use the minimum number of searches needed\r\n- Try obvious keywords first\r\n- Combine results from multiple searches if needed\r\n\r\n### Error Handling\r\n- 401/403: Check that `key=public-read-2025` is included\r\n- 404: Verify the URL path and ID are correct\r\n- No results: Try different search terms or broader keywords\r\n\r\n### Communication\r\n- Always report what you found: \"Found N items\" or \"Health check passed\"\r\n- Summarize key information from retrieved documents\r\n- Ask if the user wants more details or different searches\r\n\r\n## Example Successful Workflow\r\n\r\n1. **Health Check:**\r\n   ```\r\n   https://api.nsgia.com/health\r\n   → \"Health OK (MariaDB rea"
+}

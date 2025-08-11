@@ -1,0 +1,11 @@
+{
+  "id": "ee74e366-260d-4c18-9b2a-25e55e31f141",
+  "chunk_ix": 1,
+  "created_at": "2025-08-11T11:30:49",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "INDENTATION REQUIREMENTS\r\nIndent to far left where practical and follows good practices\r\nAvoid deep nesting - use early returns instead\r\nMaximum 2-3 levels of indentation\r\nBreak complex conditions into separate functions\r\nEARLY RETURN PATTERN (REQUIRED)\r\ndef good_function(user_id):\r\n    if not user_id:\r\n        print(\"ERROR: good_function - Missing user_id\")\r\n        return None\r\n        \r\n    conn = get_connection()\r\n    if not conn:\r\n        print(\"ERROR: good_function - No database connection\")\r\n        return None\r\n        \r\n    cur = conn.cursor()\r\n    if not cur:\r\n        print(\"ERROR: good_function - No cursor\")\r\n        return None\r\n        \r\n    cur.execute(\"SELECT * FROM users WHERE id = %s\", (user_id,))\r\n    result = cur.fetchone()\r\n    \r\n    if not result:\r\n        print(\"ERROR: good_function - User not found\")\r\n        return None\r\n        \r\n    print(\"DEBUG: good_function - User found\")\r\n    return result\r\nERROR HANDLING REQUIREMENTS (NON-NEGOTIABLE)\r\nEVERY function MUST have try/except blocks\r\nEVERY database operation MUST handle MySQLError and generic Exception\r\nEVERY function MUST print debug messages for success and error cases\r\nEVERY database connection MUST be properly closed in finally blocks\r\nEVERY error MUST be logged to console with ERROR: prefix\r\nEVERY function MUST return sensible defaults on error\r\nNO operation is too simple to skip error handling\r\nERROR HANDLING TEMPLATE - USE THIS PATTERN\r\ndef example_function_with_mandatory_error_handling():\r\n    \"\"\"\r\n    MANDATORY ERROR HANDLING PATTERN\r\n    Copy this pattern for every function in this module\r\n    \"\"\"\r\n    # 1. Initialize all variables that need cleanup\r\n    conn = None\r\n    cur = None\r\n    \r\n    try:\r\n        # 2. Add debug print at function start\r\n        print(f\"DEBUG: function_name - Starting at {datetime.now()}\")\r\n        \r\n        # 3. Validate all inputs FIRST\r\n        if not valid_input:\r\n            print(f\"ERROR: function_name - Invalid input: {input_value}\")\r\n            ret"
+}

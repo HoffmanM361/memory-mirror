@@ -1,0 +1,12 @@
+{
+  "id": "1cf300e4-1d42-45d7-a048-911f64785f6a",
+  "chunk_ix": 8,
+  "created_at": "2025-08-11T15:37:11",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "memory",
+    "system"
+  ],
+  "content": "\n                    <span class=\"conv-date\">{{ conv.created_at.strftime('%Y-%m-%d %H:%M') }}</span>\r\n                    <span class=\"conv-size\">{{ conv.content_length }} chars</span>\r\n                </div>\r\n            </div>\r\n            \r\n            {% if conv.summary %}\r\n            <div class=\"conv-summary\">\r\n                <strong>Summary:</strong> {{ conv.summary }}\r\n            </div>\r\n            {% endif %}\r\n            \r\n            <div class=\"conv-preview\">\r\n                {{ conv.preview }}\r\n                {% if conv.content_length > 200 %}...{% endif %}\r\n            </div>\r\n            \r\n            <div class=\"conv-actions\">\r\n                <a href=\"{{ url_for('conversations.conversation_detail', chat_id=conv.id) }}\" \r\n                   class=\"btn btn-sm btn-primary\">View Full</a>\r\n                <a href=\"{{ url_for('conversations.export_conversation', chat_id=conv.id) }}\" \r\n                   class=\"btn btn-sm btn-secondary\">Export JSON</a>\r\n                <form method=\"POST\" action=\"{{ url_for('conversations.delete_conversation', chat_id=conv.id) }}\" \r\n                      style=\"display: inline;\" onsubmit=\"return confirm('Delete this conversation?')\">\r\n                    <button type=\"submit\" class=\"btn btn-sm btn-danger\">Delete</button>\r\n                </form>\r\n            </div>\r\n        </div>\r\n        {% endfor %}\r\n    {% else %}\r\n        <div class=\"empty-state\">\r\n            <h3>No conversations found</h3>\r\n            <p>{% if search or source_filter %}\r\n                Try adjusting your search terms or filters.\r\n               {% else %}\r\n                Start by <a href=\"{{ url_for('conversations.save_conversation') }}\">saving your first conversation</a>!\r\n               {% endif %}\r\n            </p>\r\n        </div>\r\n    {% endif %}\r\n</div>\r\n\r\n{% if total_pages > 1 %}\r\n<div class=\"pagination\">\r\n    {% if has_prev %}\r\n        <a href=\"?page={{ page - 1 }}{% if search %}&search={{ search }}{% endif %}{% if source_filter %}&sou"
+}

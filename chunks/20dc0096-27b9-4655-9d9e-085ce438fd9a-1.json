@@ -1,0 +1,11 @@
+{
+  "id": "20dc0096-27b9-4655-9d9e-085ce438fd9a",
+  "chunk_ix": 1,
+  "created_at": "2025-08-11T10:05:04",
+  "source": "web",
+  "tags": [
+    "memory",
+    "system"
+  ],
+  "content": "d legal reasoning memo to the store.\r\n- ChatGPT retrieves it, condenses it into a policy brief.\r\n- LLaMA pulls the brief and generates a multilingual translation.\r\nAll without the assistants communicating directly, preserving separation while achieving\r\ncooperative work.\r\n\r\n5. Example API Payload\r\n{\r\n&quot;assistant&quot;: &quot;Claude&quot;,\r\n&quot;date&quot;: &quot;2025-08-09T14:32:00Z&quot;,\r\n&quot;topic&quot;: &quot;Housing Grant Proposal&quot;,\r\n&quot;confidence&quot;: 0.92,\r\n&quot;content&quot;: &quot;Full proposal draft with budget analysis...&quot;,\r\n&quot;tags&quot;: [&quot;grant&quot;, &quot;housing&quot;, &quot;budget&quot;]\r\n}\r\n6. Security Considerations\r\n- Keep storage encrypted at rest.\r\n- Require API keys for all requests.\r\n- Rotate keys periodically.\r\n- Maintain audit logs of read/write events.\r\n- Consider IP whitelisting to limit exposure.\r\n7. Phased Implementation\r\nPhase 1 – Single-Assistant Memory\r\n- Implement Flask API and local storage for ChatGPT.\r\n- Validate indexing and retrieval.\r\nPhase 2 – Cross-Assistant Expansion\r\n- Allow Claude and others to read/write.\r\n- Add unified tagging and source tracking.\r\nPhase 3 – Automated Context Injection\r\n- Assistants automatically pull relevant memory entries at conversation start.\r\n- Operator defines retrieval rules per assistant.\r\nPhase 4 – Distributed &amp; Fault-Tolerant Memory\r\n- Mirror across multiple drives/locations.\r\n- Enable offline operation and sync on reconnection.\r\n8. Future Capabilities\r\n- Auto-summarization before storage to save space.\r\n- Embedding-based semantic search.\r\n- Selective context injection for efficiency.\r\n- Shared knowledge graphs linking related memory entries."
+}

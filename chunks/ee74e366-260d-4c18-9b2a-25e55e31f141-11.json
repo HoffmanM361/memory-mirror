@@ -1,0 +1,11 @@
+{
+  "id": "ee74e366-260d-4c18-9b2a-25e55e31f141",
+  "chunk_ix": 11,
+  "created_at": "2025-08-11T11:30:49",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "int}'\")\r\n                    break\r\n                    \r\n        # Only show debug message if AJAX calls found\r\n        if ajax_calls:\r\n            print(f\"DEBUG: extract_ajax_calls - Found {len(ajax_calls)} AJAX calls in {file_path}\")\r\n        return ajax_calls\r\n        \r\n    except FileNotFoundError:\r\n        print(f\"ERROR: extract_ajax_calls - File not found: {file_path}\")\r\n        return []\r\n    except UnicodeDecodeError:\r\n        print(f\"ERROR: extract_ajax_calls - Cannot decode file: {file_path}\")\r\n        return []\r\n    except Exception as e:\r\n        print(f\"ERROR: extract_ajax_calls - Error processing {file_path}: {e}\")\r\n        print(f\"ERROR: extract_ajax_calls - Traceback: {traceback.format_exc()}\")\r\n        return []\r\n\r\ndef extract_project_reference():\r\n    \"\"\"\r\n    Main function to recursively scan project and extract all callable items\r\n    \"\"\"\r\n    output_file = None\r\n    \r\n    try:\r\n        print(f\"DEBUG: extract_project_reference - Starting at {datetime.now()}\")\r\n        \r\n        # Validate current directory\r\n        if not os.path.exists('.'):\r\n            print(\"ERROR: extract_project_reference - Current directory not accessible\")\r\n            return False\r\n            \r\n        # File patterns to scan - exclude virtual environments and common non-project directories\r\n        python_files = []\r\n        js_files = []\r\n        \r\n        # Get all Python and JS files while excluding unwanted directories\r\n        for py_file in Path('.').rglob('*.py'):\r\n            if not any(pattern in str(py_file) for pattern in ['venv', 'env', '.git', '__pycache__', 'build', 'dist', '.egg-info']):\r\n                python_files.append(py_file)\r\n                \r\n        for js_file in Path('.').rglob('*.js'):\r\n            if not any(pattern in str(js_file) for pattern in ['venv', 'env', '.git', 'node_modules', 'build', 'dist']):\r\n                js_files.append(js_file)\r\n        \r\n        print(f\"DEBUG: extract_project_reference - Found {len(python_files)} Python "
+}

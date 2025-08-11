@@ -1,0 +1,11 @@
+{
+  "id": "ee74e366-260d-4c18-9b2a-25e55e31f141",
+  "chunk_ix": 10,
+  "created_at": "2025-08-11T11:30:49",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "       func_name = match.group(1)\r\n                    functions.append(f\"{file_path}:{line_num}: function {func_name}()\")\r\n                    break\r\n                    \r\n        # Only show debug message if functions found\r\n        if functions:\r\n            print(f\"DEBUG: extract_javascript_functions - Found {len(functions)} functions in {file_path}\")\r\n        return functions\r\n        \r\n    except FileNotFoundError:\r\n        print(f\"ERROR: extract_javascript_functions - File not found: {file_path}\")\r\n        return []\r\n    except UnicodeDecodeError:\r\n        print(f\"ERROR: extract_javascript_functions - Cannot decode file: {file_path}\")\r\n        return []\r\n    except Exception as e:\r\n        print(f\"ERROR: extract_javascript_functions - Error processing {file_path}: {e}\")\r\n        print(f\"ERROR: extract_javascript_functions - Traceback: {traceback.format_exc()}\")\r\n        return []\r\n\r\ndef extract_ajax_calls(file_path):\r\n    \"\"\"\r\n    Extract AJAX calls and fetch requests from JavaScript files\r\n    \"\"\"\r\n    ajax_calls = []\r\n    \r\n    try:\r\n        with open(file_path, 'r', encoding='utf-8') as f:\r\n            lines = f.readlines()\r\n            \r\n        for line_num, line in enumerate(lines, 1):\r\n            line = line.strip()\r\n            \r\n            # Match fetch() calls and similar AJAX patterns\r\n            ajax_patterns = [\r\n                r'fetch\\s*\\(\\s*[\\'\"]([^\\'\"]+)[\\'\"]',\r\n                r'\\.get\\s*\\(\\s*[\\'\"]([^\\'\"]+)[\\'\"]',\r\n                r'\\.post\\s*\\(\\s*[\\'\"]([^\\'\"]+)[\\'\"]',\r\n                r'\\.put\\s*\\(\\s*[\\'\"]([^\\'\"]+)[\\'\"]',\r\n                r'\\.delete\\s*\\(\\s*[\\'\"]([^\\'\"]+)[\\'\"]',\r\n                r'XMLHttpRequest.*open\\s*\\(\\s*[\\'\"][A-Z]+[\\'\"],\\s*[\\'\"]([^\\'\"]+)[\\'\"]'\r\n            ]\r\n            \r\n            for pattern in ajax_patterns:\r\n                match = re.search(pattern, line)\r\n                if match:\r\n                    endpoint = match.group(1)\r\n                    ajax_calls.append(f\"{file_path}:{line_num}: AJAX call to '{endpo"
+}

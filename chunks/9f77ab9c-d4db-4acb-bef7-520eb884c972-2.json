@@ -1,0 +1,12 @@
+{
+  "id": "9f77ab9c-d4db-4acb-bef7-520eb884c972",
+  "chunk_ix": 2,
+  "created_at": "2025-08-11T12:28:23",
+  "source": "web",
+  "tags": [
+    "development",
+    "memory",
+    "system"
+  ],
+  "content": "New Outreach**: Create companies → Create deals → Add email activities → Schedule follow-ups\r\n2. **Meeting Updates**: Add MEETING activities → Update deal stages/probability\r\n3. **Deal Progression**: Update stage_id and probability based on conversation context\r\n4. **Contact Management**: Use deal_contacts for linking people to opportunities\r\n\r\n## Business Context\r\n\r\n### Sales Methodology\r\n- **Gift-first approach**: Lead with immediate value (grant briefs, technical specs)\r\n- **Multi-funnel strategy**: PHAs (housing), Pew manufacturers (convertible systems), Traceability/mapping\r\n- **No forced cross-sell**: Keep business lines modular\r\n\r\n### Key Projects\r\n- **RTS Chapel**: 400-seat convertible pew project in Charlotte, NC\r\n- **PHA Strategy**: Southeast-focused mixed-income housing using non-LIHTC model\r\n- **Patent Portfolio**: USPTO App #63/854,489 for convertible pew system\r\n\r\n### Integration Points\r\n- **Memory System**: All conversations and documents stored in api.nsgia.com/mem/*\r\n- **Grant Funding**: Church projects leverage federal disaster relief funding\r\n- **Technical Specs**: Detailed patent applications and technical documentation available\r\n\r\n## Usage Instructions for Future Chats\r\n\r\n1. **When business activities are discussed**: Generate appropriate CRM SQL updates\r\n2. **For new contacts/companies**: Always include complete contact information in companies table\r\n3. **Deal values**: PHA deals ~$20M, Convertible pew deals ~$125K, adjust based on context\r\n4. **Follow-up timing**: PHAs = 7 days, Manufacturers = 5 days, adjust as needed\r\n5. **Activity types**: Use standard UPPERCASE types, default to EMAIL for outreach\r\n6. **Stage progression**: Start deals in 'New' (25% probability), advance based on responses\r\n\r\n## Memory System Integration\r\n- All CRM operations should reference stored conversation context\r\n- Use memory system to retrieve previous deal details, contact information, and business strategy\r\n- Cross-reference with stored documents for technical"
+}

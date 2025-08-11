@@ -1,0 +1,11 @@
+{
+  "id": "ee74e366-260d-4c18-9b2a-25e55e31f141",
+  "chunk_ix": 14,
+  "created_at": "2025-08-11T11:30:49",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "   print(\"=\" * 60)\r\n    \r\n    success = extract_project_reference()\r\n    \r\n    if success:\r\n        print(\"\\nSUCCESS: project_reference.txt created!\")\r\n        print(\"Copy the contents to your AI assistant for complete project context.\")\r\n    else:\r\n        print(\"\\nFAILED: Could not generate project reference.\")\r\n        print(\"Check error messages above for details.\")\r\nAI ASSISTANT BENEFIT:\r\nWhen user provides project_reference.txt content, AI has complete context\r\nNo more guessing endpoint names or function signatures\r\nDebugging becomes nearly instantaneous with full project inventory\r\nREMINDERS:\r\nChange logs MUST be visible in browser view-source\r\nNO hidden characters or formatting that browsers can't display\r\nInclude ALL relevant information for troubleshooting\r\nBoth error handling AND change logs are MANDATORY\r\nSIMPLICITY OVER CLEVERNESS - Simple code is maintainable code\r\nAffordable Housing NorthStar Group <redacted.phone> / <redacted.email> / © 2025, all rights reserved"
+}

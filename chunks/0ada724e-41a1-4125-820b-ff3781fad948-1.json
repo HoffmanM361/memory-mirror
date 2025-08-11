@@ -1,0 +1,11 @@
+{
+  "id": "0ada724e-41a1-4125-820b-ff3781fad948",
+  "chunk_ix": 1,
+  "created_at": "2025-08-11T10:22:22",
+  "source": "web",
+  "tags": [
+    "memory",
+    "system"
+  ],
+  "content": "y health endpoint again.\r\n6) Extra (optional) index files\r\nFor a high-level map, use:\r\nhttps://api.nsgia.com/getfile?key=public-read-2025&amp;path=catalog/search_map.json\r\n7) What to say back to the user\r\n- After health: &#39;Health OK (MariaDB reachable).&#39;\r\n- After search: &#39;Found N items. IDs: ...&#39;\r\n- After get: &#39;Opened item &lt;id&gt;. I see &lt;summary&gt;. Do you want more?&#39;\r\nWhy this is simpler\r\nThese endpoints are clean HTTPS with query-key auth and embedded JSON in HTML, which\r\nClaude can reliably fetch and parse. Always stick to these routes and flow."
+}

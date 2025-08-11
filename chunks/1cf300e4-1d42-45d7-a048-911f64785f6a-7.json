@@ -1,0 +1,12 @@
+{
+  "id": "1cf300e4-1d42-45d7-a048-911f64785f6a",
+  "chunk_ix": 7,
+  "created_at": "2025-08-11T15:37:11",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "memory",
+    "system"
+  ],
+  "content": "ml\" %}\r\n\r\n{% block title %}Browse Conversations - Memory System{% endblock %}\r\n\r\n{% block content %}\r\n<div class=\"page-header\">\r\n    <h1>📚 Saved Conversations</h1>\r\n    <p>Browse and search your persistent AI memory</p>\r\n</div>\r\n\r\n<div class=\"search-section\">\r\n    <form method=\"GET\" class=\"search-form\">\r\n        <div class=\"search-row\">\r\n            <input type=\"text\" name=\"search\" value=\"{{ search }}\" \r\n                   placeholder=\"Search conversations...\" class=\"search-input\">\r\n            <select name=\"source\" class=\"source-filter\">\r\n                <option value=\"\">All Sources</option>\r\n                {% for source in sources %}\r\n                    <option value=\"{{ source }}\" {% if source == source_filter %}selected{% endif %}>\r\n                        {{ source.title() }}\r\n                    </option>\r\n                {% endfor %}\r\n            </select>\r\n            <button type=\"submit\" class=\"btn btn-primary\">🔍 Search</button>\r\n        </div>\r\n    </form>\r\n</div>\r\n\r\n<div class=\"results-info\">\r\n    <p>Found {{ total_count }} conversation(s)\r\n    {% if search %} for \"{{ search }}\"{% endif %}\r\n    {% if source_filter %} from {{ source_filter }}{% endif %}\r\n    </p>\r\n</div>\r\n\r\n<div class=\"conversations-list\">\r\n    {% if conversations %}\r\n        {% for conv in conversations %}\r\n        <div class=\"conversation-card\">\r\n            <div class=\"conv-header\">\r\n                <h3 class=\"conv-title\">\r\n                    <a href=\"{{ url_for('conversations.conversation_detail', chat_id=conv.id) }}\">\r\n                        {% if conv.preview.startswith('TITLE: ') %}\r\n                            {{ conv.preview.split('\\n')[0][7:] }}\r\n                        {% else %}\r\n                            {{ conv.preview[:60] }}{% if conv.preview|length > 60 %}...{% endif %}\r\n                        {% endif %}\r\n                    </a>\r\n                </h3>\r\n                <div class=\"conv-meta\">\r\n                    <span class=\"conv-source\">{{ conv.source }}</span>\r"
+}

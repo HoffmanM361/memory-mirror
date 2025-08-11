@@ -1,0 +1,12 @@
+{
+  "id": "1cf300e4-1d42-45d7-a048-911f64785f6a",
+  "chunk_ix": 2,
+  "created_at": "2025-08-11T15:37:11",
+  "source": "web",
+  "tags": [
+    "breakthrough",
+    "memory",
+    "system"
+  ],
+  "content": "    <div class=\"info-card\">\r\n        <h3>🚀 Revolutionary System</h3>\r\n        <p>The world's first persistent AI memory system that actually works with AI assistants. Enables true continuity across conversations and models.</p>\r\n    </div>\r\n    \r\n    <div class=\"info-card\">\r\n        <h3>🔒 Your Control</h3>\r\n        <p>All data stored on your hardware. No cloud dependencies. You own and control every conversation and piece of knowledge.</p>\r\n    </div>\r\n    \r\n    <div class=\"info-card\">\r\n        <h3>🤖 AI Accessible</h3>\r\n        <p>AI assistants can search and reference previous conversations, creating genuine continuity and growing knowledge over time.</p>\r\n    </div>\r\n    \r\n    <div class=\"info-card\">\r\n        <h3>⚡ Production Ready</h3>\r\n        <p>MariaDB backend, secure authentication, full logging, and enterprise-grade reliability for serious use.</p>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"quick-stats\">\r\n    <h2>System Status</h2>\r\n    <div class=\"stats-grid\">\r\n        <div class=\"stat-item\">\r\n            <span class=\"stat-number\" id=\"chat-count\">Loading...</span>\r\n            <span class=\"stat-label\">Conversations Stored</span>\r\n        </div>\r\n        <div class=\"stat-item\">\r\n            <span class=\"stat-number\">MariaDB</span>\r\n            <span class=\"stat-label\">Database Engine</span>\r\n        </div>\r\n        <div class=\"stat-item\">\r\n            <span class=\"stat-number\">38.1 GB</span>\r\n            <span class=\"stat-label\">Storage Available</span>\r\n        </div>\r\n        <div class=\"stat-item\">\r\n            <span class=\"stat-number\" id=\"system-status\">Loading...</span>\r\n            <span class=\"stat-label\">System Health</span>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"api-info\">\r\n    <h2>API Access</h2>\r\n    <p><strong>Health Check:</strong> <code>http://104.191.236.122/memory/health</code></p>\r\n    <p><strong>AI Search:</strong> <code>http://104.191.236.122/memory/search?keyword=topic&amp;key=public-read-2025</code></p>\r\n    <p><strong>Full Document"
+}

@@ -1,7 +1,506 @@
 {
   "version": "1",
-  "generated_at": "2025-08-11T07:07:23.898799Z",
+  "generated_at": "2025-08-11T20:47:47.120977Z",
   "items": [
+    {
+      "id": "1cf300e4-1d42-45d7-a048-911f64785f6a",
+      "created_at": "2025-08-11T15:37:11",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "breakthrough",
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-0.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-1.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-2.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-3.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-4.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-5.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-6.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-7.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-8.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-9.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: v1 interface memory system interface templates\n\ncat conversation_detail.html index.html base.html payload.html save_conversation.html view_conversations.html\r\n<!-- CHANGE LOG -->\r\n<!-- File: /var/www/memory_system/templates/conversat..."
+    },
+    {
+      "id": "1546e931-3b09-4fed-91c6-f66dbf6e75de",
+      "created_at": "2025-08-11T15:31:23",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/1546e931-3b09-4fed-91c6-f66dbf6e75de-0.json?key=8bba14962f9f2318",
+        "chunks/1546e931-3b09-4fed-91c6-f66dbf6e75de-1.json?key=8bba14962f9f2318",
+        "chunks/1546e931-3b09-4fed-91c6-f66dbf6e75de-2.json?key=8bba14962f9f2318",
+        "chunks/1546e931-3b09-4fed-91c6-f66dbf6e75de-3.json?key=8bba14962f9f2318",
+        "chunks/1546e931-3b09-4fed-91c6-f66dbf6e75de-4.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Chat Retrieval System: Professional AI Conversation Management\n\n# Chat Retrieval System: Professional AI Conversation Management\r\n\r\n## Executive Summary\r\n\r\nThe Chat Retrieval System is a professional productivity tool that saves, org..."
+    },
+    {
+      "id": "d0ea5856-3a16-4061-b32a-1ced2b1ed4a2",
+      "created_at": "2025-08-11T12:58:40",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/d0ea5856-3a16-4061-b32a-1ced2b1ed4a2-0.json?key=8bba14962f9f2318",
+        "chunks/d0ea5856-3a16-4061-b32a-1ced2b1ed4a2-1.json?key=8bba14962f9f2318",
+        "chunks/d0ea5856-3a16-4061-b32a-1ced2b1ed4a2-2.json?key=8bba14962f9f2318",
+        "chunks/d0ea5856-3a16-4061-b32a-1ced2b1ed4a2-3.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Integrated 90‑Day Plan: Revenue, Grants, and MapArea (Refuge\n\nIntegrated 90‑Day Plan: Revenue, Grants, and MapArea (Refuge\r\nChapel Program)\r\nExecutive Summary\r\nPurpose: Generate cash in 90 days while positioning North Star to deliver..."
+    },
+    {
+      "id": "9a18924e-e52a-45d1-be06-7c6186a01048",
+      "created_at": "2025-08-11T12:51:20",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/9a18924e-e52a-45d1-be06-7c6186a01048-0.json?key=8bba14962f9f2318",
+        "chunks/9a18924e-e52a-45d1-be06-7c6186a01048-1.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: 90-Day Financial Plan – Refuge Chapel &amp; Related Project Development\n\n90-Day Financial Plan – Refuge Chapel &amp; Related Project Development\r\nThis document outlines a targeted 90-day financial strategy to generate revenue for\r\nNo..."
+    },
+    {
+      "id": "9f77ab9c-d4db-4acb-bef7-520eb884c972",
+      "created_at": "2025-08-11T12:28:23",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/9f77ab9c-d4db-4acb-bef7-520eb884c972-0.json?key=8bba14962f9f2318",
+        "chunks/9f77ab9c-d4db-4acb-bef7-520eb884c972-1.json?key=8bba14962f9f2318",
+        "chunks/9f77ab9c-d4db-4acb-bef7-520eb884c972-2.json?key=8bba14962f9f2318",
+        "chunks/9f77ab9c-d4db-4acb-bef7-520eb884c972-3.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: 20250811  CRM System Documentation for Future Claude Interactions 20250811\n\n# CRM System Documentation for Future Claude Interactions\r\n\r\n## Overview\r\nNorth Star Group uses a custom MariaDB-based CRM system in the \"modular\" database. ..."
+    },
+    {
+      "id": "d139db53-95ca-493f-80f2-6a25565e758f",
+      "created_at": "2025-08-11T11:59:56",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/d139db53-95ca-493f-80f2-6a25565e758f-0.json?key=8bba14962f9f2318",
+        "chunks/d139db53-95ca-493f-80f2-6a25565e758f-1.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: pews  APPLICATION #RECEIPT DATE / TIMEATTORNEY DOCKET # 63/854,48907/31/2025 01:44:59 AM Z ET- Title of Invention Convertible Seating Unit with Repositionable Backrest for Sleeping Surface Formation Application Information APPLICATIO..."
+    },
+    {
+      "id": "16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5",
+      "created_at": "2025-08-11T11:50:16",
+      "source": "web",
+      "title": "PROVISIONAL PATENT APPLICATION",
+      "tags": [
+        "memory",
+        "system"
+      ],
+      "summary": "PROVISIONAL PATENT APPLICATION",
+      "chunk_urls": [
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-0.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-1.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-2.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-3.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-4.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-5.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-6.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-7.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-8.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-9.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-10.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-11.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-12.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-13.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-14.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-15.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-16.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-17.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-18.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: pew PROVISIONAL PATENT APPLICATION Convertible Seating Unit with Repositionable Backrest for Sleeping Surface Formation TECHNICAL DRAWINGS\n\nPROVISIONAL PATENT APPLICATION\r\nConvertible Seating Unit with Repositionable Backrest for Sle..."
+    },
+    {
+      "id": "3a20cff2-4faa-4db7-9895-3e6d586d63ce",
+      "created_at": "2025-08-11T11:48:26",
+      "source": "web",
+      "title": "Sample Pew Manufacturers List",
+      "tags": [
+        "historic",
+        "system"
+      ],
+      "summary": "Sample Pew Manufacturers List",
+      "chunk_urls": [
+        "chunks/3a20cff2-4faa-4db7-9895-3e6d586d63ce-0.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Sample Pew Manufacturers List\n\nAppendix B: Sample Pew Manufacturers List\r\nThis appendix provides a preliminary list of ten reputable pew manufacturers based on\r\nindustry knowledge and public trade references. The list is intended to ..."
+    },
+    {
+      "id": "ee74e366-260d-4c18-9b2a-25e55e31f141",
+      "created_at": "2025-08-11T11:30:49",
+      "source": "web",
+      "title": "Provides development standards - Consistent coding practices across all files\r\nP",
+      "tags": [
+        "development",
+        "system"
+      ],
+      "summary": "Provides development standards - Consistent coding practices across all files\r\nProvides context for AI assistants - Complete information for faster debugging\r\nMakes debugging rational and easy - Clear patterns and error handling\r\nSaves time in AI conversations - Context eliminates repetitive explanations\r\nThe Debugging Reality",
+      "chunk_urls": [
+        "chunks/ee74e366-260d-4c18-9b2a-25e55e31f141-0.json?key=8bba14962f9f2318",
+        "chunks/ee74e366-260d-4c18-9b2a-25e55e31f141-1.json?key=8bba14962f9f2318",
+        "chunks/ee74e366-260d-4c18-9b2a-25e55e31f141-2.json?key=8bba14962f9f2318",
+        "chunks/ee74e366-260d-4c18-9b2a-25e55e31f141-3.json?key=8bba14962f9f2318",
+        "chunks/ee74e366-260d-4c18-9b2a-25e55e31f141-4.json?key=8bba14962f9f2318",
+        "chunks/ee74e366-260d-4c18-9b2a-25e55e31f141-5.json?key=8bba14962f9f2318",
+        "chunks/ee74e366-260d-4c18-9b2a-25e55e31f141-6.json?key=8bba14962f9f2318",
+        "chunks/ee74e366-260d-4c18-9b2a-25e55e31f141-7.json?key=8bba14962f9f2318",
+        "chunks/ee74e366-260d-4c18-9b2a-25e55e31f141-8.json?key=8bba14962f9f2318",
+        "chunks/ee74e366-260d-4c18-9b2a-25e55e31f141-9.json?key=8bba14962f9f2318",
+        "chunks/ee74e366-260d-4c18-9b2a-25e55e31f141-10.json?key=8bba14962f9f2318",
+        "chunks/ee74e366-260d-4c18-9b2a-25e55e31f141-11.json?key=8bba14962f9f2318",
+        "chunks/ee74e366-260d-4c18-9b2a-25e55e31f141-12.json?key=8bba14962f9f2318",
+        "chunks/ee74e366-260d-4c18-9b2a-25e55e31f141-13.json?key=8bba14962f9f2318",
+        "chunks/ee74e366-260d-4c18-9b2a-25e55e31f141-14.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: DEVELOPMENT STANDARDS - AI PROMPT\n\nDEVELOPMENT STANDARDS - AI PROMPT\r\nPURPOSE OF THIS AI PROMPT\r\nWhat This Document Does\r\nProvides development standards - Consistent coding practices across all files\r\nProvides context for AI assistan..."
+    },
+    {
+      "id": "c69bf4c8-51ed-4de1-b181-7b4ee64645be",
+      "created_at": "2025-08-11T11:18:15",
+      "source": "web",
+      "title": "# Claude Persistent Memory System Instructions",
+      "tags": [
+        "memory",
+        "system"
+      ],
+      "summary": "# Claude Persistent Memory System Instructions",
+      "chunk_urls": [
+        "chunks/c69bf4c8-51ed-4de1-b181-7b4ee64645be-0.json?key=8bba14962f9f2318",
+        "chunks/c69bf4c8-51ed-4de1-b181-7b4ee64645be-1.json?key=8bba14962f9f2318",
+        "chunks/c69bf4c8-51ed-4de1-b181-7b4ee64645be-2.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: # Claude Persistent Memory System Instructions\n\n# Claude Persistent Memory System Instructions\r\n\r\n## Overview\r\nThis persistent memory system allows Claude to store, search, and retrieve information across conversations. Unlike standa..."
+    },
+    {
+      "id": "6b121b08-b4f0-48d2-94a1-9b12dedcc431",
+      "created_at": "2025-08-11T11:15:47",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-0.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-1.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-2.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-3.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-4.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-5.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-6.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-7.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-8.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-9.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: PHA emails first one\n\nRetryMHNow because you are a super duper super smart artificial intelligence assistant can you make each of the 10 letters their emails right so each each one would have a email address each individualized lette..."
+    },
+    {
+      "id": "c1a3ebf3-94f1-4392-9164-775fde8696b5",
+      "created_at": "2025-08-11T10:39:24",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/c1a3ebf3-94f1-4392-9164-775fde8696b5-0.json?key=8bba14962f9f2318",
+        "chunks/c1a3ebf3-94f1-4392-9164-775fde8696b5-1.json?key=8bba14962f9f2318",
+        "chunks/c1a3ebf3-94f1-4392-9164-775fde8696b5-2.json?key=8bba14962f9f2318",
+        "chunks/c1a3ebf3-94f1-4392-9164-775fde8696b5-3.json?key=8bba14962f9f2318",
+        "chunks/c1a3ebf3-94f1-4392-9164-775fde8696b5-4.json?key=8bba14962f9f2318",
+        "chunks/c1a3ebf3-94f1-4392-9164-775fde8696b5-5.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: PHA Public Housing Authority Mixed-Income Development Proposal  A Simple, Legal Structure for Building Both Workforce and Affordable Housing\n\nMobile Housing Authority Mixed-Income\r\nDevelopment Proposal\r\n\r\nA Simple, Legal Structure fo..."
+    },
+    {
+      "id": "0ada724e-41a1-4125-820b-ff3781fad948",
+      "created_at": "2025-08-11T10:22:22",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/0ada724e-41a1-4125-820b-ff3781fad948-0.json?key=8bba14962f9f2318",
+        "chunks/0ada724e-41a1-4125-820b-ff3781fad948-1.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Claude API Memory System Access Instructions\n\nClaude API Memory System Access Instructions\r\nProblem in one sentence\r\nChatGPT still can’t browse my memory via the IP or custom headers, so we added clean\r\nHTTPS endpoints that return pl..."
+    },
+    {
+      "id": "20dc0096-27b9-4655-9d9e-085ce438fd9a",
+      "created_at": "2025-08-11T10:05:04",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/20dc0096-27b9-4655-9d9e-085ce438fd9a-0.json?key=8bba14962f9f2318",
+        "chunks/20dc0096-27b9-4655-9d9e-085ce438fd9a-1.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Cross-Assistant Persistent Memory System – Expanded Design\n\nCross-Assistant Persistent Memory System – Expanded Design\r\nThis document expands on the original persistent memory concept to support multiple AI\r\nassistants (e.g., OpenAI&..."
+    },
+    {
+      "id": "c985c115-e3ed-411e-8c24-0ffcd0f41d6a",
+      "created_at": "2025-08-11T10:00:26",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/c985c115-e3ed-411e-8c24-0ffcd0f41d6a-0.json?key=8bba14962f9f2318",
+        "chunks/c985c115-e3ed-411e-8c24-0ffcd0f41d6a-1.json?key=8bba14962f9f2318",
+        "chunks/c985c115-e3ed-411e-8c24-0ffcd0f41d6a-2.json?key=8bba14962f9f2318",
+        "chunks/c985c115-e3ed-411e-8c24-0ffcd0f41d6a-3.json?key=8bba14962f9f2318",
+        "chunks/c985c115-e3ed-411e-8c24-0ffcd0f41d6a-4.json?key=8bba14962f9f2318",
+        "chunks/c985c115-e3ed-411e-8c24-0ffcd0f41d6a-5.json?key=8bba14962f9f2318",
+        "chunks/c985c115-e3ed-411e-8c24-0ffcd0f41d6a-6.json?key=8bba14962f9f2318",
+        "chunks/c985c115-e3ed-411e-8c24-0ffcd0f41d6a-7.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: PROVISIONAL PATENT APPLICATION Title: iVerify: Field-to-Ledger Product Verification System\n\nPROVISIONAL PATENT APPLICATION\r\nTitle: iVerify: Field-to-Ledger Product Verification System\r\n\r\nFIELD OF THE INVENTION\r\nThis invention relates..."
+    },
+    {
+      "id": "ae9dd06f-f468-45f5-b64c-bba2141ffc8a",
+      "created_at": "2025-08-11T09:59:05",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/ae9dd06f-f468-45f5-b64c-bba2141ffc8a-0.json?key=8bba14962f9f2318",
+        "chunks/ae9dd06f-f468-45f5-b64c-bba2141ffc8a-1.json?key=8bba14962f9f2318",
+        "chunks/ae9dd06f-f468-45f5-b64c-bba2141ffc8a-2.json?key=8bba14962f9f2318",
+        "chunks/ae9dd06f-f468-45f5-b64c-bba2141ffc8a-3.json?key=8bba14962f9f2318",
+        "chunks/ae9dd06f-f468-45f5-b64c-bba2141ffc8a-4.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: iVerify: Field-to-Ledger Traceability for Premium Markets 1 source\n\niVerify: Field-to-Ledger Traceability for Premium Markets\r\n1 source\r\nThe provided texts describe iVerify, a platform designed to enable smallholder farmers and artis..."
+    },
+    {
+      "id": "b098ee05-a087-4639-a44d-ecd3c6a04d45",
+      "created_at": "2025-08-11T09:57:13",
+      "source": "web",
+      "title": "Strategy North Star Sales and Marketing Master Document",
+      "tags": [
+        "development",
+        "system"
+      ],
+      "summary": "Strategy North Star Sales and Marketing Master Document",
+      "chunk_urls": [
+        "chunks/b098ee05-a087-4639-a44d-ecd3c6a04d45-0.json?key=8bba14962f9f2318",
+        "chunks/b098ee05-a087-4639-a44d-ecd3c6a04d45-1.json?key=8bba14962f9f2318",
+        "chunks/b098ee05-a087-4639-a44d-ecd3c6a04d45-2.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Strategy North Star Sales and Marketing Master Document\n\nNorthStar Sales and Marketing Master\r\nDocument\r\n\r\n1. Introduction\r\nNorthStar Group builds trust by offering real value to partners before asking for\r\ncommitments. Our approach ..."
+    },
+    {
+      "id": "f41f0e7a-823a-4e5a-bdf8-835dc6448dae",
+      "created_at": "2025-08-11T09:55:27",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/f41f0e7a-823a-4e5a-bdf8-835dc6448dae-0.json?key=8bba14962f9f2318",
+        "chunks/f41f0e7a-823a-4e5a-bdf8-835dc6448dae-1.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Request for Quote (RFQ) Templates\n\nRequest for Quote (RFQ) Templates\r\nThese RFQ templates are designed for three distinct initiatives within our strategic plan.\r\nThey share a common introduction outlining our organization and objecti..."
+    },
+    {
+      "id": "79b26c11-ce1f-4281-be7c-893d1754b6fd",
+      "created_at": "2025-08-11T09:53:44",
+      "source": "web",
+      "title": "Section 5: Grant Writing and Funding Strategy",
+      "tags": [
+        "development",
+        "system"
+      ],
+      "summary": "Section 5: Grant Writing and Funding Strategy",
+      "chunk_urls": [
+        "chunks/79b26c11-ce1f-4281-be7c-893d1754b6fd-0.json?key=8bba14962f9f2318",
+        "chunks/79b26c11-ce1f-4281-be7c-893d1754b6fd-1.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Section 5: Grant Writing and Funding Strategy\n\nSection 5: Grant Writing and Funding Strategy\r\n5.1 Role in Company Mission\r\nGrant writing is both a direct revenue source and a strategic engagement tool. By providing\r\nhigh-quality, tar..."
+    },
+    {
+      "id": "343e4c6c-9aa5-4b5b-bc65-5e10b03cdfd0",
+      "created_at": "2025-08-11T09:52:38",
+      "source": "web",
+      "title": "Section 4: Traceability and Mapping Strategy",
+      "tags": [
+        "system"
+      ],
+      "summary": "Section 4: Traceability and Mapping Strategy",
+      "chunk_urls": [
+        "chunks/343e4c6c-9aa5-4b5b-bc65-5e10b03cdfd0-0.json?key=8bba14962f9f2318",
+        "chunks/343e4c6c-9aa5-4b5b-bc65-5e10b03cdfd0-1.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Section 4: Traceability and Mapping Strategy\n\nSection 4: Traceability and Mapping Strategy\r\n4.1 Overview\r\nThis section outlines the strategy for leveraging our traceability and mapping capabilities.\r\nThe goal is to demonstrate proof-..."
+    },
+    {
+      "id": "81e367d4-87af-4b43-bf0f-bfc713af5a6c",
+      "created_at": "2025-08-11T09:51:42",
+      "source": "web",
+      "title": "Section 3 – Chapel Refuge Development Strategy",
+      "tags": [
+        "development",
+        "system"
+      ],
+      "summary": "Section 3 – Chapel Refuge Development Strategy",
+      "chunk_urls": [
+        "chunks/81e367d4-87af-4b43-bf0f-bfc713af5a6c-0.json?key=8bba14962f9f2318",
+        "chunks/81e367d4-87af-4b43-bf0f-bfc713af5a6c-1.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Section 3 – Chapel Refuge Development Strategy\n\nSection 3 – Chapel Refuge Development Strategy\r\n3.1 Overview\r\nThe Chapel Refuge Development Strategy focuses on positioning newly built or renovated\r\nchapels as dual-use facilities serv..."
+    },
+    {
+      "id": "0f1d3a4b-ca4a-4fc6-9b5b-1a12140a2aff",
+      "created_at": "2025-08-11T09:50:32",
+      "source": "web",
+      "title": "2. Traceability &amp; Mapping Program Strategy\r\n2.1 Overview",
+      "tags": [
+        "development",
+        "system"
+      ],
+      "summary": "2. Traceability &amp; Mapping Program Strategy\r\n2.1 Overview",
+      "chunk_urls": [
+        "chunks/0f1d3a4b-ca4a-4fc6-9b5b-1a12140a2aff-0.json?key=8bba14962f9f2318",
+        "chunks/0f1d3a4b-ca4a-4fc6-9b5b-1a12140a2aff-1.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: 2. Traceability &amp; Mapping Program Strategy 2.1 Overview\n\n2. Traceability &amp; Mapping Program Strategy\r\n2.1 Overview\r\nThe traceability and mapping program is designed to address regulatory compliance\r\nrequirements for agricultur..."
+    },
+    {
+      "id": "35dc73d9-6d72-45ca-bbd7-4476d483ded3",
+      "created_at": "2025-08-11T09:46:35",
+      "source": "web",
+      "title": "This program targets the top-performing PHAs in the Southeast U.S. and select ot",
+      "tags": [
+        "development"
+      ],
+      "summary": "This program targets the top-performing PHAs in the Southeast U.S. and select other\r\nregions, offering a turnkey mixed-income housing solution that delivers immediate and\r\nlong-term benefits without requiring RAD conversion or disruptive restructuring.\r\nCore deliverables for PHAs:",
+      "chunk_urls": [
+        "chunks/35dc73d9-6d72-45ca-bbd7-4476d483ded3-0.json?key=8bba14962f9f2318",
+        "chunks/35dc73d9-6d72-45ca-bbd7-4476d483ded3-1.json?key=8bba14962f9f2318",
+        "chunks/35dc73d9-6d72-45ca-bbd7-4476d483ded3-2.json?key=8bba14962f9f2318",
+        "chunks/35dc73d9-6d72-45ca-bbd7-4476d483ded3-3.json?key=8bba14962f9f2318",
+        "chunks/35dc73d9-6d72-45ca-bbd7-4476d483ded3-4.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Public Housing Authority (PHA) Strategy 1.1 Overview This program targets the top-performing PHAs in the Southeast U.S. and select other regions, offering a turnkey mixed-income housing solution that delivers immediate and long-term ..."
+    },
+    {
+      "id": "a85cbc6f-0a9b-4721-b732-4ec28cee6202",
+      "created_at": "2025-08-11T09:45:03",
+      "source": "web",
+      "title": "Appendix C – Top 10 PHA Target Shortlist (Southeast)",
+      "tags": [
+        "development"
+      ],
+      "summary": "Appendix C – Top 10 PHA Target Shortlist (Southeast)",
+      "chunk_urls": [
+        "chunks/a85cbc6f-0a9b-4721-b732-4ec28cee6202-0.json?key=8bba14962f9f2318",
+        "chunks/a85cbc6f-0a9b-4721-b732-4ec28cee6202-1.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Appendix C – Top 10 PHA Target Shortlist (Southeast)\n\nAppendix C – Top 10 PHA Target Shortlist (Southeast)\r\nCriteria: mid-sized agencies in AL, GA, FL (north/central), NC, SC, MS with solid\r\noperations and leadership likely to engage..."
+    },
+    {
+      "id": "a0961713-45bb-42a5-8476-99708ac4118b",
+      "created_at": "2025-08-11T09:42:47",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/a0961713-45bb-42a5-8476-99708ac4118b-0.json?key=8bba14962f9f2318",
+        "chunks/a0961713-45bb-42a5-8476-99708ac4118b-1.json?key=8bba14962f9f2318",
+        "chunks/a0961713-45bb-42a5-8476-99708ac4118b-2.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: master sales strategy\n\nMaster Strategy Document\r\nThis document is a comprehensive, modular strategy guide for internal use, capturing the\r\ncore logic, shared DNA, tactical approaches, and actionable steps discussed. Sections are\r\nnum..."
+    },
+    {
+      "id": "b06ff33a-a06f-47a6-a739-ee2da06d12c8",
+      "created_at": "2025-08-11T09:41:31",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/b06ff33a-a06f-47a6-a739-ee2da06d12c8-0.json?key=8bba14962f9f2318",
+        "chunks/b06ff33a-a06f-47a6-a739-ee2da06d12c8-1.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Sales Strategy – Mapping Program This document summarizes the discussion on developing and monetizing the Mapping Program as a broad-market utility product. It captures the context, technical considerations,\n\nSales Strategy – Mapping..."
+    },
+    {
+      "id": "f93f21ea-729f-4e8e-9010-8382957b6b2f",
+      "created_at": "2025-08-11T09:39:48",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/f93f21ea-729f-4e8e-9010-8382957b6b2f-0.json?key=8bba14962f9f2318",
+        "chunks/f93f21ea-729f-4e8e-9010-8382957b6b2f-1.json?key=8bba14962f9f2318",
+        "chunks/f93f21ea-729f-4e8e-9010-8382957b6b2f-2.json?key=8bba14962f9f2318",
+        "chunks/f93f21ea-729f-4e8e-9010-8382957b6b2f-3.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Sales Strategy – Multi-Funnel Plan (Refuge Churches, PHAs, Traceability/Mapping) Executive Summary\n\nSales Strategy – Multi-Funnel Plan (Refuge Churches, PHAs,\r\nTraceability/Mapping)\r\nExecutive Summary\r\nThis document consolidates the ..."
+    },
     {
       "id": "6a08b105-c741-4bf2-8ed4-3fa7948d2904",
       "created_at": "2025-08-11T00:46:21",

@@ -1,0 +1,11 @@
+{
+  "id": "ee74e366-260d-4c18-9b2a-25e55e31f141",
+  "chunk_ix": 9,
+  "created_at": "2025-08-11T11:30:49",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "        \r\n            if match:\r\n                func_name = match.group(1)\r\n                # Skip private functions starting with _\r\n                if not func_name.startswith('_'):\r\n                    functions.append(f\"{file_path}:{line_num}: def {func_name}()\")\r\n                    \r\n        # Only show debug message if functions found\r\n        if functions:\r\n            print(f\"DEBUG: extract_python_functions - Found {len(functions)} functions in {file_path}\")\r\n        return functions\r\n        \r\n    except FileNotFoundError:\r\n        print(f\"ERROR: extract_python_functions - File not found: {file_path}\")\r\n        return []\r\n    except UnicodeDecodeError:\r\n        print(f\"ERROR: extract_python_functions - Cannot decode file: {file_path}\")\r\n        return []\r\n    except Exception as e:\r\n        print(f\"ERROR: extract_python_functions - Error processing {file_path}: {e}\")\r\n        print(f\"ERROR: extract_python_functions - Traceback: {traceback.format_exc()}\")\r\n        return []\r\n\r\ndef extract_javascript_functions(file_path):\r\n    \"\"\"\r\n    Extract JavaScript function declarations and assignments\r\n    \"\"\"\r\n    functions = []\r\n    \r\n    try:\r\n        with open(file_path, 'r', encoding='utf-8') as f:\r\n            lines = f.readlines()\r\n            \r\n        for line_num, line in enumerate(lines, 1):\r\n            line = line.strip()\r\n            \r\n            # Match function declarations\r\n            func_patterns = [\r\n                r'function\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(',\r\n                r'const\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*=\\s*function',\r\n                r'let\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*=\\s*function',\r\n                r'var\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*=\\s*function',\r\n                r'const\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*=\\s*\\(',\r\n                r'([a-zA-Z_][a-zA-Z0-9_]*)\\s*:\\s*function\\s*\\('\r\n            ]\r\n            \r\n            for pattern in func_patterns:\r\n                match = re.search(pattern, line)\r\n                if match:\r\n             "
+}

@@ -1,0 +1,11 @@
+{
+  "id": "ee74e366-260d-4c18-9b2a-25e55e31f141",
+  "chunk_ix": 3,
+  "created_at": "2025-08-11T11:30:49",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "or main app controls this file\r\nCHANGE LOG REQUIREMENTS\r\nEVERY file MUST have a change log at the top with file path\r\nChange logs MUST be HTML comments for .html files\r\nChange logs MUST be Python comments for .py files\r\nChange logs MUST be JavaScript comments for .js files\r\nChange logs MUST be CSS comments for .css files\r\nINCLUDE: File path, Document type, Purpose, Version history, Route info, Blueprint info\r\nChange logs MUST be VISIBLE in browser/editor (no hidden formatting)\r\nNEVER use brackets or hidden characters that browser can't display\r\nAdd new entries at the top with date and description\r\nFILE NAMING CONVENTIONS\r\nPython Blueprints: {purpose}_blueprint.py\r\nJavaScript Modules: {purpose}-{type}.js\r\nCSS Files: {purpose}.css\r\nHTML Templates: {purpose}.html\r\nCHANGE LOG TEMPLATE FOR HTML FILES\r\n<!--\r\nCHANGE LOG\r\nFile: /templates/login.html\r\nDocument Type: HTML Template\r\nPurpose: User login form with 2FA photo upload for area mapping system\r\nMain App: area_mapping_app.py\r\nBlueprint: auth_blueprint.py\r\nRoute: /login\r\nContext: Federal grant application requires secure user authentication with photo verification\r\nJavaScript Orchestrator: login-handler.js\r\nCSS Dependencies: login.css\r\nVersion History:\r\n2025-07-04 v1.1 - Added 2FA photo upload functionality for grant compliance\r\n2025-07-01 v1.0 - Initial creation\r\n-->\r\nCHANGE LOG TEMPLATE FOR PYTHON FILES\r\n# CHANGE LOG\r\n# File: /routes/auth_blueprint.py\r\n# Document Type: Flask Blueprint\r\n# Purpose: Authentication routes for login/register with 2FA photo verification\r\n# Main App: area_mapping_app.py\r\n# Blueprint: auth_blueprint.py (this file)\r\n# Routes: /login, /register, /logout\r\n# Context: Secure authentication system for area mapping to support federal grant applications\r\n# Dependencies: flask, bcrypt, mysql.connector, utils.image_processing\r\n# Related Templates: login.html, register.html\r\n# Version History:\r\n# 2025-07-04 v1.1 - Added photo hash verification for enhanced security\r\n# 2025-07-01 v1.0 - Initial creation\r"
+}

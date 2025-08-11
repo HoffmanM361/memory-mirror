@@ -1,0 +1,11 @@
+{
+  "id": "ee74e366-260d-4c18-9b2a-25e55e31f141",
+  "chunk_ix": 6,
+  "created_at": "2025-08-11T11:30:49",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": " AVOID\r\nDON'T ADD: Icons, progress bars, loading spinners, animations\r\nDON'T ADD: Copy buttons, tooltips, help modals, pretty styling\r\nDON'T ADD: Extra validation, auto-complete, suggestions\r\nDON'T ADD: Gradients, shadows, hover effects, decorative elements\r\nDON'T ADD: Auto-save, draft functionality, convenience features\r\nDON'T ADD: Notifications, alerts, status indicators\r\nDON'T ADD: Settings, preferences, customization options\r\nDON'T ADD: Search, filtering, sorting unless specifically requested\r\nSIMPLE EXAMPLES TO FOLLOW\r\nDO: Basic forms with submit buttons\r\nDO: Plain text messages and responses\r\nDO: Standard HTML inputs and elements\r\nDO: Minimal CSS for layout and readability only\r\nDO: Console logging for debugging purposes\r\nDO: Simple success/failure responses\r\nFINAL CHECKLIST FOR EVERY FILE\r\nChange log at top with complete information\r\nFile follows naming convention\r\nAll functions have error handling\r\nAll database connections properly closed\r\nDebug messages for success and error cases\r\nFile under 300 lines (MANDATORY)\r\nNO extra features added\r\nOnly implements what was requested\r\nVisible change log (no hidden formatting)\r\nPython code avoids classes and deep nesting\r\nUses early return pattern for cleaner code\r\nPROJECT REFERENCE GENERATOR SCRIPT\r\nPURPOSE\r\nStandalone Python script for any project root\r\nRecursively scans all files and extracts callable items\r\nGenerates text file for AI assistant context\r\nPrevents hours of debugging from mismatched endpoint names\r\nShows inconsistencies with filename and line numbers\r\nWHAT IT EXTRACTS\r\nPython Routes: @app.route and @blueprint.route decorators with methods\r\nPython Functions: All def statements that could be imported or called\r\nJavaScript Functions: function declarations and const/let function assignments\r\nAJAX Calls: fetch() and XMLHttpRequest endpoints\r\nFile Locations: Filename and line number for each item (grep-style)\r\nOUTPUT FORMAT EXAMPLE\r\n=== PYTHON ROUTES ===\r\n/routes/auth_blueprint.py:23: @blueprint.route('/log"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "f93f21ea-729f-4e8e-9010-8382957b6b2f",
+  "chunk_ix": 3,
+  "created_at": "2025-08-11T09:39:48",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "ew asset). Track:\r\n- Meetings booked per 10 outreaches\r\n- Gifts delivered → % that schedule review calls\r\n- Pilots started → % converting to paid\r\n- Referral-originated leads\r\nCRM &amp; Data Ops (High-Level)\r\nPhase 1: export current schema; Phase 2: add staging tables; Phase 3: upsert scripts for\r\nagencies and contacts; Phase 4: source tags (thread, partner, geography), propagation\r\nsource field, and meeting notes templates.\r\nRisks &amp; Mitigations\r\n- Channel dependence (church vendors): mitigate by onboarding 2–3 vendors per state.\r\n- PHA cycle time: focus on mid-sized agencies, maintain a pipeline of 20–30 active leads.\r\n- Mapping adoption: keep the gift frictionless; provide guided sessions and fast support.\r\nAppendix A – Gift Templates (Outlines)\r\nA1: Refuge Church Grant Brief – program list, budget template, install scope, CTA.\r\nA2: PHA Cash Flow Without Debt – fee math example, non‑recourse note, optional profit\r\nshare, authority contacts.\r\nA3: Mapping Gift – access instructions, 10‑parcel limit, export list, pilot CTA.\r\nAppendix B – Call Scripts (Bulleted)\r\nRefuge Vendors: lead with grant-funded upgrade; ask to attach brief to next proposal; book\r\n20‑min technical follow‑up.\r\nPHAs: open with dev‑fee number; confirm bond familiarity; offer term‑sheet walkthrough;\r\nschedule board brief.\r\nTraceability: invite to map 1 parcel; deliver report; propose pilot scope with success\r\nmetrics.\r\n\r\nAppendix C – CRM Data Fields (Minimum Set)\r\nOrganization type; Thread tag; Geography; Contact name/title/email/phone; Gift delivered\r\n(Y/N/Date); Next step; Source/referrer; Notes."
+}

@@ -1,0 +1,11 @@
+{
+  "id": "0ada724e-41a1-4125-820b-ff3781fad948",
+  "chunk_ix": 0,
+  "created_at": "2025-08-11T10:22:22",
+  "source": "web",
+  "tags": [
+    "memory",
+    "system"
+  ],
+  "content": "TITLE: Claude API Memory System Access Instructions\n\nClaude API Memory System Access Instructions\r\nProblem in one sentence\r\nChatGPT still can’t browse my memory via the IP or custom headers, so we added clean\r\nHTTPS endpoints that return plain HTML pages with embedded JSON (and simple query-\r\nkey auth) at api.nsgia.com. You (Claude) can already reach them reliably. Please use the\r\nsteps below.\r\n0) Rules you must follow\r\n- Use HTTPS domain, not IP: always https://api.nsgia.com, never http://104.191…\r\n- No custom headers needed. Auth is a simple query parameter: key=public-read-2025.\r\n- Two endpoints you will use now:\r\n1) /mem/search → find items (returns an HTML page that contains a JSON payload block).\r\n2) /mem/get → open a specific item by id (also an HTML page with a JSON payload block).\r\n1) Health check (sanity)\r\nOpen:\r\nhttps://api.nsgia.com/health\r\nExpect: JSON like {&quot;status&quot;:&quot;healthy&quot;,...}. If not healthy, stop and report.\r\n2) Search for items (example: “memory”)\r\nOpen:\r\nhttps://api.nsgia.com/mem/search?keyword=memory&amp;limit=5&amp;key=public-read-2025\r\nExpect: HTML page titled &#39;Search results&#39;. Inside is a &lt;script id=&quot;memory_payload&quot;\r\ntype=&quot;application/json&quot;&gt; block with JSON data.\r\nExtract &#39;id&#39; values for step 3.\r\n3) Open one item by ID\r\nUse:\r\nhttps://api.nsgia.com/mem/get?id=PUT-ID-HERE&amp;key=public-read-2025\r\nExpect: HTML page titled &#39;Entry&#39;. Inside, JSON block with &#39;content&#39; field.\r\n4) Specific info requests (e.g., 10 Southeast PHA addresses)\r\n1) Run targeted search:\r\nhttps://api.nsgia.com/mem/search?keyword=PHA&amp;limit=10&amp;key=public-read-2025\r\n2) Open items with /mem/get?id=... and read &#39;content&#39;.\r\n3) Extract info as needed.\r\n5) Common errors\r\n- 401/403: Ensure key=public-read-2025 is present.\r\n- 404: Check path is exactly /mem/search or /mem/get.\r\n- HTML but &#39;no data&#39;: Parse &lt;script id=&#39;memory_payload&#39; ...&gt;.\r\n\r\n- Can&#39;t reach domain: Tr"
+}

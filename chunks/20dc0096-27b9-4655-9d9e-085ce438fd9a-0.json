@@ -1,0 +1,11 @@
+{
+  "id": "20dc0096-27b9-4655-9d9e-085ce438fd9a",
+  "chunk_ix": 0,
+  "created_at": "2025-08-11T10:05:04",
+  "source": "web",
+  "tags": [
+    "memory",
+    "system"
+  ],
+  "content": "TITLE: Cross-Assistant Persistent Memory System – Expanded Design\n\nCross-Assistant Persistent Memory System – Expanded Design\r\nThis document expands on the original persistent memory concept to support multiple AI\r\nassistants (e.g., OpenAI&#39;s ChatGPT, Anthropic&#39;s Claude, Meta&#39;s LLaMA, Mistral) with a\r\nshared, external memory architecture. The design allows assistants to exchange\r\ninformation indirectly via a neutral memory store, enabling &#39;cross-talk&#39; while preserving\r\nsecurity and control.\r\n1. Core Principles\r\n1. Model-Agnostic Memory: The persistent memory store is completely external and does\r\nnot rely on the internal capabilities of any one assistant. Any assistant with API or text I/O\r\ncan interact with it.\r\n2. Controlled Access: All read/write operations pass through an authentication layer to\r\nensure only approved models or operators can interact with the store.\r\n3. Human Ownership: The operator (you) retains physical and legal control over the storage\r\ndevice or server hosting the memory.\r\n2. Technical Structure\r\nThe architecture consists of:\r\n- **Storage Layer**: Local or cloud storage (e.g., static IP Linux server, NAS, encrypted\r\ndrive).\r\n- **API Layer**: A Flask + Nginx REST API for memory read/write.\r\n- **Index Layer**: SQLite/FAISS database indexing entries by date, topic, assistant source,\r\nand confidence rating.\r\n- **Interface Layer**: Simple endpoints (`/write`, `/read`, `/search`) accessible to any\r\nassistant.\r\n- **Security Layer**: API key + optional private key signature.\r\n3. Data Flow\r\n1. Assistant generates output you want to keep.\r\n2. Output is sent via API to the memory store with metadata.\r\n3. Memory store indexes and saves both raw text and embeddings.\r\n4. On retrieval, assistant queries the store for relevant entries.\r\n5. Retrieved content is injected into the assistant&#39;s active context.\r\n4. Cross-Model Interaction\r\nThis design enables one assistant to retrieve and extend work from another:\r\n- Claude writes a detaile"
+}

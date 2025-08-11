@@ -1,0 +1,11 @@
+{
+  "id": "f93f21ea-729f-4e8e-9010-8382957b6b2f",
+  "chunk_ix": 2,
+  "created_at": "2025-08-11T09:39:48",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "ames to Confirm/Enrich in CRM)\r\nAlabama: Huntsville HA; Tuscaloosa HA; Anniston HA; Phenix City HA; Montgomery HA;\r\nDecatur HA; Mobile HA.\r\nGeorgia: Housing Authority of Columbus; Augusta Housing Authority; Macon‑Bibb County\r\nHA; Savannah HA.\r\nMississippi: Hattiesburg HA; Gulfport HA; Biloxi HA; South Mississippi HA (regional).*\r\nFlorida (North/Central): Tallahassee HA; Gainesville HA; Pensacola HA.\r\nSouth Carolina: Housing Authority of Florence; Greenville HA; Spartanburg HA; Rock Hill\r\nHA.\r\nNorth Carolina: Asheville HA; Fayetteville Metropolitan HA; Wilmington HA; Greensboro\r\nHA; Winston‑Salem HA; Durham HA.\r\n*Regional entities to be confirmed for scope and authority.\r\nNext step: pull contacts (ED/CFO), unit/voucher counts, and latest score bands; load into\r\nCRM staging, then upsert to production.\r\nFunnel 3 – Traceability &amp; Mapping (Compliance &amp; Broad Utility)\r\nContext\r\nAffordable, field‑first mapping/reporting with exports (GeoJSON, KML, Shapefile, photos)\r\nand a shareable Map Area Report. Useful to co‑ops, exporters, miners, real estate, and\r\nland‑use users.\r\nGift\r\nFree access for the first 10 mapped parcels per organization (online version now; offline\r\nroadmap staged).\r\nFunnel Stages\r\n1) Gift access page → 2) Self‑serve mapping or guided session → 3) Report delivery\r\n(shareable) → 4) Subscription/pilot upsell → 5) Region packs/API (enterprise).\r\nPropagation Trigger\r\nEvery report carries your brand; when shared to a buyer or colleague, it generates inbound\r\nleads.\r\nCollateral\r\n- Gift Landing copy\r\n- Onboarding email\r\n- Sample report links\r\n- Pilot SOW template\r\nPartner Playbooks (One‑Pager per Thread)\r\n\r\n- Refuge Churches: who to target, 3‑minute pitch, grant brief attachment, propagation ask.\r\n- PHAs: developer‑fee math, non‑recourse note, sample term sheet, CTA for 30‑minute\r\nreview.\r\n- Traceability: mapping gift steps, export list, pilot success metrics, referral loop.\r\nOutreach Cadence &amp; KPIs\r\nMonthly partner nudges (brief win, grant deadline, n"
+}

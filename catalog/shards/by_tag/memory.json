@@ -1,7 +1,158 @@
 {
   "version": "1",
-  "generated_at": "2025-08-11T07:07:23.898799Z",
+  "generated_at": "2025-08-11T20:47:47.120977Z",
   "items": [
+    {
+      "id": "1cf300e4-1d42-45d7-a048-911f64785f6a",
+      "created_at": "2025-08-11T15:37:11",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "breakthrough",
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-0.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-1.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-2.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-3.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-4.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-5.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-6.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-7.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-8.json?key=8bba14962f9f2318",
+        "chunks/1cf300e4-1d42-45d7-a048-911f64785f6a-9.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: v1 interface memory system interface templates\n\ncat conversation_detail.html index.html base.html payload.html save_conversation.html view_conversations.html\r\n<!-- CHANGE LOG -->\r\n<!-- File: /var/www/memory_system/templates/conversat..."
+    },
+    {
+      "id": "9f77ab9c-d4db-4acb-bef7-520eb884c972",
+      "created_at": "2025-08-11T12:28:23",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/9f77ab9c-d4db-4acb-bef7-520eb884c972-0.json?key=8bba14962f9f2318",
+        "chunks/9f77ab9c-d4db-4acb-bef7-520eb884c972-1.json?key=8bba14962f9f2318",
+        "chunks/9f77ab9c-d4db-4acb-bef7-520eb884c972-2.json?key=8bba14962f9f2318",
+        "chunks/9f77ab9c-d4db-4acb-bef7-520eb884c972-3.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: 20250811  CRM System Documentation for Future Claude Interactions 20250811\n\n# CRM System Documentation for Future Claude Interactions\r\n\r\n## Overview\r\nNorth Star Group uses a custom MariaDB-based CRM system in the \"modular\" database. ..."
+    },
+    {
+      "id": "16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5",
+      "created_at": "2025-08-11T11:50:16",
+      "source": "web",
+      "title": "PROVISIONAL PATENT APPLICATION",
+      "tags": [
+        "memory",
+        "system"
+      ],
+      "summary": "PROVISIONAL PATENT APPLICATION",
+      "chunk_urls": [
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-0.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-1.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-2.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-3.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-4.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-5.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-6.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-7.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-8.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-9.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-10.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-11.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-12.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-13.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-14.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-15.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-16.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-17.json?key=8bba14962f9f2318",
+        "chunks/16de8dc9-3d0b-4bc4-a14a-3c1067e88fe5-18.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: pew PROVISIONAL PATENT APPLICATION Convertible Seating Unit with Repositionable Backrest for Sleeping Surface Formation TECHNICAL DRAWINGS\n\nPROVISIONAL PATENT APPLICATION\r\nConvertible Seating Unit with Repositionable Backrest for Sle..."
+    },
+    {
+      "id": "c69bf4c8-51ed-4de1-b181-7b4ee64645be",
+      "created_at": "2025-08-11T11:18:15",
+      "source": "web",
+      "title": "# Claude Persistent Memory System Instructions",
+      "tags": [
+        "memory",
+        "system"
+      ],
+      "summary": "# Claude Persistent Memory System Instructions",
+      "chunk_urls": [
+        "chunks/c69bf4c8-51ed-4de1-b181-7b4ee64645be-0.json?key=8bba14962f9f2318",
+        "chunks/c69bf4c8-51ed-4de1-b181-7b4ee64645be-1.json?key=8bba14962f9f2318",
+        "chunks/c69bf4c8-51ed-4de1-b181-7b4ee64645be-2.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: # Claude Persistent Memory System Instructions\n\n# Claude Persistent Memory System Instructions\r\n\r\n## Overview\r\nThis persistent memory system allows Claude to store, search, and retrieve information across conversations. Unlike standa..."
+    },
+    {
+      "id": "6b121b08-b4f0-48d2-94a1-9b12dedcc431",
+      "created_at": "2025-08-11T11:15:47",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-0.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-1.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-2.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-3.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-4.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-5.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-6.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-7.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-8.json?key=8bba14962f9f2318",
+        "chunks/6b121b08-b4f0-48d2-94a1-9b12dedcc431-9.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: PHA emails first one\n\nRetryMHNow because you are a super duper super smart artificial intelligence assistant can you make each of the 10 letters their emails right so each each one would have a email address each individualized lette..."
+    },
+    {
+      "id": "0ada724e-41a1-4125-820b-ff3781fad948",
+      "created_at": "2025-08-11T10:22:22",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/0ada724e-41a1-4125-820b-ff3781fad948-0.json?key=8bba14962f9f2318",
+        "chunks/0ada724e-41a1-4125-820b-ff3781fad948-1.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Claude API Memory System Access Instructions\n\nClaude API Memory System Access Instructions\r\nProblem in one sentence\r\nChatGPT still can’t browse my memory via the IP or custom headers, so we added clean\r\nHTTPS endpoints that return pl..."
+    },
+    {
+      "id": "20dc0096-27b9-4655-9d9e-085ce438fd9a",
+      "created_at": "2025-08-11T10:05:04",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/20dc0096-27b9-4655-9d9e-085ce438fd9a-0.json?key=8bba14962f9f2318",
+        "chunks/20dc0096-27b9-4655-9d9e-085ce438fd9a-1.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Cross-Assistant Persistent Memory System – Expanded Design\n\nCross-Assistant Persistent Memory System – Expanded Design\r\nThis document expands on the original persistent memory concept to support multiple AI\r\nassistants (e.g., OpenAI&..."
+    },
     {
       "id": "6a08b105-c741-4bf2-8ed4-3fa7948d2904",
       "created_at": "2025-08-11T00:46:21",
