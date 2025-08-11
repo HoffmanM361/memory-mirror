@@ -7,11 +7,11 @@
     "memory": [
       "catalog/shards/by_tag/memory.json?key=8bba14962f9f2318"
     ],
-    "historic": [
-      "catalog/shards/by_tag/historic.json?key=8bba14962f9f2318"
-    ],
     "breakthrough": [
       "catalog/shards/by_tag/breakthrough.json?key=8bba14962f9f2318"
+    ],
+    "historic": [
+      "catalog/shards/by_tag/historic.json?key=8bba14962f9f2318"
     ]
   },
   "security": "token_parameter",
