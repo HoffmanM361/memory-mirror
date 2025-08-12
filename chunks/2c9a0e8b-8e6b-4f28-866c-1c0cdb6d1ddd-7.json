@@ -1,0 +1,11 @@
+{
+  "id": "2c9a0e8b-8e6b-4f28-866c-1c0cdb6d1ddd",
+  "chunk_ix": 7,
+  "created_at": "2025-08-11T22:06:27",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "\n  [34] LOMAs\r\n  [22] Political Jurisdictions\r\n  [17] Profile Baselines\r\n  [20] Water Lines\r\n  [14] Cross-Sections\r\n  [16] Base Flood Elevations\r\n       ^ This layer might contain flood data\r\n  [23] Levees\r\n  [29] Seclusion Boundaries\r\n  [15] Coastal Transects\r\n  [18] Transect Baselines\r\n  [24] General Structures\r\n  [ 7] River Mile Markers\r\n  [32] Water Areas\r\n  [ 5] PLSS\r\n  [19] Limit of Moderate Wave Action\r\n  [27] Flood Hazard Boundaries\r\n       ^ This layer might contain flood data\r\n  [28] Flood Hazard Zones\r\n       ^ This layer might contain flood data\r\n  [25] Primary Frontal Dunes\r\n  [ 4] Base Index\r\n  [ 6] Topographic Low Confidence Areas\r\n  [ 8] Datum Conversion Points\r\n  [ 9] Coastal Gages\r\n  [10] Gages\r\n  [11] Nodes\r\n  [12] High Water Marks\r\n  [13] Station Start Points\r\n  [26] Hydrologic Reaches\r\n  [30] Alluvial Fans\r\n  [31] Subbasins\r\n\r\n=== Starting parcel flood analysis ===\r\nLoading parcels...\r\nFound 2 parcels\r\nQuery bbox: (np.float64(-89.27322821774774), np.float64(31.316457816560117), np.float64(-89.25838465326433), np.float64(31.330979642442326))\r\nFetching flood polygons...\r\nUsing detailed local DFIRM data: Forrest_fldhaz.zip\r\nLoading detailed flood data from Forrest_fldhaz.zip\r\nFound shapefiles: ['Forrest_fldhaz.shp']\r\n\r\nProcessing Forrest_fldhaz.shp:\r\n  Original CRS: EPSG:2254\r\n  Features: 932\r\n  Columns: ['FLD_AR_ID', 'FLD_ZONE', 'FLOODWAY', 'SFHA_TF', 'STATIC_BFE', 'V_DATUM', 'DEPTH', 'LEN_UNIT', 'VELOCITY', 'VEL_UNIT', 'AR_REVERT', 'BFE_REVERT', 'DEP_REVERT', 'SOURCE_CIT', 'geometry']\r\n  Features in AOI: 7\r\n  FLD_ZONE: ['X', '0.2 PCT ANNUAL CHANCE FLOOD HAZARD', 'AE', 'X PROTECTED BY LEVEE']\r\n  FLOODWAY: ['FLOODWAY']\r\n\r\nCombined flood data:\r\n  Total features: 7\r\n  All columns: ['FLD_AR_ID', 'FLD_ZONE', 'FLOODWAY', 'SFHA_TF', 'STATIC_BFE', 'V_DATUM', 'DEPTH', 'LEN_UNIT', 'VELOCITY', 'VEL_UNIT', 'AR_REVERT', 'BFE_REVERT', 'DEP_REVERT', 'SOURCE_CIT', 'geometry']\r\n  FLD_AR_ID: ['377', '507', '684', '745', '902', '914', '924']\r\n  FLD_ZONE: ['X', '0.2 "
+}

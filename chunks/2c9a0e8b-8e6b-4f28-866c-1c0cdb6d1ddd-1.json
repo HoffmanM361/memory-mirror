@@ -1,0 +1,11 @@
+{
+  "id": "2c9a0e8b-8e6b-4f28-866c-1c0cdb6d1ddd",
+  "chunk_ix": 1,
+  "created_at": "2025-08-11T22:06:27",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": " with municipal staff, reserving the right to refine buildable areas based on subsequent detailed engineering analysis.\r\n\r\n1. Methodology\r\n1.1 Data Sources\r\nPrimary Source: Mississippi Automated Resource Information System (MARIS) DFIRM flood hazard shapefiles\r\nFIRM Panel Details: DFIRM panels 28035C0229E and 28035C0233E (effective date: 2011)\r\nSecondary Sources: FEMA National Flood Hazard Layer (NFHL) web services\r\nParcel Data: Forrest County parcel boundaries (PPINs 26700 & 26786)\r\nRegulatory Research: 44 CFR §60.3, Mississippi Administrative Code Title 33 Part 208, Hattiesburg Code Chapter 4 Articles III §4-26 through §4-35\r\n1.2 Technical Analysis\r\nWe developed a Python-based GIS analysis script that:\r\n\r\nLoads detailed DFIRM flood hazard data from MARIS\r\nPerforms precise geometric intersection analysis between parcels and flood zones\r\nGenerates accurate flood zone maps matching official FEMA cartography\r\nAutomates regulatory compliance assessment\r\nKey Finding: Both target parcels (26700 & 26786) intersect Zone AE flood areas and designated floodways.\r\n\r\n2. Regulatory Framework Analysis\r\n2.1 Federal Regulations - 44 CFR 60.3(d)(3)\r\nPrimary Authority: Code of Federal Regulations, Title 44, Section 60.3(d)(3)\r\n\r\nThe regulation states that communities must require demonstration that proposed development will not increase the water surface elevation of the base flood more than one foot at any point within the community.\r\n\r\nFloodway Provision: In FEMA-defined floodways, 44 CFR 60.3(d)(3) requires that proposed projects prove no-rise or 0.00-feet increase in the Base Flood Elevation (BFE).\r\n\r\n2.2 Mississippi State Regulations\r\nAuthority: Mississippi Administrative Code, Title 33, Part 208 - Flood Damage Prevention Regulation\r\n\r\nRegulatory Floodway Definition: \"The channel of a river or other watercourse and the adjacent land areas that must be reserved in order to discharge the base flood without cumulatively increasing the water surface elevation more than one foot.\"\r\n"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "2c9a0e8b-8e6b-4f28-866c-1c0cdb6d1ddd",
+  "chunk_ix": 6,
+  "created_at": "2025-08-11T22:06:27",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "on based on detailed engineering analysis\r\nEngineering Analysis Required For:\r\n\r\nDetermining actual percentage of buildable area\r\nIdentifying optimal development locations within parcels\r\nConfirming no-rise certification feasibility\r\nEstablishing precise elevation requirements\r\nValidating construction methodology\r\n\r\n8 Diplomatic Municipal Engagement Strategy\r\nCooperative Approach:\r\n\r\nAcknowledge city staff expertise and preliminary assessments\r\nExpress willingness to work within municipal guidelines\r\nFrame engineering analysis as verification rather than challenge to city estimates\r\nPosition detailed surveys as standard due diligence for responsible development\r\nKey Messaging:\r\n\r\n\"We appreciate the city's preliminary guidance on buildable areas\"\r\n\"Our engineering analysis will verify and refine these estimates\"\r\n\"We're committed to compliant development that meets all regulatory requirements\"\r\n\"Professional surveying will help us optimize design within actual site constraints\"\r\nPolitical Positioning:\r\n\r\nAvoid adversarial stance on buildability estimates\r\nMake engineering verification seem routine and cooperative\r\nAllow city staff to save face if engineering reveals different buildable areas\r\nPresent surveys as partnership to achieve mutual compliance goals\r\n8.4 Timeline and Cost Considerations\r\nKey Principle: Treat all buildability estimates as preliminary until confirmed by professional engineering analysis. The regulatory framework permits development, but the extent and configuration must be determined through site-specific engineering.\r\n\r\nTechnical Methodology: Python/GIS analysis of MARIS DFIRM data\r\nRegulatory Research: Federal CFR, Mississippi Administrative Code, Municipal Ordinances\r\n\r\nRicky is a python person, here is a snippet of the python file I  used. If you want the entire python file, please let me know\r\npython3 overlay_map.py\r\n\r\n=== Exploring all available FEMA layers ===\r\nFound 32 layers:\r\n  [ 0] NFHL Availability\r\n  [ 3] FIRM Panels\r\n  [ 1] LOMRs\r"
+}

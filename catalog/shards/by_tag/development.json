@@ -1,7 +1,233 @@
 {
   "version": "1",
-  "generated_at": "2025-08-12T01:26:51.004460Z",
+  "generated_at": "2025-08-12T15:57:25.109965Z",
   "items": [
+    {
+      "id": "085c9632-6ce2-437f-8bbb-eff4caa24aa9",
+      "created_at": "2025-08-12T03:31:29",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/085c9632-6ce2-437f-8bbb-eff4caa24aa9-0.json?key=8bba14962f9f2318",
+        "chunks/085c9632-6ce2-437f-8bbb-eff4caa24aa9-1.json?key=8bba14962f9f2318",
+        "chunks/085c9632-6ce2-437f-8bbb-eff4caa24aa9-2.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Floodway Development – Pre-Engineering Support Pro...\n\nFloodway Development – Pre-Engineering Support Proposal\r\nGoal\r\nYou intend to obtain a building permit for development on your property at Hattiesburg, MS (PPIN: 26700, approx. 3 ..."
+    },
+    {
+      "id": "7c82927a-a515-461f-86b8-66ea7ca93d38",
+      "created_at": "2025-08-12T03:05:14",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/7c82927a-a515-461f-86b8-66ea7ca93d38-0.json?key=8bba14962f9f2318",
+        "chunks/7c82927a-a515-461f-86b8-66ea7ca93d38-1.json?key=8bba14962f9f2318",
+        "chunks/7c82927a-a515-461f-86b8-66ea7ca93d38-2.json?key=8bba14962f9f2318",
+        "chunks/7c82927a-a515-461f-86b8-66ea7ca93d38-3.json?key=8bba14962f9f2318",
+        "chunks/7c82927a-a515-461f-86b8-66ea7ca93d38-4.json?key=8bba14962f9f2318",
+        "chunks/7c82927a-a515-461f-86b8-66ea7ca93d38-5.json?key=8bba14962f9f2318",
+        "chunks/7c82927a-a515-461f-86b8-66ea7ca93d38-6.json?key=8bba14962f9f2318",
+        "chunks/7c82927a-a515-461f-86b8-66ea7ca93d38-7.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Pre-Development & Website Launch Plan\r A strategic...\n\nPre-Development & Website Launch Plan\r\nA strategic 5-phase roadmap for validating unit mix concepts, securing stakeholder buy-in, and launching an institutional-grade website to ..."
+    },
+    {
+      "id": "65381e10-e094-48f7-afa4-a603ab571cd5",
+      "created_at": "2025-08-12T02:08:11",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/65381e10-e094-48f7-afa4-a603ab571cd5-0.json?key=8bba14962f9f2318",
+        "chunks/65381e10-e094-48f7-afa4-a603ab571cd5-1.json?key=8bba14962f9f2318",
+        "chunks/65381e10-e094-48f7-afa4-a603ab571cd5-2.json?key=8bba14962f9f2318",
+        "chunks/65381e10-e094-48f7-afa4-a603ab571cd5-3.json?key=8bba14962f9f2318",
+        "chunks/65381e10-e094-48f7-afa4-a603ab571cd5-4.json?key=8bba14962f9f2318",
+        "chunks/65381e10-e094-48f7-afa4-a603ab571cd5-5.json?key=8bba14962f9f2318",
+        "chunks/65381e10-e094-48f7-afa4-a603ab571cd5-6.json?key=8bba14962f9f2318",
+        "chunks/65381e10-e094-48f7-afa4-a603ab571cd5-7.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: # Eagles Flock to Woodstock Development Support Pr...\n\n# Eagles Flock to Woodstock Development Support Proposal\r\n\r\n**Project:** Eagles Flock to Woodstock  \r\n**Location:** 0 Lagoon Rd, Hattiesburg, MS (PPIN: 26700)  \r\n**Client:** Kent..."
+    },
+    {
+      "id": "92da003f-ddc8-4d4e-a4c1-56016b12d2ea",
+      "created_at": "2025-08-12T01:42:47",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "historic"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/92da003f-ddc8-4d4e-a4c1-56016b12d2ea-0.json?key=8bba14962f9f2318",
+        "chunks/92da003f-ddc8-4d4e-a4c1-56016b12d2ea-1.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Floodway Development – Pre-Engineering Feasibility &amp; Permit\n\nFloodway Development – Pre-Engineering Feasibility &amp; Permit\r\nPreparation\r\nThis document outlines the steps required to move the proposed Leaf River floodway site\r\nf..."
+    },
+    {
+      "id": "c895612a-b84c-4c04-a4ac-6cd513355af1",
+      "created_at": "2025-08-12T01:41:53",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/c895612a-b84c-4c04-a4ac-6cd513355af1-0.json?key=8bba14962f9f2318",
+        "chunks/c895612a-b84c-4c04-a4ac-6cd513355af1-1.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Hattiesburg Floodway Development Feasibility &amp; Permit Preparation\n\nFloodway Development Feasibility &amp; Permit Preparation\r\nScope of Work – Revised\r\n1. Permit Prerequisite Coordination (Required Tasks)\r\nThese are the essential ..."
+    },
+    {
+      "id": "db5b2559-e70a-42bc-8270-5689d8c42d1d",
+      "created_at": "2025-08-11T22:14:41",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "historic",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/db5b2559-e70a-42bc-8270-5689d8c42d1d-0.json?key=8bba14962f9f2318",
+        "chunks/db5b2559-e70a-42bc-8270-5689d8c42d1d-1.json?key=8bba14962f9f2318",
+        "chunks/db5b2559-e70a-42bc-8270-5689d8c42d1d-2.json?key=8bba14962f9f2318",
+        "chunks/db5b2559-e70a-42bc-8270-5689d8c42d1d-3.json?key=8bba14962f9f2318",
+        "chunks/db5b2559-e70a-42bc-8270-5689d8c42d1d-4.json?key=8bba14962f9f2318",
+        "chunks/db5b2559-e70a-42bc-8270-5689d8c42d1d-5.json?key=8bba14962f9f2318",
+        "chunks/db5b2559-e70a-42bc-8270-5689d8c42d1d-6.json?key=8bba14962f9f2318",
+        "chunks/db5b2559-e70a-42bc-8270-5689d8c42d1d-7.json?key=8bba14962f9f2318",
+        "chunks/db5b2559-e70a-42bc-8270-5689d8c42d1d-8.json?key=8bba14962f9f2318",
+        "chunks/db5b2559-e70a-42bc-8270-5689d8c42d1d-9.json?key=8bba14962f9f2318",
+        "chunks/db5b2559-e70a-42bc-8270-5689d8c42d1d-10.json?key=8bba14962f9f2318",
+        "chunks/db5b2559-e70a-42bc-8270-5689d8c42d1d-11.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Housing Shortage Crisis in Hattiesburg: The\r Case...\n\nHousing Shortage Crisis in Hattiesburg: The\r\nCase for Workforce Housing Development\r\nA White Paper on Affordable Housing Needs in Hattiesburg, Mississippi\r\n\r\nExecutive Summary\r\nBo..."
+    },
+    {
+      "id": "e1b5f5b2-cc76-4f4f-a368-bb6319fdfe71",
+      "created_at": "2025-08-11T22:12:13",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/e1b5f5b2-cc76-4f4f-a368-bb6319fdfe71-0.json?key=8bba14962f9f2318",
+        "chunks/e1b5f5b2-cc76-4f4f-a368-bb6319fdfe71-1.json?key=8bba14962f9f2318",
+        "chunks/e1b5f5b2-cc76-4f4f-a368-bb6319fdfe71-2.json?key=8bba14962f9f2318",
+        "chunks/e1b5f5b2-cc76-4f4f-a368-bb6319fdfe71-3.json?key=8bba14962f9f2318",
+        "chunks/e1b5f5b2-cc76-4f4f-a368-bb6319fdfe71-4.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Leaf River Cluster Development - SIP Panel\r Condom...\n\nLeaf River Cluster Development - SIP Panel\r\nCondominium Project\r\n\r\nPreamble\r\nThe Hattiesburg market shows robust demand for workforce and student housing, though current\r\noptions..."
+    },
+    {
+      "id": "da130a3e-f58c-44a3-8277-fe932486b66d",
+      "created_at": "2025-08-11T22:09:09",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "breakthrough",
+        "development",
+        "historic",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/da130a3e-f58c-44a3-8277-fe932486b66d-0.json?key=8bba14962f9f2318",
+        "chunks/da130a3e-f58c-44a3-8277-fe932486b66d-1.json?key=8bba14962f9f2318",
+        "chunks/da130a3e-f58c-44a3-8277-fe932486b66d-2.json?key=8bba14962f9f2318",
+        "chunks/da130a3e-f58c-44a3-8277-fe932486b66d-3.json?key=8bba14962f9f2318",
+        "chunks/da130a3e-f58c-44a3-8277-fe932486b66d-4.json?key=8bba14962f9f2318",
+        "chunks/da130a3e-f58c-44a3-8277-fe932486b66d-5.json?key=8bba14962f9f2318",
+        "chunks/da130a3e-f58c-44a3-8277-fe932486b66d-6.json?key=8bba14962f9f2318",
+        "chunks/da130a3e-f58c-44a3-8277-fe932486b66d-7.json?key=8bba14962f9f2318",
+        "chunks/da130a3e-f58c-44a3-8277-fe932486b66d-8.json?key=8bba14962f9f2318",
+        "chunks/da130a3e-f58c-44a3-8277-fe932486b66d-9.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Eagles Flock to Woodstock\r \r Executive Summary: Ea...\n\nEagles Flock to Woodstock\r\n\r\nExecutive Summary: Eagles Flock to Woodstock represents a once-in-a-generation opportunity for the City of\r\nHattiesburg, Forrest County, and the Stat..."
+    },
+    {
+      "id": "2c9a0e8b-8e6b-4f28-866c-1c0cdb6d1ddd",
+      "created_at": "2025-08-11T22:06:27",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/2c9a0e8b-8e6b-4f28-866c-1c0cdb6d1ddd-0.json?key=8bba14962f9f2318",
+        "chunks/2c9a0e8b-8e6b-4f28-866c-1c0cdb6d1ddd-1.json?key=8bba14962f9f2318",
+        "chunks/2c9a0e8b-8e6b-4f28-866c-1c0cdb6d1ddd-2.json?key=8bba14962f9f2318",
+        "chunks/2c9a0e8b-8e6b-4f28-866c-1c0cdb6d1ddd-3.json?key=8bba14962f9f2318",
+        "chunks/2c9a0e8b-8e6b-4f28-866c-1c0cdb6d1ddd-4.json?key=8bba14962f9f2318",
+        "chunks/2c9a0e8b-8e6b-4f28-866c-1c0cdb6d1ddd-5.json?key=8bba14962f9f2318",
+        "chunks/2c9a0e8b-8e6b-4f28-866c-1c0cdb6d1ddd-6.json?key=8bba14962f9f2318",
+        "chunks/2c9a0e8b-8e6b-4f28-866c-1c0cdb6d1ddd-7.json?key=8bba14962f9f2318",
+        "chunks/2c9a0e8b-8e6b-4f28-866c-1c0cdb6d1ddd-8.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Michael Hoffman <<redacted.email>>\r Sat, Jul 12,...\n\nMichael Hoffman <<redacted.email>>\r\nSat, Jul 12, 9:21 AM\r\nto Kent\r\n\r\ngood morning. I’m up and about now so, do you wanna shoot for noon central?\r\n\r\n\r\n\r\nMichael Hoffman President No..."
+    },
+    {
+      "id": "004101a6-a20e-4d35-ab49-e15ecf2b4b64",
+      "created_at": "2025-08-11T22:03:02",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/004101a6-a20e-4d35-ab49-e15ecf2b4b64-0.json?key=8bba14962f9f2318",
+        "chunks/004101a6-a20e-4d35-ab49-e15ecf2b4b64-1.json?key=8bba14962f9f2318",
+        "chunks/004101a6-a20e-4d35-ab49-e15ecf2b4b64-2.json?key=8bba14962f9f2318",
+        "chunks/004101a6-a20e-4d35-ab49-e15ecf2b4b64-3.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Michael,\r \r Thank you again for your thoughtful fo...\n\nMichael,\r\n\r\nThank you again for your thoughtful follow-up and the detailed overview of Supreme SIPs’ capabilities. After reviewing your materials, I see strong alignment between ..."
+    },
+    {
+      "id": "cfad5ba9-728d-43fa-8c65-94e0c38e4d87",
+      "created_at": "2025-08-11T21:25:54",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "historic",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/cfad5ba9-728d-43fa-8c65-94e0c38e4d87-0.json?key=8bba14962f9f2318",
+        "chunks/cfad5ba9-728d-43fa-8c65-94e0c38e4d87-1.json?key=8bba14962f9f2318",
+        "chunks/cfad5ba9-728d-43fa-8c65-94e0c38e4d87-2.json?key=8bba14962f9f2318",
+        "chunks/cfad5ba9-728d-43fa-8c65-94e0c38e4d87-3.json?key=8bba14962f9f2318",
+        "chunks/cfad5ba9-728d-43fa-8c65-94e0c38e4d87-4.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: about michael hoffman\n\nMichael Hoffman is an accomplished real estate developer, inventor, and affordable housing advocate with over three decades of experience. As founder and CEO of North Star Group, Inc., he leads initiatives to d..."
+    },
     {
       "id": "1546e931-3b09-4fed-91c6-f66dbf6e75de",
       "created_at": "2025-08-11T15:31:23",

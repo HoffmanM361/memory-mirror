@@ -1,0 +1,11 @@
+{
+  "id": "085c9632-6ce2-437f-8bbb-eff4caa24aa9",
+  "chunk_ix": 2,
+  "created_at": "2025-08-12T03:31:29",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "o HEC-RAS.\r\n3. Verify model geometry and flow conditions.\r\n4. Integrate site-specific topographic survey data.\r\n5. Create 'Existing Conditions' scenario from the FEMA model.\r\n6. Modify geometry for the 'Proposed Conditions' scenario to include the planned development.\r\n7. Run simulations for both scenarios.\r\n8. Compare results to confirm there is no increase in water surface elevation.\r\n9. Prepare outputs and documentation for review by a licensed Professional Engineer.\r\n5. What You Get From This Work\r\nUpon completion, you will receive:\r\n- The HEC-RAS model files for both existing and proposed conditions.\r\n- Summary tables showing changes (if any) in water surface elevation.\r\n- A technical memo explaining the inputs, assumptions, and results.\r\n- All data ready for submission to a licensed Professional Engineer for certification.\r\n6. Limitations of This Work\r\nThis work prepares the technical basis for a No-Rise Certification but does not replace the role of a licensed Professional Engineer. The final certification must be stamped and submitted by a PE. Also, results depend on the accuracy of FEMA model data and site survey information."
+}

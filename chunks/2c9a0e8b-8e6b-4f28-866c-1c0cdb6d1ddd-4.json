@@ -1,0 +1,11 @@
+{
+  "id": "2c9a0e8b-8e6b-4f28-866c-1c0cdb6d1ddd",
+  "chunk_ix": 4,
+  "created_at": "2025-08-11T22:06:27",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "ecent median sale price and rental data for elevated homes to quantify market demand and pricing premiums.\r\n\r\n5. Compliance Pathway\r\n5.1 Required Permits and Approvals\r\nFloodplain Development Permit - City of Hattiesburg per Code §4-28\r\nNo-Rise Certification - Professional Engineer analysis per 44 CFR §60.3(d)(3)\r\nBuilding Permits - Standard municipal approvals\r\nNFIP Compliance - Flood insurance requirements\r\nPotential USACE Section 404 Permit - Wetlands jurisdiction review (parcels abut watercourse)\r\nNEPA Compliance - Environmental review if federal permits required\r\n5.2 Engineering Deliverables\r\nHydraulic Analysis: Demonstrating zero rise in flood levels\r\nStructural Engineering: Foundation and anchoring design to BFE + 2 feet\r\nFlood-Resistant Design: ASCE 24 compliance\r\nElevation Certificates: Post-construction verification\r\nCompensatory Storage Analysis: If required by local ordinance\r\n6. Conclusions\r\n6.1 Feasibility Determination\r\nConclusion: Development is feasible under federal, state, and local regulations with proper engineering compliance.\r\n\r\nEngineering Caveat: While regulatory analysis confirms development is legally permissible, the extent of buildable area within each parcel requires detailed civil engineering analysis.\r\n\r\n6.2 Engineering Determination Required\r\nGIS Analysis Limitations: Our Python/GIS analysis accurately identifies flood zone intersections but cannot determine:\r\n\r\nPrecise floodway boundaries at the parcel level\r\nSpecific areas where \"no-rise\" is achievable\r\nBuildable vs. non-buildable portions within each parcel\r\nOptimal placement for elevated structures\r\nProfessional Survey Required: Even if preliminary estimates suggest portions may be unbuildable, the actual buildable area can only be determined through:\r\n\r\nDetailed topographic survey by licensed surveyor\r\nHydraulic modeling by professional engineer\r\nSite-specific no-rise analysis for proposed structures\r\nMicro-siting analysis for optimal development placement\r\n6.3 Municipal Estimat"
+}

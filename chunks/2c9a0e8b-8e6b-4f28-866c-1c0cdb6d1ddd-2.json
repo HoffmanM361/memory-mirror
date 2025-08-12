@@ -1,0 +1,11 @@
+{
+  "id": "2c9a0e8b-8e6b-4f28-866c-1c0cdb6d1ddd",
+  "chunk_ix": 2,
+  "created_at": "2025-08-11T22:06:27",
+  "source": "web",
+  "tags": [
+    "development",
+    "system"
+  ],
+  "content": "\r\nEngineering Requirements: \"Hydrologic and hydraulic engineering analyses means the analyses performed by a professional engineer, registered in the state of Mississippi, in accordance with standard engineering practices as accepted by FEMA, used to determine flood elevations and /or floodway boundaries.\"\r\n\r\n2.3 Hattiesburg Municipal Authority\r\nLocal Implementation: Hattiesburg Code Chapter 4, Article III, §4-26 through §4-35 implements floodplain management regulations that exceed minimum NFIP requirements\r\n\r\nFreeboard Requirement: Hattiesburg Code §4-29 specifies 2 feet above BFE in most districts (exceeding the 18-inch state guidance)\r\n\r\nCommunity Rating System: Hattiesburg is a CRS Class 7 community, providing 15% flood insurance premium reduction for property owners through enhanced floodplain management standards\r\n\r\nCompensatory Storage: Verify compliance with potential volumetric \"cut-and-fill\" balance requirements under Hattiesburg Code §4-33(d)\r\n\r\n3. Development Requirements\r\n3.1 Engineering Analysis Requirements\r\nNo-Rise Certification Required: Projects in FEMA floodways must complete a No-Rise Certificate with hydraulic report to demonstrate no rise in the BFE, or pursue the Conditional Letter of Map Revision (CLOMR) process.\r\n\r\nH&H Study Explained: H&H stands for \"Hydrologic and Hydraulic\" study. This is a computer modeling analysis that simulates how water flows through the floodway during a flood event. The study calculates whether proposed development will increase flood levels upstream or downstream. Think of it as a digital flood simulation that proves your development won't make flooding worse for neighbors.\r\n\r\nCLOMR Process Explained: A Conditional Letter of Map Revision is a formal FEMA process used when development might increase flood levels. Instead of proving \"no-rise,\" you can propose flood mitigation measures (like channel improvements) that offset any increase. FEMA reviews and pre-approves the concept before construction begins.\r\n\r\nProfe"
+}
