@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 14,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "ed\r\n\r\nfrom flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify\r\nimport mysql.connector\r\nfrom mysql.connector import Error as MySQLError\r\nimport json\r\nimport hashlib\r\nimport uuid\r\nfrom datetime import datetime\r\nimport traceback\r\nimport os\r\n\r\n# Database configuration\r\nDB_CONFIG = {\r\n    'host': 'localhost',\r\n    'database': 'memory_system', \r\n    'user': 'memory_user',\r\n    'password': 'memory_pass_2025'\r\n}\r\n\r\nLOG_PATH = \"/media/mh/2TBU/memory_system/logs/app.log\"\r\n\r\ndef write_log(message):\r\n    \"\"\"Write log message with timestamp\"\"\"\r\n    try:\r\n        timestamp = datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\")\r\n        log_entry = f\"[{timestamp}] {message}\\n\"\r\n        \r\n        # Ensure log directory exists\r\n        log_dir = os.path.dirname(LOG_PATH)\r\n        if not os.path.exists(log_dir):\r\n            os.makedirs(log_dir, exist_ok=True)\r\n            \r\n        with open(LOG_PATH, 'a') as f:\r\n            f.write(log_entry)\r\n    except Exception as e:\r\n        print(f\"Logging error: {e}\")\r\n\r\ndef get_db_connection():\r\n    \"\"\"Get database connection\"\"\"\r\n    try:\r\n        connection = mysql.connector.connect(**DB_CONFIG)\r\n        write_log(\"DEBUG: get_db_connection - Connected to MariaDB successfully\")\r\n        return connection\r\n    except mysql.connector.Error as e:\r\n        write_log(f\"ERROR: get_db_connection - Database connection failed: {e}\")\r\n        return None\r\n\r\n# Create blueprint\r\nconversation_bp = Blueprint('conversations', __name__, url_prefix='/conversations')\r\n\r\n@conversation_bp.route('/')\r\ndef index():\r\n    \"\"\"Main conversation management page\"\"\"\r\n    try:\r\n        write_log(\"DEBUG: conversations index - Loading dashboard\")\r\n        \r\n        # Get system stats\r\n        conn = get_db_connection()\r\n        if not conn:\r\n            flash('Database connection failed', 'error')\r\n            return render_template('index.html', \r\n                                 total_conversations=0,\r\n                                 recent_conv"
+}

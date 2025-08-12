@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 19,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "\r\n                             total_count=total_count)\r\n        \r\n    except Exception as e:\r\n        write_log(f\"ERROR: view_conversations - Error: {e}\")\r\n        flash('Error loading conversations', 'error')\r\n        return render_template('view_conversations.html', conversations=[])\r\n        \r\n    finally:\r\n        if cursor:\r\n            cursor.close()\r\n        if conn:\r\n            conn.close()"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 9,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "e:\r\n        write_log(f\"ERROR: get_chat - MySQL error: {e}\")\r\n        return jsonify({'error': 'Database error'}), 500\r\n    except Exception as e:\r\n        write_log(f\"ERROR: get_chat - Unexpected error: {e}\")\r\n        write_log(f\"ERROR: get_chat - Traceback: {traceback.format_exc()}\")\r\n        return jsonify({'error': 'Internal server error'}), 500\r\n    finally:\r\n        if cursor:\r\n            cursor.close()\r\n        if conn:\r\n            conn.close()\r\n        write_log(\"DEBUG: get_chat - Database connection closed\")\r\n\r\n@app.route('/', methods=['GET'])\r\ndef home():\r\n    \"\"\"Simple web interface for testing\"\"\"\r\n    html = '''\r\n    <!DOCTYPE html>\r\n    <html>\r\n    <head>\r\n        <title>Memory System - MariaDB (v1.2)</title>\r\n        <style>\r\n            body { font-family: Arial, sans-serif; margin: 40px; }\r\n            .container { max-width: 800px; margin: 0 auto; }\r\n            h1 { color: #333; }\r\n            .endpoint { background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 5px; }\r\n            .method { font-weight: bold; color: #007bff; }\r\n            code { background: #eee; padding: 2px 5px; border-radius: 3px; }\r\n            .success { color: #28a745; }\r\n            .new { color: #dc3545; font-weight: bold; }\r\n        </style>\r\n    </head>\r\n    <body>\r\n        <div class=\"container\">\r\n            <h1>Memory System API <span class=\"success\">(MariaDB v1.2)</span></h1>\r\n            <p>Simple persistent memory for AI conversations using MariaDB</p>\r\n            <p class=\"new\">NEW: Read-only access via query parameter for AI assistants!</p>\r\n            \r\n            <div class=\"endpoint\">\r\n                <span class=\"method\">GET</span> <code>/health</code><br>\r\n                Check system health and database connection (no auth required)\r\n            </div>\r\n            \r\n            <div class=\"endpoint\">\r\n                <span class=\"method\">POST</span> <code>/save</code><br>\r\n                Save a conversation. Requires Authorization header: <"
+}

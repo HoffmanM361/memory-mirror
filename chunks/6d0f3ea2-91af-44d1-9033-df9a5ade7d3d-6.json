@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 6,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "   \r\n    except MySQLError as e:\r\n        write_log(f\"ERROR: save_chat - MySQL error: {e}\")\r\n        if conn:\r\n            conn.rollback()\r\n        return jsonify({'error': 'Database error'}), 500\r\n    except Exception as e:\r\n        write_log(f\"ERROR: save_chat - Unexpected error: {e}\")\r\n        write_log(f\"ERROR: save_chat - Traceback: {traceback.format_exc()}\")\r\n        if conn:\r\n            conn.rollback()\r\n        return jsonify({'error': 'Internal server error'}), 500\r\n    finally:\r\n        if cursor:\r\n            cursor.close()\r\n        if conn:\r\n            conn.close()\r\n        write_log(\"DEBUG: save_chat - Database connection closed\")\r\n\r\n\r\n@app.route('/search', methods=['GET'])\r\ndef search_chats():\r\n    \"\"\"Search chats by keyword, date range, or source\"\"\"\r\n    conn = None\r\n    cursor = None\r\n    \r\n    try:\r\n        write_log(\"DEBUG: search_chats - Starting search\")\r\n        \r\n        # Read-only auth: allow Bearer OR ?key= for GET\r\n        if not check_read_auth():\r\n            return jsonify({'error': 'Unauthorized - Bearer token or query key required'}), 401\r\n            \r\n        # Get search parameters\r\n        keyword = request.args.get('keyword', '')\r\n        date_from = request.args.get('date_from', '')\r\n        date_to = request.args.get('date_to', '')\r\n        source = request.args.get('source', '')\r\n        limit = int(request.args.get('limit', 20))\r\n        \r\n        # Limit to reasonable number\r\n        if limit > 100:\r\n            limit = 100\r\n            \r\n        write_log(f\"DEBUG: search_chats - Search params: keyword='{keyword}', date_from='{date_from}', date_to='{date_to}', source='{source}', limit={limit}\")\r\n        \r\n        # Build query\r\n        query = \"SELECT id, created_at, source, summary, LEFT(content, 200) as preview FROM chats WHERE 1=1\"\r\n        params = []\r\n        \r\n        if keyword:\r\n            query += \" AND (content LIKE %s OR summary LIKE %s)\"\r\n            params.extend([f'%{keyword}%', f'%{keyword}%'])\r\n            \r"
+}

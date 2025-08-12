@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 5,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "         return jsonify({'error': 'Content is required'}), 400\r\n            \r\n        content = data['content']\r\n        source = data.get('source', 'unknown')\r\n        summary = data.get('summary', '')\r\n        \r\n        if not content:\r\n            write_log(\"ERROR: save_chat - Empty content\")\r\n            return jsonify({'error': 'Content cannot be empty'}), 400\r\n            \r\n        # Generate ID and hash\r\n        chat_id = generate_chat_id()\r\n        if not chat_id:\r\n            write_log(\"ERROR: save_chat - Failed to generate chat ID\")\r\n            return jsonify({'error': 'Failed to generate ID'}), 500\r\n            \r\n        content_hash = hashlib.sha256(content.encode()).hexdigest()\r\n        timestamp = datetime.now()\r\n        \r\n        # Save to database\r\n        conn = get_db_connection()\r\n        if not conn:\r\n            write_log(\"ERROR: save_chat - Failed to connect to database\")\r\n            return jsonify({'error': 'Database connection failed'}), 500\r\n            \r\n        cursor = conn.cursor()\r\n        \r\n        # Check for duplicate content\r\n        cursor.execute(\"SELECT id FROM chats WHERE content_hash = %s\", (content_hash,))\r\n        existing = cursor.fetchone()\r\n        if existing:\r\n            write_log(f\"ERROR: save_chat - Duplicate content detected: {existing[0]}\")\r\n            return jsonify({'error': 'Duplicate content', 'existing_id': existing[0]}), 409\r\n            \r\n        # Insert new chat\r\n        insert_sql = '''\r\n            INSERT INTO chats (id, created_at, source, content, summary, content_hash)\r\n            VALUES (%s, %s, %s, %s, %s, %s)\r\n        '''\r\n        cursor.execute(insert_sql, (chat_id, timestamp, source, content, summary, content_hash))\r\n        \r\n        conn.commit()\r\n        write_log(f\"DEBUG: save_chat - Chat saved successfully: {chat_id}\")\r\n        \r\n        return jsonify({\r\n            'chat_id': chat_id,\r\n            'status': 'saved',\r\n            'timestamp': timestamp.isoformat()\r\n        }), 201\r\n     "
+}

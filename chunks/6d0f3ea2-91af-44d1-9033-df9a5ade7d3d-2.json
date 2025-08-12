@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 2,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "          content LONGTEXT NOT NULL,\r\n                summary TEXT,\r\n                content_hash VARCHAR(64) UNIQUE,\r\n                INDEX idx_created_at (created_at),\r\n                INDEX idx_source (source),\r\n                INDEX idx_content_hash (content_hash)\r\n            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4\r\n        '''\r\n        \r\n        cursor.execute(create_table_sql)\r\n        conn.commit()\r\n        \r\n        write_log(\"DEBUG: init_database - Database initialized successfully\")\r\n        return True\r\n        \r\n    except MySQLError as e:\r\n        write_log(f\"ERROR: init_database - MySQL error: {e}\")\r\n        if conn:\r\n            conn.rollback()\r\n        return False\r\n    except Exception as e:\r\n        write_log(f\"ERROR: init_database - Unexpected error: {e}\")\r\n        write_log(f\"ERROR: init_database - Traceback: {traceback.format_exc()}\")\r\n        if conn:\r\n            conn.rollback()\r\n        return False\r\n    finally:\r\n        if cursor:\r\n            cursor.close()\r\n            write_log(\"DEBUG: init_database - Cursor closed\")\r\n        if conn:\r\n            conn.close()\r\n            write_log(\"DEBUG: init_database - Database connection closed\")\r\n\r\ndef check_auth():\r\n    \"\"\"Check if request has valid API token for write operations\"\"\"\r\n    try:\r\n        write_log(\"DEBUG: check_auth - Checking authorization\")\r\n        \r\n        auth_header = request.headers.get('Authorization')\r\n        if not auth_header:\r\n            write_log(\"ERROR: check_auth - No authorization header\")\r\n            return False\r\n            \r\n        if not auth_header.startswith('Bearer '):\r\n            write_log(\"ERROR: check_auth - Invalid authorization format\")\r\n            return False\r\n            \r\n        token = auth_header.split(' ')[1]\r\n        if token != API_TOKEN:\r\n            write_log(\"ERROR: check_auth - Invalid token\")\r\n            return False\r\n            \r\n        write_log(\"DEBUG: check_auth - Authorization successful\")\r\n        return True\r\n        \r\n   "
+}

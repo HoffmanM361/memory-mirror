@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 11,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "e_from, date_to, source, limit, key\r\n    \"\"\"\r\n    query_key = request.args.get('key', '')\r\n    if not (READONLY_QUERY_KEY and query_key == READONLY_QUERY_KEY):\r\n        return jsonify({'error': 'unauthorized'}), 403\r\n\r\n    keyword   = request.args.get('keyword', '').strip()\r\n    date_from = request.args.get('date_from', '').strip()\r\n    date_to   = request.args.get('date_to', '').strip()\r\n    source    = request.args.get('source', '').strip()\r\n    try:\r\n        limit = int(request.args.get('limit', 20))\r\n    except ValueError:\r\n        limit = 20\r\n    limit = min(max(limit, 1), 100)\r\n\r\n    conn = None\r\n    cur  = None\r\n    try:\r\n        conn = get_db_connection()\r\n        if not conn:\r\n            return jsonify({'error': 'db_connect_failed'}), 500\r\n\r\n        sql = \"\"\"\r\n            SELECT id, created_at, source, summary, LEFT(content, 200) AS preview\r\n            FROM chats\r\n            WHERE 1=1\r\n        \"\"\"\r\n        params = []\r\n        if keyword:\r\n            sql += \" AND (content LIKE %s OR summary LIKE %s)\"\r\n            params += [f'%{keyword}%', f'%{keyword}%']\r\n        if date_from:\r\n            sql += \" AND created_at >= %s\"\r\n            params.append(date_from)\r\n        if date_to:\r\n            sql += \" AND created_at <= %s\"\r\n            params.append(date_to)\r\n        if source:\r\n            sql += \" AND source = %s\"\r\n            params.append(source)\r\n        sql += \" ORDER BY created_at DESC LIMIT %s\"\r\n        params.append(limit)\r\n\r\n        cur = conn.cursor(dictionary=True)\r\n        cur.execute(sql, params)\r\n        rows = cur.fetchall() or []\r\n        for r in rows:\r\n            try:\r\n                r['created_at'] = r['created_at'].isoformat()\r\n            except Exception:\r\n                pass\r\n            if r.get('preview') and len(r['preview']) == 200:\r\n                r['preview'] = r['preview'] + '...'\r\n\r\n        return jsonify({'count': len(rows), 'results': rows}), 200\r\n\r\n    except MySQLError as e:\r\n        return jsonify({'error': f'data"
+}

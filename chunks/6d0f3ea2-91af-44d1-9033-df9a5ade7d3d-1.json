@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 1,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "ftime(\"%Y-%m-%d %H:%M:%S\")\r\n        log_message = f\"[{timestamp}] {message}\\n\"\r\n        \r\n        # Ensure log directory exists\r\n        log_dir = os.path.dirname(LOG_PATH)\r\n        if not os.path.exists(log_dir):\r\n            os.makedirs(log_dir, exist_ok=True)\r\n        \r\n        with open(LOG_PATH, \"a\") as f:\r\n            f.write(log_message)\r\n        \r\n        print(log_message.strip())  # Also print to console\r\n        \r\n    except Exception as e:\r\n        print(f\"ERROR: write_log failed: {e}\")\r\n\r\ndef get_db_connection():\r\n    \"\"\"Get MariaDB connection with error handling\"\"\"\r\n    conn = None\r\n    \r\n    try:\r\n        conn = mysql.connector.connect(**DB_CONFIG)\r\n        if not conn.is_connected():\r\n            write_log(\"ERROR: get_db_connection - Failed to connect to MariaDB\")\r\n            return None\r\n            \r\n        write_log(\"DEBUG: get_db_connection - Connected to MariaDB successfully\")\r\n        return conn\r\n        \r\n    except MySQLError as e:\r\n        write_log(f\"ERROR: get_db_connection - MySQL error: {e}\")\r\n        return None\r\n    except Exception as e:\r\n        write_log(f\"ERROR: get_db_connection - Unexpected error: {e}\")\r\n        return None\r\n\r\ndef init_database():\r\n    \"\"\"Initialize the database with required tables\"\"\"\r\n    conn = None\r\n    cursor = None\r\n    \r\n    try:\r\n        write_log(\"DEBUG: init_database - Starting database initialization\")\r\n        \r\n        conn = get_db_connection()\r\n        if not conn:\r\n            write_log(\"ERROR: init_database - Failed to get database connection\")\r\n            return False\r\n            \r\n        cursor = conn.cursor()\r\n        if not cursor:\r\n            write_log(\"ERROR: init_database - Failed to get cursor\")\r\n            return False\r\n        \r\n        # Create chats table\r\n        create_table_sql = '''\r\n            CREATE TABLE IF NOT EXISTS chats (\r\n                id VARCHAR(36) PRIMARY KEY,\r\n                created_at DATETIME NOT NULL,\r\n                source VARCHAR(50) NOT NULL,\r\n      "
+}

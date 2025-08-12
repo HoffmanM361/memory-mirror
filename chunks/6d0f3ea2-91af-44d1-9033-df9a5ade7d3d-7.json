@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 7,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "\n        if date_from:\r\n            query += \" AND created_at >= %s\"\r\n            params.append(date_from)\r\n            \r\n        if date_to:\r\n            query += \" AND created_at <= %s\"\r\n            params.append(date_to)\r\n            \r\n        if source:\r\n            query += \" AND source = %s\"\r\n            params.append(source)\r\n            \r\n        query += \" ORDER BY created_at DESC LIMIT %s\"\r\n        params.append(limit)\r\n        \r\n        # Execute search\r\n        conn = get_db_connection()\r\n        if not conn:\r\n            write_log(\"ERROR: search_chats - Failed to connect to database\")\r\n            return jsonify({'error': 'Database connection failed'}), 500\r\n            \r\n        cursor = conn.cursor(dictionary=True)  # Return rows as dictionaries\r\n        cursor.execute(query, params)\r\n        rows = cursor.fetchall()\r\n        \r\n        results = []\r\n        for row in rows:\r\n            results.append({\r\n                'id': row['id'],\r\n                'created_at': row['created_at'].isoformat(),\r\n                'source': row['source'],\r\n                'summary': row['summary'],\r\n                'preview': row['preview'] + '...' if len(row['preview']) == 200 else row['preview']\r\n            })\r\n            \r\n        write_log(f\"DEBUG: search_chats - Found {len(results)} results\")\r\n        \r\n        return jsonify({\r\n            'results': results,\r\n            'count': len(results),\r\n            'search_params': {\r\n                'keyword': keyword,\r\n                'date_from': date_from,\r\n                'date_to': date_to,\r\n                'source': source,\r\n                'limit': limit\r\n            }\r\n        }), 200\r\n        \r\n    except MySQLError as e:\r\n        write_log(f\"ERROR: search_chats - MySQL error: {e}\")\r\n        return jsonify({'error': 'Database error'}), 500\r\n    except Exception as e:\r\n        write_log(f\"ERROR: search_chats - Unexpected error: {e}\")\r\n        write_log(f\"ERROR: search_chats - Traceback: {traceback.format_exc("
+}

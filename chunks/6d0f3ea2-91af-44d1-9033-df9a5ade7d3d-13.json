@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 13,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "ds=['POST'])\r\ndef mem_add():\r\n    data = request.get_json()\r\n    if not data:\r\n        return \"Missing JSON data\", 400\r\n\r\n    entry_id = data.get(\"id\")\r\n    content = data.get(\"content\")\r\n    if not entry_id or not content:\r\n        return \"Missing id or content\", 400\r\n\r\n    c = db.cursor()\r\n    try:\r\n        c.execute(\r\n            \"INSERT INTO memory (id, content) VALUES (?, ?)\",\r\n            (entry_id, content)\r\n        )\r\n        db.commit()\r\n    except Exception as e:\r\n        db.rollback()\r\n        return f\"Database error: {e}\", 500\r\n    finally:\r\n        c.close()\r\n\r\n    return jsonify({\"id\": entry_id, \"content\": content}), 201\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nif __name__ == '__main__':\r\n    write_log(\"INFO: Memory System starting up (MariaDB version v1.2)\")\r\n    write_log(f\"INFO: Read-only query key: {READONLY_QUERY_KEY}\")\r\n    \r\n    # Initialize database\r\n    if not init_database():\r\n        write_log(\"CRITICAL: Failed to initialize database - exiting\")\r\n        exit(1)\r\n    \r\n    write_log(\"INFO: Database initialized successfully\")\r\n    write_log(\"INFO: Starting Flask app on http://104.191.236.122:40001\")\r\n    \r\n    # Run the app\r\n    app.run(host='<redacted.ip>', port=40001, debug=False)\r\n(memory_venv) mh@NSG:/var/www/memory_system$ cd blueprints\r\n(memory_venv) mh@NSG:/var/www/memory_system/blueprints$ ls\r\nconversation_bp.py  __init__.py\r\n(memory_venv) mh@NSG:/var/www/memory_system/blueprints$ cat conversation_bp.py\r\n# CHANGE LOG\r\n# File: /var/www/memory_system/blueprints/conversation_bp.py\r\n# Document Type: Flask Blueprint\r\n# Purpose: Human-friendly conversation management interface\r\n# Main App: memory_app.py\r\n# Routes: /conversations/, /conversations/save, /conversations/view, /conversations/detail/<id>\r\n# Context: Web interface for saving and browsing AI conversations\r\n# Dependencies: flask, mysql.connector\r\n# Version History:\r\n# 2025-08-10 v1.0 - Initial creation with save and browse functionality\r\n# 2025-08-10 v1.1 - Complete rewrite with all required functions includ"
+}

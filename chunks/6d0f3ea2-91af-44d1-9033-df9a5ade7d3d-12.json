@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 12,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "base_error: {e}'}), 500\r\n    except Exception as e:\r\n        return jsonify({'error': f'internal_error: {e}'}), 500\r\n    finally:\r\n        if cur: cur.close()\r\n        if conn: conn.close()\r\n\r\n@app.route('/mem/get', methods=['GET'])\r\ndef mem_get():\r\n    \"\"\"\r\n    ChatGPT-safe get-by-id endpoint (GET, JSON, read-only via ?key=...).\r\n    Query params: id (chat UUID), key\r\n    \"\"\"\r\n    record_id = request.args.get('id', '').strip()\r\n    query_key = request.args.get('key', '')\r\n\r\n    if not (READONLY_QUERY_KEY and query_key == READONLY_QUERY_KEY):\r\n        return jsonify({'error': 'unauthorized'}), 403\r\n    if not record_id:\r\n        return jsonify({'error': 'missing_id'}), 400\r\n\r\n    conn = None\r\n    cur  = None\r\n    try:\r\n        conn = get_db_connection()\r\n        if not conn:\r\n            return jsonify({'error': 'db_connect_failed'}), 500\r\n\r\n        sql = \"SELECT id, created_at, source, summary, content FROM chats WHERE id = %s\"\r\n        cur = conn.cursor(dictionary=True)\r\n        cur.execute(sql, (record_id,))\r\n        row = cur.fetchone()\r\n        if not row:\r\n            return jsonify({'error': 'not_found'}), 404\r\n\r\n        try:\r\n            row['created_at'] = row['created_at'].isoformat()\r\n        except Exception:\r\n            pass\r\n\r\n        return jsonify(row), 200\r\n\r\n    except MySQLError as e:\r\n        return jsonify({'error': f'database_error: {e}'}), 500\r\n    except Exception as e:\r\n        return jsonify({'error': f'internal_error: {e}'}), 500\r\n    finally:\r\n        if cur: cur.close()\r\n        if conn: conn.close()\r\n\r\n\r\n\r\n\r\n@app.route('/mem/post', methods=['POST'])\r\ndef mem_post():\r\n    key = request.args.get('key')\r\n    if key != 'public-write-2025':\r\n        return jsonify({'error': 'Invalid key'}), 403\r\n\r\n    data = request.get_json()\r\n    if not data or 'id' not in data:\r\n        return jsonify({'error': 'Invalid payload'}), 400\r\n\r\n    memory_store[data['id']] = data\r\n    return jsonify({'status': 'success'}), 201\r\n\r\n\r\n@app.route('/mem/add', metho"
+}

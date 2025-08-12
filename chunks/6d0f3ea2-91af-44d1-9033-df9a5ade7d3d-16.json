@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 16,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "ent = request.form.get('content', '').strip()\r\n        source = request.form.get('source', 'web').strip()\r\n        summary = request.form.get('summary', '').strip()\r\n        tags = request.form.get('tags', '').strip()\r\n        \r\n        # Validation\r\n        if not content:\r\n            flash('Content is required', 'error')\r\n            return render_template('save_conversation.html')\r\n        \r\n        if not title:\r\n            # Auto-generate title from first 50 characters\r\n            title = content[:50].replace('\\n', ' ').strip()\r\n            if len(content) > 50:\r\n                title += \"...\"\r\n        \r\n        # Generate ID and hash\r\n        chat_id = str(uuid.uuid4())\r\n        content_hash = hashlib.sha256(content.encode()).hexdigest()\r\n        timestamp = datetime.now()\r\n        \r\n        # Prepare metadata\r\n        metadata = {\r\n            'title': title,\r\n            'tags': [tag.strip() for tag in tags.split(',') if tag.strip()],\r\n            'saved_via': 'web_interface',\r\n            'ip_address': request.remote_addr\r\n        }\r\n        \r\n        # Save to database\r\n        conn = get_db_connection()\r\n        if not conn:\r\n            flash('Database connection failed', 'error')\r\n            return render_template('save_conversation.html')\r\n        \r\n        cursor = conn.cursor()\r\n        \r\n        # Check for duplicate content\r\n        cursor.execute(\"SELECT id FROM chats WHERE content_hash = %s\", (content_hash,))\r\n        existing = cursor.fetchone()\r\n        if existing:\r\n            flash(f'Duplicate content detected. Existing conversation ID: {existing[0]}', 'warning')\r\n            return redirect(url_for('conversations.view_conversations'))\r\n        \r\n        # Insert new chat\r\n        insert_sql = '''\r\n            INSERT INTO chats (id, created_at, source, content, summary, content_hash)\r\n            VALUES (%s, %s, %s, %s, %s, %s)\r\n        '''\r\n        \r\n        # Combine title and content for storage\r\n        full_content = f\"TITLE: {title"
+}

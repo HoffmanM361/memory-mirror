@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 8,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": ")}\")\r\n        return jsonify({'error': 'Internal server error'}), 500\r\n    finally:\r\n        if cursor:\r\n            cursor.close()\r\n        if conn:\r\n            conn.close()\r\n        write_log(\"DEBUG: search_chats - Database connection closed\")\r\n\r\n@app.route('/get/<chat_id>', methods=['GET'])\r\ndef get_chat(chat_id):\r\n    \"\"\"Get full content of a specific chat\"\"\"\r\n    conn = None\r\n    cursor = None\r\n    \r\n    try:\r\n        write_log(f\"DEBUG: get_chat - Getting chat: {chat_id}\")\r\n        \r\n        # Read-only auth: allow Bearer OR ?key= for GET\r\n        if not check_read_auth():\r\n            return jsonify({'error': 'Unauthorized - Bearer token or query key required'}), 401\r\n            \r\n        if not chat_id:\r\n            write_log(\"ERROR: get_chat - No chat ID provided\")\r\n            return jsonify({'error': 'Chat ID is required'}), 400\r\n            \r\n        # Get from database\r\n        conn = get_db_connection()\r\n        if not conn:\r\n            write_log(\"ERROR: get_chat - Failed to connect to database\")\r\n            return jsonify({'error': 'Database connection failed'}), 500\r\n            \r\n        cursor = conn.cursor(dictionary=True)\r\n        cursor.execute('''\r\n            SELECT id, created_at, source, content, summary, content_hash\r\n            FROM chats WHERE id = %s\r\n        ''', (chat_id,))\r\n        \r\n        row = cursor.fetchone()\r\n        if not row:\r\n            write_log(f\"ERROR: get_chat - Chat not found: {chat_id}\")\r\n            return jsonify({'error': 'Chat not found'}), 404\r\n            \r\n        result = {\r\n            'id': row['id'],\r\n            'created_at': row['created_at'].isoformat(),\r\n            'source': row['source'],\r\n            'content': row['content'],\r\n            'summary': row['summary'],\r\n            'content_hash': row['content_hash']\r\n        }\r\n        \r\n        write_log(f\"DEBUG: get_chat - Chat retrieved successfully: {chat_id}\")\r\n        \r\n        return jsonify(result), 200\r\n        \r\n    except MySQLError as "
+}

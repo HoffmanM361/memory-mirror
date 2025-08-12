@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 4,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "= get_db_connection()\r\n        if not conn:\r\n            write_log(\"ERROR: health_check - Cannot connect to database\")\r\n            return jsonify({'status': 'unhealthy', 'error': 'database_connection_failed'}), 500\r\n            \r\n        # Test a simple query\r\n        cursor = conn.cursor()\r\n        cursor.execute(\"SELECT COUNT(*) FROM chats\")\r\n        count = cursor.fetchone()[0]\r\n        \r\n        write_log(f\"DEBUG: health_check - Health check passed, {count} chats in database\")\r\n        \r\n        return jsonify({\r\n            'status': 'healthy',\r\n            'chat_count': count,\r\n            'database': 'MariaDB',\r\n            'timestamp': datetime.now().isoformat(),\r\n            'read_access': 'query_key_supported'\r\n        }), 200\r\n        \r\n    except MySQLError as e:\r\n        write_log(f\"ERROR: health_check - MySQL error: {e}\")\r\n        return jsonify({'status': 'unhealthy', 'error': 'database_error'}), 500\r\n    except Exception as e:\r\n        write_log(f\"ERROR: health_check - Unexpected error: {e}\")\r\n        return jsonify({'status': 'unhealthy', 'error': str(e)}), 500\r\n    finally:\r\n        if cursor:\r\n            cursor.close()\r\n        if conn:\r\n            conn.close()\r\n\r\n@app.route('/save', methods=['POST'])\r\ndef save_chat():\r\n    \"\"\"Save a chat conversation\"\"\"\r\n    conn = None\r\n    cursor = None\r\n    \r\n    try:\r\n        write_log(\"DEBUG: save_chat - Starting chat save\")\r\n        \r\n        # Check authentication (WRITE requires Bearer header)\r\n        if not check_auth():\r\n            return jsonify({'error': 'Unauthorized - Bearer token required for write operations'}), 401\r\n            \r\n        # Get JSON data\r\n        data = request.get_json()\r\n        if not data:\r\n            write_log(\"ERROR: save_chat - No JSON data provided\")\r\n            return jsonify({'error': 'No data provided'}), 400\r\n            \r\n        # Validate required fields\r\n        if 'content' not in data:\r\n            write_log(\"ERROR: save_chat - Content field missing\")\r\n   "
+}

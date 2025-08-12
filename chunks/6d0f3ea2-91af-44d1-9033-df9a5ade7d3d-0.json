@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 0,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "TITLE: memory _ app py and blueprint\n\ncat memory_app.py\r\n# CHANGE LOG\r\n# File: /var/www/memory_system/memory_app.py\r\n# Document Type: Flask Main Application\r\n# Purpose: Simple persistent memory system for AI conversations using MariaDB\r\n# Main App: memory_app.py (this file)\r\n# Routes: /health, /save, /search, /get/<chat_id>\r\n# Context: Store and retrieve AI conversations with Bearer token + read-only query auth\r\n# Database: MariaDB - memory_system database with memory_user\r\n# Dependencies: flask, mysql.connector, datetime, json, hashlib\r\n# Access: http://104.191.236.122:40001 and http://104.191.236.122/memory/\r\n# Virtual Environment: memory_venv (must be activated)\r\n# Version History:\r\n# 2025-08-10 v1.2 - Added read-only query parameter auth for AI assistants\r\n# 2025-08-09 v1.1 - Updated to use MariaDB instead of SQLite\r\n# 2025-08-09 v1.0 - Initial creation with SQLite\r\n\r\nfrom flask import Flask, request, jsonify\r\nimport mysql.connector\r\nfrom mysql.connector import Error as MySQLError\r\nimport json\r\nimport hashlib\r\nimport os\r\nfrom datetime import datetime\r\nimport traceback\r\nfrom blueprints.conversation_bp import conversation_bp\r\nfrom flask import render_template\r\n\r\n\r\napp = Flask(__name__)\r\n\r\napp.register_blueprint(conversation_bp)\r\napp.secret_key = os.getenv('SECRET_KEY', '8*Fold*Path')\r\n\r\n\r\n# Configuration - MariaDB settings\r\nDB_CONFIG = {\r\n    'host': 'localhost',\r\n    'database': 'memory_system',\r\n    'user': 'memory_user',\r\n    'password': 'memory_pass_2025'\r\n}\r\n\r\nLOG_PATH = \"/media/mh/2TBU/memory_system/logs/app.log\"\r\nAPI_TOKEN = os.getenv(\"MEMORY_API_TOKEN\", \"memory-system-2025-token\")  # Bearer for write/search auth\r\n# Read-only query-string key for GET access by tools that cannot set headers.\r\n# Example: /search?keyword=HISTORIC&key=public-read-2025\r\nREADONLY_QUERY_KEY = os.getenv(\"MEMORY_READ_KEY\", \"public-read-2025\")  # rotate regularly\r\n\r\ndef write_log(message):\r\n    \"\"\"Simple logging to file and console\"\"\"\r\n    try:\r\n        timestamp = datetime.now().str"
+}

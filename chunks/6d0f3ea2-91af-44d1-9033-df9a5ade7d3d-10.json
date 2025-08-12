@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 10,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "code>Bearer memory-system-2025-token</code><br>\r\n                JSON: <code>{\"content\": \"conversation text\", \"source\": \"claude\", \"summary\": \"optional\"}</code>\r\n            </div>\r\n            \r\n            <div class=\"endpoint\">\r\n                <span class=\"method\">GET</span> <code>/search</code><br>\r\n                Search conversations. <span class=\"new\">TWO AUTH OPTIONS:</span><br>\r\n                1. Header: <code>Authorization: Bearer memory-system-2025-token</code><br>\r\n                2. Query: <code>?keyword=text&key=public-read-2025</code><br>\r\n                Params: <code>?keyword=text&date_from=2025-08-01&source=claude&limit=20</code>\r\n            </div>\r\n            \r\n            <div class=\"endpoint\">\r\n                <span class=\"method\">GET</span> <code>/get/&lt;chat_id&gt;</code><br>\r\n                Get full conversation content. <span class=\"new\">TWO AUTH OPTIONS:</span><br>\r\n                1. Header: <code>Authorization: Bearer memory-system-2025-token</code><br>\r\n                2. Query: <code>?key=public-read-2025</code>\r\n            </div>\r\n            \r\n            <h3>Database</h3>\r\n            <p><strong>MariaDB:</strong> memory_system database on localhost</p>\r\n            \r\n            <h3>Storage</h3>\r\n            <p><strong>Logs:</strong> <code>/media/mh/2TBU/memory_system/logs/app.log</code></p>\r\n            \r\n            <h3>Authentication</h3>\r\n            <p><strong>Write operations:</strong> Bearer token required</p>\r\n            <p><strong>Read operations:</strong> Bearer token OR query key (?key=public-read-2025)</p>\r\n            \r\n            <h3>Virtual Environment</h3>\r\n            <p><strong>venv:</strong> memory_venv (must be activated)</p>\r\n        </div>\r\n    </body>\r\n    </html>\r\n    '''\r\n    return html\r\n\r\n# HTML Mirror Routes for ChatGPT Access\r\n@app.route('/mem/search', methods=['GET'])\r\ndef mem_search():\r\n    \"\"\"\r\n    ChatGPT-safe search endpoint (GET, JSON, read-only via ?key=...).\r\n    Query params: keyword, dat"
+}

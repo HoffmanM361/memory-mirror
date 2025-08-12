@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 15,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "ersations=[],\r\n                                 sources=[])\r\n        \r\n        cursor = conn.cursor(dictionary=True)\r\n        \r\n        # Total conversation count\r\n        cursor.execute(\"SELECT COUNT(*) as total FROM chats\")\r\n        total_conversations = cursor.fetchone()['total']\r\n        \r\n        # Recent conversations (last 10)\r\n        cursor.execute(\"\"\"\r\n            SELECT id, source, summary, created_at \r\n            FROM chats \r\n            ORDER BY created_at DESC \r\n            LIMIT 10\r\n        \"\"\")\r\n        recent_conversations = cursor.fetchall()\r\n        \r\n        # Sources breakdown\r\n        cursor.execute(\"\"\"\r\n            SELECT source, COUNT(*) as count \r\n            FROM chats \r\n            GROUP BY source \r\n            ORDER BY count DESC\r\n        \"\"\")\r\n        sources = cursor.fetchall()\r\n        \r\n        cursor.close()\r\n        conn.close()\r\n        \r\n        return render_template('index.html', \r\n                             total_conversations=total_conversations,\r\n                             recent_conversations=recent_conversations,\r\n                             sources=sources)\r\n                             \r\n    except Exception as e:\r\n        write_log(f\"ERROR: conversations index - {e}\")\r\n        flash(f\"Error loading dashboard: {e}\", 'error')\r\n        return render_template('index.html', \r\n                             total_conversations=0,\r\n                             recent_conversations=[],\r\n                             sources=[])\r\n\r\n@conversation_bp.route('/save', methods=['GET', 'POST'])\r\ndef save_conversation():\r\n    \"\"\"Save conversation form and handler\"\"\"\r\n    if request.method == 'GET':\r\n        return render_template('save_conversation.html')\r\n    \r\n    # Handle POST - save the conversation\r\n    conn = None\r\n    cursor = None\r\n    \r\n    try:\r\n        write_log(\"DEBUG: save_conversation - Processing web form submission\")\r\n        \r\n        # Get form data\r\n        title = request.form.get('title', '').strip()\r\n        cont"
+}

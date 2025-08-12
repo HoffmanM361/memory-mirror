@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 18,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "       \r\n        if search:\r\n            where_conditions.append(\"(content LIKE %s OR summary LIKE %s)\")\r\n            params.extend([f'%{search}%', f'%{search}%'])\r\n        \r\n        if source_filter:\r\n            where_conditions.append(\"source = %s\")\r\n            params.append(source_filter)\r\n        \r\n        where_clause = \" AND \".join(where_conditions) if where_conditions else \"1=1\"\r\n        \r\n        # Get conversations\r\n        query = f'''\r\n            SELECT id, created_at, source, summary, \r\n                   LEFT(content, 200) as preview,\r\n                   CHAR_LENGTH(content) as content_length\r\n            FROM chats \r\n            WHERE {where_clause}\r\n            ORDER BY created_at DESC \r\n            LIMIT %s OFFSET %s\r\n        '''\r\n        params.extend([per_page, offset])\r\n        \r\n        cursor.execute(query, params)\r\n        conversations = cursor.fetchall()\r\n        \r\n        # Get total count for pagination\r\n        count_query = f\"SELECT COUNT(*) as total FROM chats WHERE {where_clause}\"\r\n        cursor.execute(count_query, params[:-2])  # Exclude limit and offset\r\n        total_count = cursor.fetchone()['total']\r\n        \r\n        # Calculate pagination info\r\n        total_pages = (total_count + per_page - 1) // per_page\r\n        has_prev = page > 1\r\n        has_next = page < total_pages\r\n        \r\n        # Get unique sources for filter\r\n        cursor.execute(\"SELECT DISTINCT source FROM chats ORDER BY source\")\r\n        sources = [row['source'] for row in cursor.fetchall()]\r\n        \r\n        return render_template('view_conversations.html',\r\n                             conversations=conversations,\r\n                             search=search,\r\n                             source_filter=source_filter,\r\n                             sources=sources,\r\n                             page=page,\r\n                             total_pages=total_pages,\r\n                             has_prev=has_prev,\r\n                             has_next=has_next,"
+}

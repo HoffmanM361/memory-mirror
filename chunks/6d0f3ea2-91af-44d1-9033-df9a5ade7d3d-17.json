@@ -1,0 +1,12 @@
+{
+  "id": "6d0f3ea2-91af-44d1-9033-df9a5ade7d3d",
+  "chunk_ix": 17,
+  "created_at": "2025-08-11T19:22:13",
+  "source": "web",
+  "tags": [
+    "historic",
+    "memory",
+    "system"
+  ],
+  "content": "}\\n\\n{content}\"\r\n        \r\n        cursor.execute(insert_sql, (chat_id, timestamp, source, full_content, summary, content_hash))\r\n        conn.commit()\r\n        \r\n        write_log(f\"DEBUG: save_conversation - Web form conversation saved: {chat_id}\")\r\n        flash(f'Conversation saved successfully! ID: {chat_id}', 'success')\r\n        \r\n        return redirect(url_for('conversations.view_conversations'))\r\n        \r\n    except MySQLError as e:\r\n        write_log(f\"ERROR: save_conversation - MySQL error: {e}\")\r\n        flash('Database error occurred', 'error')\r\n        if conn:\r\n            conn.rollback()\r\n        return render_template('save_conversation.html')\r\n        \r\n    except Exception as e:\r\n        write_log(f\"ERROR: save_conversation - Unexpected error: {e}\")\r\n        write_log(f\"ERROR: save_conversation - Traceback: {traceback.format_exc()}\")\r\n        flash('An error occurred while saving', 'error')\r\n        if conn:\r\n            conn.rollback()\r\n        return render_template('save_conversation.html')\r\n        \r\n    finally:\r\n        if cursor:\r\n            cursor.close()\r\n        if conn:\r\n            conn.close()\r\n\r\n@conversation_bp.route('/view')\r\ndef view_conversations():\r\n    \"\"\"Browse saved conversations\"\"\"\r\n    conn = None\r\n    cursor = None\r\n    \r\n    try:\r\n        write_log(\"DEBUG: view_conversations - Loading conversation list\")\r\n        \r\n        # Get search parameters\r\n        search = request.args.get('search', '').strip()\r\n        source_filter = request.args.get('source', '').strip()\r\n        page = int(request.args.get('page', 1))\r\n        per_page = 20\r\n        offset = (page - 1) * per_page\r\n        \r\n        conn = get_db_connection()\r\n        if not conn:\r\n            flash('Database connection failed', 'error')\r\n            return render_template('view_conversations.html', conversations=[])\r\n        \r\n        cursor = conn.cursor(dictionary=True)\r\n        \r\n        # Build query\r\n        where_conditions = []\r\n        params = []\r\n "
+}
