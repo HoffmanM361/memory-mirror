@@ -1,11 +1,11 @@
 {
   "version": "1",
   "tokens": {
-    "system": [
-      "catalog/shards/by_tag/system.json?key=8bba14962f9f2318"
-    ],
     "development": [
       "catalog/shards/by_tag/development.json?key=8bba14962f9f2318"
+    ],
+    "system": [
+      "catalog/shards/by_tag/system.json?key=8bba14962f9f2318"
     ],
     "historic": [
       "catalog/shards/by_tag/historic.json?key=8bba14962f9f2318"
