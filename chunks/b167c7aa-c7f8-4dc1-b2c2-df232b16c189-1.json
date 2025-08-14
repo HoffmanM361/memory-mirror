@@ -1,0 +1,11 @@
+{
+  "id": "b167c7aa-c7f8-4dc1-b2c2-df232b16c189",
+  "chunk_ix": 1,
+  "created_at": "2025-08-13T11:50:24",
+  "source": "web",
+  "tags": [
+    "historic",
+    "system"
+  ],
+  "content": "ving Export: Allow selected chats to be exported with full context for legal, compliance, or reporting purposes.\r\n- Offline Search: Support for disconnected environments using a local database.\r\n\r\n4. Technical Overview\r\n- Data Storage: SQLite or lightweight MariaDB for local installs; scalable DB (PostgreSQL) for cloud deployments.\r\n- Indexing Engine: Open-source search library (e.g., Meilisearch or Elastic) for fast retrieval.\r\n- Ingestion Layer: API connectors and import parsers for each platform.\r\n- Interface: Web UI (React or Vue) and/or command-line client for power users.\r\n- Export Layer: Template-based formatters for platform-specific output.\r\n\r\n5. Roadmap\r\nPhase 1 – MVP\r\n- Manual chat file import (TXT, JSON).\r\n- Basic search and filtering.\r\n- Local storage only.\r\n\r\nPhase 2 – Platform Integrations\r\n- API connections for Slack, Discord, and Teams.\r\n- Tagging and collections.\r\n- Basic export functions.\r\n\r\nPhase 3 – Cross-Platform Push\r\n- Send retrieved chats into another platform.\r\n- Format conversion.\r\n\r\nPhase 4 – Advanced Search\r\n- Semantic search and context linking.\r\n- Thread grouping across platforms.\r\n\r\nPhase 5 – Security & Collaboration\r\n- Encrypted storage.\r\n- Role-based permissions for shared instances."
+}

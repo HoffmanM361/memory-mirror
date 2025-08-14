@@ -1,0 +1,12 @@
+{
+  "id": "597ed4e4-b4a0-4d7c-810d-d9d75c79eaa7",
+  "chunk_ix": 7,
+  "created_at": "2025-08-13T13:49:41",
+  "source": "claude",
+  "tags": [
+    "development",
+    "memory",
+    "system"
+  ],
+  "content": "**: Prevent abuse of API endpoints\r\n- **Audit Logging**: Enhanced logging for security events\r\n- **Backup Encryption**: Encrypted backup storage and rotation\r\n\r\n---\r\n\r\n## Deployment Architecture\r\n\r\n### Current Infrastructure\r\n- **Web Server**: Nginx reverse proxy with SSL/TLS termination\r\n- **Application**: Gunicorn WSGI server with multiple workers\r\n- **Database**: MariaDB with InnoDB storage engine\r\n- **Domain**: NSGIA.com with subdomain routing\r\n- **SSL**: Let's Encrypt or organizational certificates\r\n\r\n### Environment Configuration\r\n```bash\r\n# Production Environment Variables\r\nFLASK_ENV=production\r\nSECRET_KEY=8*Fold*Path\r\nDATABASE_URL=mariadb://user:pass@host/memory_system\r\nUPLOAD_DIR=/var/app/uploads\r\nMAX_UPLOAD_MB=25\r\nENABLE_AUTH=true\r\nSESSION_COOKIE_DOMAIN=.nsgia.com\r\nSESSION_COOKIE_SECURE=true\r\n```\r\n\r\n### Monitoring and Maintenance\r\n- **Logging**: Comprehensive application and access logs\r\n- **Health Checks**: Automated monitoring of database connectivity\r\n- **Backups**: Database dumps and file system backups\r\n- **Updates**: Security patches and dependency management\r\n\r\n---\r\n\r\n## Integration Capabilities\r\n\r\n### AI Platform Integration\r\nThe temporary link system enables seamless integration with:\r\n- **Claude (Anthropic)**: Context sharing via URL fetch\r\n- **ChatGPT (OpenAI)**: Conversation briefings through link sharing\r\n- **Google Gemini**: Technical documentation access\r\n- **GitHub Copilot**: Code context and technical specifications\r\n- **Custom AI Tools**: Any system with URL fetch capabilities\r\n\r\n### External System Integration\r\n- **Authentication**: Compatible with OAuth2 and SAML\r\n- **Data Export**: JSON, CSV, and custom format support\r\n- **Webhooks**: Real-time event notifications (planned)\r\n- **API Access**: RESTful endpoints for third-party applications\r\n\r\n---\r\n\r\n## Business Model and Monetization\r\n\r\n### Freemium Structure (Planned)\r\n**Free Tier:**\r\n- Limited conversation storage (e.g., 50 conversations)\r\n- Basic search functionality\r\n- Standard expo"
+}

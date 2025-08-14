@@ -1,0 +1,12 @@
+{
+  "id": "a0bee0a3-d01a-4d51-b2f9-d8155cd5aeb2",
+  "chunk_ix": 6,
+  "created_at": "2025-08-13T10:50:20",
+  "source": "claude",
+  "tags": [
+    "development",
+    "memory",
+    "system"
+  ],
+  "content": "the friction: \"Pro accounts include enhanced security\"\r\nPosition as premium feature: \"Bank-level security for your valuable data\"\r\nGrandfather existing users: Keep current photo auth users as \"Pro Security\" tier\r\nImplementation Strategy\r\npython\r\n# Modified user registration flow\r\n@auth_bp.route('/register', methods=['POST'])\r\ndef register():\r\n    email = request.form.get('email')\r\n    password = request.form.get('password')\r\n    \r\n    # Free tier: basic registration only\r\n    create_user(email, password, tier='free', auth_level='basic')\r\n    \r\n    flash('Account created! Start saving conversations now.', 'success')\r\n    return redirect(url_for('main.index'))\r\n\r\n@main_bp.route('/upgrade', methods=['POST']) \r\ndef upgrade():\r\n    # During upgrade process, require photo auth setup\r\n    if not user_has_photo_auth(user_id):\r\n        return redirect(url_for('auth.setup_photo_auth'))\r\n    \r\n    # Process Stripe payment\r\n    # Upgrade to paid tier\r\nUser Flow Benefits\r\nFree User Journey:\r\n\r\nLand on site → See value proposition\r\nQuick signup → Email/password only (like every other service)\r\nImmediate access → Start saving conversations\r\nHit 30-conversation limit → Natural upgrade prompt\r\nUpgrade decision → Now they understand the value\r\nCurrent vs. Proposed:\r\n\r\nCurrent:  Landing → Complex Photo Auth → (User drops off)\r\nProposed: Landing → Simple Signup → Use Product → See Value → Upgrade\r\nPositioning the Photo Auth\r\nFor Free Users: \"Quick start - just email and password\" For Upgraders: \"Pro security includes photo-based authentication for enhanced account protection\"\r\n\r\nThis turns the photo auth from a barrier into a premium feature that reinforces the value of paying.\r\n\r\nTechnical Implementation\r\nAdd an auth_level field to your users table:\r\n\r\nsql\r\nALTER TABLE users ADD COLUMN auth_level VARCHAR(20) DEFAULT 'basic';\r\n-- 'basic' = email/password only\r\n-- 'enhanced' = photo + email/password\r\nModify your authentication middleware:\r\n\r\npython\r\ndef login_required_for_dashboard(f):\r"
+}

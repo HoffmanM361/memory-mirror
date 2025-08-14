@@ -1,0 +1,12 @@
+{
+  "id": "a0bee0a3-d01a-4d51-b2f9-d8155cd5aeb2",
+  "chunk_ix": 7,
+  "created_at": "2025-08-13T10:50:20",
+  "source": "claude",
+  "tags": [
+    "development",
+    "memory",
+    "system"
+  ],
+  "content": "\n    @wraps(f)\r\n    def decorated_function(*args, **kwargs):\r\n        # Check basic auth for all users\r\n        is_auth, user_id = check_basic_auth()\r\n        \r\n        # For paid users accessing sensitive features, require enhanced auth\r\n        if is_paid_user(user_id) and is_sensitive_route():\r\n            enhanced_auth = check_photo_auth(user_id)\r\n            if not enhanced_auth:\r\n                return redirect(url_for('auth.photo_challenge'))\r\n        \r\n        return f(*args, **kwargs)\r\n    return decorated_function\r\nConversion Psychology\r\nCurrent Problem: Photo auth creates doubt (\"Is this legit? Why do they need my photo?\") Solution: Remove friction for evaluation, add security as premium value\r\n\r\nFree Tier Message: \"Try it risk-free\" Upgrade Message: \"Protect your valuable conversations with enhanced security\"\r\n\r\nThis approach lets users experience the value first, then choose enhanced security when they're ready to pay. Much better conversion funnel!\r\n\r\nWould you like me to help implement this tiered authentication system? ?"
+}

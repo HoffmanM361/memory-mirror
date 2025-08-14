@@ -1,0 +1,12 @@
+{
+  "id": "597ed4e4-b4a0-4d7c-810d-d9d75c79eaa7",
+  "chunk_ix": 3,
+  "created_at": "2025-08-13T13:49:41",
+  "source": "claude",
+  "tags": [
+    "development",
+    "memory",
+    "system"
+  ],
+  "content": "ction on all forms\r\n\r\n**Access Control:**\r\n- Route-level authentication decorators\r\n- API bearer token authentication\r\n- Read-only query parameters for tool access\r\n- Comprehensive audit logging\r\n\r\n**File Security:**\r\n- Upload size limits (25MB)\r\n- Extension allowlisting\r\n- MIME type validation\r\n- Content sanitization\r\n\r\n---\r\n\r\n## Current Web Interface Capabilities\r\n\r\n### Browse Interface (`memory.nsgia.com/view`)\r\n\r\n**Features:**\r\n- Search with keyword filtering\r\n- Source-based filtering (dropdown selection)\r\n- Date range filtering capabilities\r\n- Pagination with configurable limits\r\n- Real-time result counts\r\n\r\n**Conversation Display:**\r\n- Card-based layout with previews\r\n- Title, source, and timestamp display\r\n- Character count and summary preview\r\n- Temporary link generation (15-minute expiry)\r\n- Export functionality per conversation\r\n\r\n**Current Data:**\r\n- 69 conversations stored and accessible\r\n- Multiple source types tracked\r\n- Full-text search across content and summaries\r\n\r\n### Save Interface (`memory.nsgia.com/save`)\r\n\r\n**Manual Input Features:**\r\n- Conversation title (auto-generated if empty)\r\n- Source selection dropdown\r\n- Large text area for full conversation content\r\n- Optional summary field\r\n- Tag system with comma-separated values\r\n\r\n**Data Processing:**\r\n- Automatic title generation from content\r\n- Content hash generation for deduplication\r\n- Real-time character counting\r\n- Form validation and error handling\r\n\r\n### Individual Conversation Views\r\n\r\n**Detailed Display:**\r\n- Full conversation content with formatting\r\n- Metadata display (source, dates, character count)\r\n- Summary prominently featured\r\n- Export options (multiple formats planned)\r\n- Temporary link sharing with expiration tracking\r\n\r\n---\r\n\r\n## API Architecture\r\n\r\n### Core Endpoints\r\n\r\n**Health Check**\r\n- `GET /health` - System status and metrics\r\n- Returns: Database connectivity, user count, authentication status\r\n\r\n**Conversation Management**\r\n- `POST /save` - Store new conversation (requ"
+}

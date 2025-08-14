@@ -1,0 +1,12 @@
+{
+  "id": "cd90fe51-9c0b-4f68-9991-fa1b65629631",
+  "chunk_ix": 1,
+  "created_at": "2025-08-13T13:28:14",
+  "source": "web",
+  "tags": [
+    "development",
+    "memory",
+    "system"
+  ],
+  "content": "\r\n GET /login, POST /login — Session auth.\r\n POST /logout — End session.\r\n GET /import — Upload form (auth required).\r\n POST /import — Accept files, parse and persist.\r\n GET /search?q=...&amp;source=...&amp;from=...&amp;to=... — Search list.\r\n GET /thread/&lt;id&gt; — View thread detail, copy/export snippets.\r\n GET /admin/health — Simple health check.\r\n\r\n6) Data Model (MVP)\r\nCore tables (logical):\r\n users(id, email, password_hash, role, created_at, updated_at)\r\n sources(id, name, platform, notes, created_at)\r\n threads(id, source_id, external_id, title, started_at, ended_at, created_at)\r\n messages(id, thread_id, sender, sent_at, content_text, content_html, meta_json)\r\n tags(id, name), message_tags(message_id, tag_id)\r\n ingests(id, filename, format, status, record_count, created_at, created_by)\r\n usage_logs(id, user_id, action, details_json, created_at)\r\nNotes: message.content_html is optional; content_text is canonical for search. For SQLite\r\nMVP, enable FTS5 on a materialized view or shadow table.\r\n\r\n7) Authentication &amp; Security\r\n All mutation and import routes require login.\r\n Password storage via bcrypt/argon2.\r\n CSRF protection enabled for POST forms.\r\n File validation: size caps, extension allowlist, simple MIME checks.\r\n Optional per-user data scoping (owner-only view).\r\n Backups: nightly DB dump; optional encrypted ZIP export.\r\n\r\n8) Configuration &amp; Environment Variables\r\n FLASK_ENV=production|development\r\n SECRET_KEY=&lt;random&gt;\r\n DATABASE_URL=mariadb://user:pass@host/dbname or sqlite:///local.db\r\n UPLOAD_DIR=/var/app/uploads\r\n MAX_UPLOAD_MB=25\r\n ENABLE_AUTH=true|false\r\n\r\n9) Deployment Notes (Reference)\r\n Gunicorn with 2–4 workers behind Nginx reverse proxy (TLS).\r\n Systemd service for app and timer for backups.\r\n Log to stdout; rotate via journald/logrotate.\r\n TLS: Let&#39;s Encrypt or organization cert; HSTS enabled.\r\n Data directory &amp; DB backups restricted to app user.\r\n\r\n10) Operator Walkthrough\r\n Login → Impo"
+}

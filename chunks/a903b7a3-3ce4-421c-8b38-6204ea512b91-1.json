@@ -1,0 +1,12 @@
+{
+  "id": "a903b7a3-3ce4-421c-8b38-6204ea512b91",
+  "chunk_ix": 1,
+  "created_at": "2025-08-13T15:30:00",
+  "source": "web",
+  "tags": [
+    "development",
+    "memory",
+    "system"
+  ],
+  "content": "ing, finance, CRM, or other workflows.\r\n\r\nTemplates ensure consistent AI output and can be reused across sessions.\r\n\r\n3. Freemium and Paid Tiers\r\n3.1 Freemium Tier\r\nLimited number of temp pages per month (5–10).\r\n\r\nShort-lived page expiration (15 minutes).\r\n\r\nLow-friction login encourages adoption and viral sharing.\r\n\r\n3.2 Paid Tier\r\nUnlimited temp pages with configurable expiration.\r\n\r\nAdvanced templates and versioned libraries.\r\n\r\nStrong device-bound 2FA for sensitive content.\r\n\r\nOptional link revocation and extended analytics.\r\n\r\n4. Persistent AI Memory\r\nEvery temp page, chat, or reflection becomes part of a durable user-specific knowledge graph.\r\n\r\nAI can reference past interactions and user preferences across sessions.\r\n\r\nWeekly “reflection queries” are supported, allowing AI to provide insights that users can ingest back into the system.\r\n\r\n5. OS-Level Ingestion (Planned Enhancement)\r\nPrototype development underway for one-click ingestion via hotkeys (e.g., F4/F8).\r\n\r\nUsers will be able to capture text from any application and upload it directly to the system.\r\n\r\nThis will expand the system into a universal personal AI memory manager.\r\n\r\n6. Security Model\r\nFree-tier content: short-lived and low-risk, no 2FA required.\r\n\r\nPaid-tier content: device-bound 2FA, one-device per account, optional revocation.\r\n\r\nTemp pages remain unguessable, accessible only via unique URLs during their active window.\r\n\r\n7. MVP Status\r\nAll core functionality is complete and operational.\r\n\r\nUI/UX polished and tested across platforms.\r\n\r\nToken-efficient AI integration validated with multiple AI assistants.\r\n\r\nReady for launch to early adopters, chat groups, and communities.\r\n\r\n8. Launch Strategy\r\nRelease MVP to early adopters with freemium and paid tiers.\r\n\r\nTrack usage metrics, adoption patterns, and viral sharing impact.\r\n\r\nCollect feedback for iterative improvements while maintaining core functionality.\r\n\r\n9. Conclusion\r\nThe NSGIA Memory System is a completed, launch-ready platform fo"
+}

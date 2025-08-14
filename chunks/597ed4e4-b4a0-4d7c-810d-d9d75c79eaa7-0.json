@@ -1,0 +1,12 @@
+{
+  "id": "597ed4e4-b4a0-4d7c-810d-d9d75c79eaa7",
+  "chunk_ix": 0,
+  "created_at": "2025-08-13T13:49:41",
+  "source": "claude",
+  "tags": [
+    "development",
+    "memory",
+    "system"
+  ],
+  "content": "TITLE: # Memory System Technical White Paper\n\n# Memory System Technical White Paper\r\n## Current State Analysis and Architecture Overview\r\n\r\n**Document Version:** 2.0  \r\n**Prepared:** August 13, 2025  \r\n**Owner:** Michael Hoffman (North Star Group)  \r\n**Distribution:** Internal (for AI context and technical reference)  \r\n**Status:** Production System (Beyond MVP)\r\n\r\n---\r\n\r\n## Executive Summary\r\n\r\nThe Memory System has evolved significantly beyond its original MVP specification into a **production-grade conversation management platform** with advanced authentication, secure sharing, and comprehensive web interfaces. This document provides a complete technical overview of the current implementation, revealing a system that is substantially more sophisticated than initially documented.\r\n\r\n**Key Findings:**\r\n- **Advanced Authentication System**: Multi-factor authentication with photo verification, QR login, and device management\r\n- **Dual Application Architecture**: Separate backend API and frontend web application\r\n- **Production Database**: MariaDB with proper relationships and indexing\r\n- **Temporary Link System**: Secure 15-minute expiring links for external sharing\r\n- **Complete Web Interface**: Full CRUD operations with search, filtering, and export capabilities\r\n\r\n---\r\n\r\n## Current Architecture Overview\r\n\r\n### System Components\r\n\r\n**1. Memory System Backend** (`/var/www/memory_system/`)\r\n- **File:** `memory_app.py`\r\n- **Purpose:** Core API for conversation storage and retrieval\r\n- **Access:** `http://104.191.236.122:40001` and `http://104.191.236.122/memory/`\r\n- **Database:** MariaDB (`memory_system` database)\r\n- **Features:** User authentication, data isolation, comprehensive logging\r\n\r\n**2. NSGIA Web Application** (`/var/www/html/nsgia.com/`)\r\n- **File:** `nsgia_app.py`\r\n- **Purpose:** Public-facing web interface and temporary link management\r\n- **Access:** `memory.nsgia.com` (via domain routing)\r\n- **Features:** Web UI, temporary links, authentication integrati"
+}

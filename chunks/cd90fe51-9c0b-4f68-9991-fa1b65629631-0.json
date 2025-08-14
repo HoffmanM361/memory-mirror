@@ -1,0 +1,12 @@
+{
+  "id": "cd90fe51-9c0b-4f68-9991-fa1b65629631",
+  "chunk_ix": 0,
+  "created_at": "2025-08-13T13:28:14",
+  "source": "web",
+  "tags": [
+    "development",
+    "memory",
+    "system"
+  ],
+  "content": "TITLE: get context instructions\n\nMemory System MVP — Technical\r\nContext (For Claude Sonnet)\r\nPrepared: 2025-08-13 16:58 | Owner: Michael Hoffman (North Star Group) |\r\nDistribution: Internal (temporary link)\r\n\r\n1) Purpose\r\nProvide a single, authoritative context document that Claude Sonnet and ChatGPT can ingest\r\nto understand the MVP’s technical construction, interfaces, and next steps. This file is\r\ndesigned to be hosted at a temporary NSGIA link.\r\n\r\n2) MVP Scope (What Exists Today)\r\n Manual import of conversation files (TXT/JSON/HTML).\r\n Basic search and filter (by platform/source, date, keywords).\r\n Local storage only; no external services required for core use.\r\n Simple web UI built on Flask routes (protected routes available).\r\n\r\n3) High-Level Architecture\r\nStack overview:\r\n Backend: Python (Flask).\r\n Storage: SQLite (dev) or MariaDB (prod).\r\n Indexing/Search: SQLite FTS5 for MVP (upgrade path to Meilisearch/Elasticsearch).\r\n Frontend: HTML/CSS/JS (vanilla) with minimal dependencies.\r\n Auth: Flask-Login (session cookies), bcrypt password hashing.\r\nData flow (textual):\r\n User uploads exported chat file(s) → Validation/parse → Persist to DB → Optional index\r\nbuild.\r\n User queries UI → Query DB/FTS → Paginate results → View detail → Copy/export\r\nsnippets.\r\n\r\n4) Application Structure (Reference)\r\n app.py — Flask factory bootstrap (creates app, registers blueprints).\r\n auth_routes.py — login/logout, session management, password utilities.\r\n\r\n import_routes.py — upload, parse, validate, store, index.\r\n search_routes.py — keyword search, filters, pagination, detail view.\r\n admin_routes.py — health checks, simple metrics, backups.\r\n templates/ — Jinja templates (list, detail, upload, login).\r\n static/ — CSS/JS assets.\r\n models.py — SQL schemas and data access helpers.\r\n config.py — configuration via environment variables.\r\n migrations/ — migration scripts if using MariaDB.\r\n\r\n5) Key Routes (MVP)\r\n GET / — Home/dashboard (auth required if enabled)."
+}

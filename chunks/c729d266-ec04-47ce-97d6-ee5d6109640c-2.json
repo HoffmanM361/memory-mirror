@@ -1,0 +1,12 @@
+{
+  "id": "c729d266-ec04-47ce-97d6-ee5d6109640c",
+  "chunk_ix": 2,
+  "created_at": "2025-08-13T11:42:09",
+  "source": "web",
+  "tags": [
+    "development",
+    "memory",
+    "system"
+  ],
+  "content": "d with their API and handles all the payment complexity, tax compliance, and international billing automatically.\r\n\r\nPhase 3: UI Integration (2-3 hours)\r\nModify your existing save_conversation function to check usage limits:\r\n\r\npython\r\n@main_bp.route('/save', methods=['POST'])\r\n@login_required_for_dashboard\r\ndef save_conversation():\r\n    is_auth, user_id = check_user_auth()\r\n    if not is_auth:\r\n        return redirect('https://nsgia.com/auth/login')\r\n    \r\n    # New usage check\r\n    usage_allowed, usage_info = is_usage_allowed(user_id)\r\n    if not usage_allowed:\r\n        flash(f'Free limit reached ({usage_info[\"used\"]}/30 this month). Upgrade to Pro for unlimited saves!', 'warning')\r\n        return redirect(url_for('main.upgrade'))\r\n    \r\n    # Track this usage\r\n    track_usage(user_id, 'save_conversation')\r\n    \r\n    # ... existing save logic unchanged ...\r\nAdd upgrade and billing routes to your existing blueprint:\r\n\r\npython\r\n@main_bp.route('/upgrade')\r\n@login_required_for_dashboard\r\ndef upgrade():\r\n    # Show pricing page with Stripe checkout\r\n    \r\n@main_bp.route('/billing')\r\n@login_required_for_dashboard  \r\ndef billing():\r\n    # Show current subscription status and usage\r\nPhase 4: User Experience Enhancements (1-2 hours)\r\nAdd a usage indicator to your existing templates:\r\n\r\nhtml\r\n<!-- In your base template or dashboard -->\r\n<div class=\"usage-status\">\r\n    {% if session.user_tier == 'free' %}\r\n        <span>{{ usage_remaining }}/30 saves remaining this month</span>\r\n        {% if usage_remaining < 5 %}\r\n            <a href=\"{{ url_for('main.upgrade') }}\" class=\"upgrade-link\">Upgrade to Pro</a>\r\n        {% endif %}\r\n    {% else %}\r\n        <span>✓ Pro Member - Unlimited saves</span>\r\n    {% endif %}\r\n</div>\r\nWhy This Approach Is Optimal\r\n1. Minimal Technical Risk: You're adding functionality to a working system rather than rebuilding it. Your existing authentication, database connections, error handling, and user interface all remain intact.\r\n\r\n2. Fast Time-to-Re"
+}

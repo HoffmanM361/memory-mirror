@@ -1,0 +1,12 @@
+{
+  "id": "597ed4e4-b4a0-4d7c-810d-d9d75c79eaa7",
+  "chunk_ix": 2,
+  "created_at": "2025-08-13T13:49:41",
+  "source": "claude",
+  "tags": [
+    "development",
+    "memory",
+    "system"
+  ],
+  "content": "DE\r\n);\r\n```\r\n\r\n**Device Tokens Table** - Persistent device authentication\r\n```sql\r\nCREATE TABLE device_tokens (\r\n  id int(11) PRIMARY KEY AUTO_INCREMENT,\r\n  user_id int(11) NOT NULL,\r\n  token varchar(255) UNIQUE NOT NULL,\r\n  label varchar(255),\r\n  expires_at datetime NOT NULL,\r\n  device_info text,\r\n  created_at datetime DEFAULT current_timestamp(),\r\n  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE\r\n);\r\n```\r\n\r\n**QR Login Tokens Table** - Challenge-response QR authentication\r\n```sql\r\nCREATE TABLE qr_login_tokens (\r\n  token varchar(255) PRIMARY KEY,\r\n  user_id int(11),\r\n  is_approved tinyint(1) DEFAULT 0,\r\n  expires_at datetime NOT NULL,\r\n  created_at datetime DEFAULT current_timestamp(),\r\n  challenge_code varchar(10),\r\n  device_info text,\r\n  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE\r\n);\r\n```\r\n\r\n### Data Relationships\r\n\r\n- **User Isolation**: All data operations filtered by `user_id`\r\n- **Cascade Deletes**: Proper cleanup of related records\r\n- **Content Deduplication**: SHA-256 hashing prevents duplicate storage\r\n- **Comprehensive Indexing**: Optimized for search and retrieval operations\r\n\r\n---\r\n\r\n## Authentication & Security Architecture\r\n\r\n### Multi-Factor Authentication System\r\n\r\n**1. Primary Authentication**\r\n- Email/password with bcrypt hashing\r\n- Session management with secure cookies\r\n- Cross-domain session support (`.nsgia.com`)\r\n\r\n**2. Two-Factor Photo Verification**\r\n- Photo upload for identity verification\r\n- SHA-256 hashing of photo content\r\n- LONGBLOB storage for image data\r\n\r\n**3. QR Code Login System**\r\n- Challenge-response mechanism\r\n- Device information tracking\r\n- Approval workflow with expiration\r\n\r\n**4. Device Token Management**\r\n- Persistent device authentication\r\n- Labeled device tracking\r\n- Configurable expiration policies\r\n\r\n### Security Features\r\n\r\n**Data Protection:**\r\n- User data isolation at database level\r\n- Foreign key constraints with cascade deletes\r\n- Content hash verification for integrity\r\n- CSRF prote"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "a903b7a3-3ce4-421c-8b38-6204ea512b91",
+  "chunk_ix": 0,
+  "created_at": "2025-08-13T15:30:00",
+  "source": "web",
+  "tags": [
+    "development",
+    "memory",
+    "system"
+  ],
+  "content": "TITLE: NSGIA Memory System: Roadmap and Launch-Ready Over...\n\nNSGIA Memory System: Roadmap and Launch-Ready Overview\r\nAbstract\r\nThe NSGIA Memory System is a fully developed, token-efficient platform enabling persistent cross-chat memory for AI assistants. Leveraging temporary static HTML pages, secure authentication, and modular prompt templates, the system allows users to store, share, and retrieve contextual knowledge efficiently. This document describes the completed architecture, freemium and paid tiers, and the system’s readiness for release to early adopters.\r\n\r\n1. Introduction\r\nArtificial intelligence assistants are traditionally limited by ephemeral interactions and small context windows. The NSGIA Memory System resolves these limitations by providing:\r\n\r\nPersistent memory via user-uploaded chats, documents, and prompts.\r\n\r\nToken-efficient sharing with AI assistants through temporary static HTML pages.\r\n\r\nModular prompt templates for consistent style, tone, and workflow instructions.\r\n\r\nSecure access with tiered authentication for free and paid users.\r\n\r\nThe MVP has been fully implemented, tested, and is now ready for public deployment.\r\n\r\n2. Completed Features\r\n2.1 Temporary Pages\r\nUsers can create static HTML pages containing chats, documents, or prompt templates.\r\n\r\nPages are optimized for AI web tools and include unique URLs.\r\n\r\nPages expire automatically (default 15 minutes) to balance usability and security.\r\n\r\nPages include branding to ensure each shared page serves as a subtle promotion.\r\n\r\n2.2 AI Integration\r\nAI assistants can fetch and parse temp pages directly, avoiding high token costs.\r\n\r\nUsers can share pages across multiple AI platforms or with colleagues.\r\n\r\n2.3 User Authentication\r\nFreemium users: Simple email/password login with persistent data and limited temp pages per month.\r\n\r\nPaid users: Device-bound two-factor authentication using QR/image-based login for sensitive content.\r\n\r\n2.4 Prompt Templates\r\nUsers can store templates for market"
+}

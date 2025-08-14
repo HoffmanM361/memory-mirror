@@ -1,0 +1,12 @@
+{
+  "id": "597ed4e4-b4a0-4d7c-810d-d9d75c79eaa7",
+  "chunk_ix": 1,
+  "created_at": "2025-08-13T13:49:41",
+  "source": "claude",
+  "tags": [
+    "development",
+    "memory",
+    "system"
+  ],
+  "content": "on\r\n\r\n### Technology Stack\r\n\r\n**Backend:**\r\n- Python Flask with blueprint architecture\r\n- MariaDB database with InnoDB engine\r\n- SQLite FTS5 planned for advanced search\r\n- bcrypt password hashing with 2FA\r\n\r\n**Frontend:**\r\n- HTML/CSS/JavaScript (vanilla)\r\n- Responsive design with card-based layouts\r\n- Real-time temporary link generation\r\n- Ajax-based search and filtering\r\n\r\n**Infrastructure:**\r\n- Nginx reverse proxy with SSL/TLS\r\n- Shared session management across domains\r\n- Comprehensive logging and error handling\r\n- Production-ready deployment configuration\r\n\r\n---\r\n\r\n## Database Architecture\r\n\r\n### Complete Schema\r\n\r\n**Users Table** - User account management with advanced security\r\n```sql\r\nCREATE TABLE users (\r\n  id int(11) PRIMARY KEY AUTO_INCREMENT,\r\n  uuid varchar(36) NOT NULL,\r\n  name varchar(100) NOT NULL,\r\n  email varchar(255) UNIQUE NOT NULL,\r\n  organization varchar(255),\r\n  password_hash varchar(255) NOT NULL,\r\n  twofa_photo longblob NOT NULL,\r\n  twofa_photo_hash varchar(64) NOT NULL,\r\n  address varchar(255) NOT NULL,\r\n  city varchar(100) NOT NULL,\r\n  county varchar(100) NOT NULL,\r\n  last_login datetime,\r\n  created_at datetime DEFAULT current_timestamp()\r\n);\r\n```\r\n\r\n**Chats Table** - Core conversation storage with user isolation\r\n```sql\r\nCREATE TABLE chats (\r\n  id varchar(36) PRIMARY KEY,\r\n  created_at datetime NOT NULL,\r\n  source varchar(50) NOT NULL,\r\n  content longtext NOT NULL,\r\n  summary text,\r\n  content_hash varchar(64) UNIQUE,\r\n  user_id int(11),\r\n  title varchar(255) DEFAULT 'Untitled Chat',\r\n  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE\r\n);\r\n```\r\n\r\n**Temp Links Table** - Secure temporary sharing system\r\n```sql\r\nCREATE TABLE temp_links (\r\n  token varchar(255) PRIMARY KEY,\r\n  chat_id varchar(36) NOT NULL,\r\n  expires_at datetime NOT NULL,\r\n  created_at datetime DEFAULT current_timestamp(),\r\n  user_id int(11),\r\n  FOREIGN KEY (chat_id) REFERENCES chats(id) ON DELETE CASCADE,\r\n  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCA"
+}

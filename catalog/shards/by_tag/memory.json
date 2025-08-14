@@ -1,7 +1,144 @@
 {
   "version": "1",
-  "generated_at": "2025-08-13T06:15:23.343535Z",
+  "generated_at": "2025-08-14T03:26:25.092051Z",
   "items": [
+    {
+      "id": "990f9dd4-a1df-4073-993f-e707173873a6",
+      "created_at": "2025-08-13T19:43:05",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/990f9dd4-a1df-4073-993f-e707173873a6-0.json?key=8bba14962f9f2318",
+        "chunks/990f9dd4-a1df-4073-993f-e707173873a6-1.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: Use Case Page Content\r ## Header\r One tool to keep...\n\nUse Case Page Content\r\n## Header\r\nOne tool to keep every chat, file, and note searchable — forever.\r\nStop losing context. Keep your conversations and documents in one memory bank..."
+    },
+    {
+      "id": "a903b7a3-3ce4-421c-8b38-6204ea512b91",
+      "created_at": "2025-08-13T15:30:00",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/a903b7a3-3ce4-421c-8b38-6204ea512b91-0.json?key=8bba14962f9f2318",
+        "chunks/a903b7a3-3ce4-421c-8b38-6204ea512b91-1.json?key=8bba14962f9f2318",
+        "chunks/a903b7a3-3ce4-421c-8b38-6204ea512b91-2.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: NSGIA Memory System: Roadmap and Launch-Ready Over...\n\nNSGIA Memory System: Roadmap and Launch-Ready Overview\r\nAbstract\r\nThe NSGIA Memory System is a fully developed, token-efficient platform enabling persistent cross-chat memory for..."
+    },
+    {
+      "id": "597ed4e4-b4a0-4d7c-810d-d9d75c79eaa7",
+      "created_at": "2025-08-13T13:49:41",
+      "source": "claude",
+      "title": "claude conversation",
+      "tags": [
+        "development",
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/597ed4e4-b4a0-4d7c-810d-d9d75c79eaa7-0.json?key=8bba14962f9f2318",
+        "chunks/597ed4e4-b4a0-4d7c-810d-d9d75c79eaa7-1.json?key=8bba14962f9f2318",
+        "chunks/597ed4e4-b4a0-4d7c-810d-d9d75c79eaa7-2.json?key=8bba14962f9f2318",
+        "chunks/597ed4e4-b4a0-4d7c-810d-d9d75c79eaa7-3.json?key=8bba14962f9f2318",
+        "chunks/597ed4e4-b4a0-4d7c-810d-d9d75c79eaa7-4.json?key=8bba14962f9f2318",
+        "chunks/597ed4e4-b4a0-4d7c-810d-d9d75c79eaa7-5.json?key=8bba14962f9f2318",
+        "chunks/597ed4e4-b4a0-4d7c-810d-d9d75c79eaa7-6.json?key=8bba14962f9f2318",
+        "chunks/597ed4e4-b4a0-4d7c-810d-d9d75c79eaa7-7.json?key=8bba14962f9f2318",
+        "chunks/597ed4e4-b4a0-4d7c-810d-d9d75c79eaa7-8.json?key=8bba14962f9f2318",
+        "chunks/597ed4e4-b4a0-4d7c-810d-d9d75c79eaa7-9.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: # Memory System Technical White Paper\n\n# Memory System Technical White Paper\r\n## Current State Analysis and Architecture Overview\r\n\r\n**Document Version:** 2.0  \r\n**Prepared:** August 13, 2025  \r\n**Owner:** Michael Hoffman (North Star..."
+    },
+    {
+      "id": "cd90fe51-9c0b-4f68-9991-fa1b65629631",
+      "created_at": "2025-08-13T13:28:14",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/cd90fe51-9c0b-4f68-9991-fa1b65629631-0.json?key=8bba14962f9f2318",
+        "chunks/cd90fe51-9c0b-4f68-9991-fa1b65629631-1.json?key=8bba14962f9f2318",
+        "chunks/cd90fe51-9c0b-4f68-9991-fa1b65629631-2.json?key=8bba14962f9f2318",
+        "chunks/cd90fe51-9c0b-4f68-9991-fa1b65629631-3.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: get context instructions\n\nMemory System MVP — Technical\r\nContext (For Claude Sonnet)\r\nPrepared: 2025-08-13 16:58 | Owner: Michael Hoffman (North Star Group) |\r\nDistribution: Internal (temporary link)\r\n\r\n1) Purpose\r\nProvide a single, ..."
+    },
+    {
+      "id": "c729d266-ec04-47ce-97d6-ee5d6109640c",
+      "created_at": "2025-08-13T11:42:09",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "development",
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/c729d266-ec04-47ce-97d6-ee5d6109640c-0.json?key=8bba14962f9f2318",
+        "chunks/c729d266-ec04-47ce-97d6-ee5d6109640c-1.json?key=8bba14962f9f2318",
+        "chunks/c729d266-ec04-47ce-97d6-ee5d6109640c-2.json?key=8bba14962f9f2318",
+        "chunks/c729d266-ec04-47ce-97d6-ee5d6109640c-3.json?key=8bba14962f9f2318",
+        "chunks/c729d266-ec04-47ce-97d6-ee5d6109640c-4.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: A Comprehensive Case for Implementing a Freemium Model in Your Memory System\n\nLet's ask our college professor friend the artificial intelligence assistant chat gtp5 what it thinks about how to organize it can you compose a pretty lon..."
+    },
+    {
+      "id": "a0bee0a3-d01a-4d51-b2f9-d8155cd5aeb2",
+      "created_at": "2025-08-13T10:50:20",
+      "source": "claude",
+      "title": "The freemium model also creates a natural customer development pipeline:",
+      "tags": [
+        "development",
+        "memory",
+        "system"
+      ],
+      "summary": "The freemium model also creates a natural customer development pipeline:",
+      "chunk_urls": [
+        "chunks/a0bee0a3-d01a-4d51-b2f9-d8155cd5aeb2-0.json?key=8bba14962f9f2318",
+        "chunks/a0bee0a3-d01a-4d51-b2f9-d8155cd5aeb2-1.json?key=8bba14962f9f2318",
+        "chunks/a0bee0a3-d01a-4d51-b2f9-d8155cd5aeb2-2.json?key=8bba14962f9f2318",
+        "chunks/a0bee0a3-d01a-4d51-b2f9-d8155cd5aeb2-3.json?key=8bba14962f9f2318",
+        "chunks/a0bee0a3-d01a-4d51-b2f9-d8155cd5aeb2-4.json?key=8bba14962f9f2318",
+        "chunks/a0bee0a3-d01a-4d51-b2f9-d8155cd5aeb2-5.json?key=8bba14962f9f2318",
+        "chunks/a0bee0a3-d01a-4d51-b2f9-d8155cd5aeb2-6.json?key=8bba14962f9f2318",
+        "chunks/a0bee0a3-d01a-4d51-b2f9-d8155cd5aeb2-7.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: freemium memory v0\n\nThis is a well-structured handoff kit for creating a static documentation site for the NSGIA Chat Retrieval tool! I'll create the scaffold files as specified.\r\n\r\n\r\nNSGIA Chat Retrieval Scaffold Files\r\nDocument \r\n\r..."
+    },
+    {
+      "id": "b8c46fee-29da-444d-a9b7-acfb99b3b64e",
+      "created_at": "2025-08-13T01:16:42",
+      "source": "web",
+      "title": "web conversation",
+      "tags": [
+        "memory",
+        "system"
+      ],
+      "summary": "",
+      "chunk_urls": [
+        "chunks/b8c46fee-29da-444d-a9b7-acfb99b3b64e-0.json?key=8bba14962f9f2318"
+      ],
+      "preview_240": "TITLE: memory system urls\n\n(api_venv) mh@NSG:/var/www/api.nsgia.com$ \r\n(memory_venv) mh@NSG:/srv/memory-git$ \r\n^C(nsgia_venv) mh@NSG:/var/www/html/nsgia.com$ \r\n^C(memory_venv) mh@NSG:/var/www/memory_system$"
+    },
     {
       "id": "db19efc4-fcab-43b2-80e7-26e89534f029",
       "created_at": "2025-08-11T21:28:40",

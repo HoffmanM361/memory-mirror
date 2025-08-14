@@ -1,0 +1,11 @@
+{
+  "id": "b8c46fee-29da-444d-a9b7-acfb99b3b64e",
+  "chunk_ix": 0,
+  "created_at": "2025-08-13T01:16:42",
+  "source": "web",
+  "tags": [
+    "memory",
+    "system"
+  ],
+  "content": "TITLE: memory system urls\n\n(api_venv) mh@NSG:/var/www/api.nsgia.com$ \r\n(memory_venv) mh@NSG:/srv/memory-git$ \r\n^C(nsgia_venv) mh@NSG:/var/www/html/nsgia.com$ \r\n^C(memory_venv) mh@NSG:/var/www/memory_system$"
+}

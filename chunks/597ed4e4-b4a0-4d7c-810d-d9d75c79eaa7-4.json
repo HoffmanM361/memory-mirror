@@ -1,0 +1,12 @@
+{
+  "id": "597ed4e4-b4a0-4d7c-810d-d9d75c79eaa7",
+  "chunk_ix": 4,
+  "created_at": "2025-08-13T13:49:41",
+  "source": "claude",
+  "tags": [
+    "development",
+    "memory",
+    "system"
+  ],
+  "content": "ires authentication)\r\n- `GET /search` - Search user's conversations with filtering\r\n- `GET /get/<chat_id>` - Retrieve specific conversation\r\n\r\n**Authentication**\r\n- Session-based authentication for web interface\r\n- Bearer token authentication for API access\r\n- User isolation enforced at all endpoints\r\n\r\n### Request/Response Format\r\n\r\n**Save Conversation:**\r\n```json\r\n{\r\n  \"content\": \"Full conversation text\",\r\n  \"source\": \"platform_name\",\r\n  \"summary\": \"Optional brief summary\",\r\n  \"title\": \"Optional title (auto-generated if empty)\"\r\n}\r\n```\r\n\r\n**Search Response:**\r\n```json\r\n{\r\n  \"results\": [\r\n    {\r\n      \"id\": \"uuid\",\r\n      \"created_at\": \"ISO datetime\",\r\n      \"source\": \"platform\",\r\n      \"summary\": \"brief summary\",\r\n      \"preview\": \"first 200 characters...\"\r\n    }\r\n  ],\r\n  \"count\": 10,\r\n  \"user_id\": 1,\r\n  \"search_params\": {...}\r\n}\r\n```\r\n\r\n---\r\n\r\n## Temporary Link System\r\n\r\n### Implementation Details\r\n\r\n**Link Generation:**\r\n- Cryptographically secure random tokens\r\n- 15-minute expiration window\r\n- User and chat association tracking\r\n- Automatic cleanup of expired links\r\n\r\n**Access Control:**\r\n- Public access without authentication\r\n- Content served via NSGIA domain\r\n- Error handling for expired/invalid tokens\r\n- Template-based rendering with metadata\r\n\r\n**Use Cases:**\r\n- Sharing conversation context with AI assistants\r\n- External collaboration without account requirements\r\n- Technical documentation distribution\r\n- Cross-platform AI briefings\r\n\r\n### Current Integration\r\n\r\nThe temporary link system enables seamless context sharing across:\r\n- Claude (Anthropic)\r\n- ChatGPT (OpenAI)\r\n- Gemini (Google)\r\n- GitHub Copilot\r\n- Any AI system capable of fetching URLs\r\n\r\n---\r\n\r\n## Development Status vs. Original MVP Specification\r\n\r\n### Originally Planned (MVP Document)\r\n- Basic conversation storage\r\n- Simple search functionality\r\n- File import system\r\n- Local SQLite database\r\n- Basic Flask routes\r\n\r\n### Actually Implemented (Current State)\r\n- **Advanced multi-factor authentica"
+}

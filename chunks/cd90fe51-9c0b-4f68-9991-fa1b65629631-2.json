@@ -1,0 +1,12 @@
+{
+  "id": "cd90fe51-9c0b-4f68-9991-fa1b65629631",
+  "chunk_ix": 2,
+  "created_at": "2025-08-13T13:28:14",
+  "source": "web",
+  "tags": [
+    "development",
+    "memory",
+    "system"
+  ],
+  "content": "rt → Verify counts and status → Build/refresh index (if applicable).\r\n Search by keyword/date/source → Open thread → Copy/export snippet.\r\n Admin → Health check → Backup/download (optional).\r\n\r\n11) Reference Links (Update These Before Sharing)\r\nNSGIA Temporary Pages (paste the latest):\r\n Freemium Memory Model Proposal:\r\nhttps://nsgia.com/t/cKNw1Ty1ZaM15DeYGlNxFCzT4zmJ4V5R\r\n Chat Retrieval MVP Concept &amp; Outline:\r\nhttps://nsgia.com/t/DBkO3pYb8tJJUaqY7mYmPTF7TIYTZH0S\r\nAdd any new temporary links here before sending to Claude Sonnet.\r\n\r\nAppendix A — Sample .env\r\nFLASK_ENV=production\r\nSECRET_KEY=change_me_to_random_32_chars\r\nDATABASE_URL=sqlite:///memory_mvp.db\r\nUPLOAD_DIR=/var/app/uploads\r\nMAX_UPLOAD_MB=25\r\nENABLE_AUTH=true\r\n\r\nAppendix B — Supported Import Formats (MVP)\r\n Plain text (.txt): one message per line or paragraph; basic metadata from filename.\r\n JSON (.json): array of messages with fields {sender, sent_at, text, html?, meta?}.\r\n HTML (.html): basic DOM scrape for message blocks; sanitize to text.\r\n CSV (.csv): columns [thread_id?, sender, sent_at, text].\r\n\r\nAppendix C — API Sketch (Optional)\r\nIf you later expose APIs for automation:\r\n POST /api/v1/import — multipart upload; returns ingest_id.\r\n GET /api/v1/search?q=... — JSON results with pagination.\r\n GET /api/v1/thread/&lt;id&gt; — thread JSON.\r\n POST /api/v1/tag — add/remove tags.\r\n\r\nAppendix D — Phase 2+ Roadmap (Condensed)\r\n Integrate Meilisearch for faster fuzzy search.\r\n Add tagging UI and saved collections.\r\n Export templates (Slack MD, HTML, plain text)\r\n Optional Stripe for freemium model (limits + $5/mo).\r\n Encrypted at-rest storage and roles/permissions.\r\n\r\n12) Instructions for AI Assistants (Paste into Prompt)\r\n“Use this document as authoritative technical context for the Memory System MVP hosted\r\non NSGIA. Adhere to route and schema definitions, preserve the auth boundary (login\r\nrequired for imports and admin), and suggest incremental improvements that do not\r\ndisrupt curre"
+}

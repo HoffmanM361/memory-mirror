@@ -1,0 +1,12 @@
+{
+  "id": "a0bee0a3-d01a-4d51-b2f9-d8155cd5aeb2",
+  "chunk_ix": 2,
+  "created_at": "2025-08-13T10:50:20",
+  "source": "claude",
+  "tags": [
+    "development",
+    "memory",
+    "system"
+  ],
+  "content": "e archives of decision-making processes and technical discussions\r\nPersonal Research Organization: Individuals struggle to maintain context across extended research sessions\r\nThe beauty of your current implementation is that it already handles the core value proposition - secure, searchable, persistent storage of AI conversations with proper user authentication and data isolation. Users who find this valuable enough to use regularly will absolutely pay $5/month for unlimited access after experiencing the friction of a 30-use limit.\r\n\r\nTechnical Implementation Strategy\r\nHere's an efficient implementation path that leverages your existing architecture without major restructuring:\r\n\r\nPhase 1: Usage Tracking Infrastructure (2-3 hours)\r\nAdd a simple usage tracking table to your existing MySQL database:\r\n\r\nsql\r\nCREATE TABLE usage_tracking (\r\n    id INT AUTO_INCREMENT PRIMARY KEY,\r\n    user_id VARCHAR(255) NOT NULL,\r\n    action_type VARCHAR(50) NOT NULL,\r\n    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\r\n    FOREIGN KEY (user_id) REFERENCES users(user_id)\r\n);\r\nCreate a usage tracking module in your existing modules/ directory:\r\n\r\npython\r\n# /var/www/memory_system/modules/usage_tracker.py\r\ndef track_usage(user_id, action_type='save_conversation'):\r\n    # Simple insert into usage_tracking table\r\n    # Return current month's usage count\r\n    \r\ndef get_monthly_usage(user_id):\r\n    # Query usage_tracking for current month\r\n    # Return count and remaining free uses\r\n    \r\ndef is_usage_allowed(user_id, user_tier='free'):\r\n    # Check if user can perform action\r\n    # Return boolean and usage info\r\nPhase 2: User Tiers and Billing (4-5 hours)\r\nAdd a simple user_tier column to your existing users table:\r\n\r\nsql\r\nALTER TABLE users ADD COLUMN user_tier VARCHAR(20) DEFAULT 'free';\r\nALTER TABLE users ADD COLUMN stripe_customer_id VARCHAR(255) NULL;\r\nALTER TABLE users ADD COLUMN subscription_status VARCHAR(50) DEFAULT 'none';\r\nIntegrate with Stripe for subscription management - this is"
+}
